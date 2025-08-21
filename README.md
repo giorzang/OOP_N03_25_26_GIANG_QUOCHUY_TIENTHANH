@@ -1,2 +1,5 @@
-# OOP_NO3_25_26_GIANG
-Our Java Project
+# Nhóm Giang - Tiến Thành
+
+**1. Vũ Trường Giang**
+
+**2. Nguyễn Tiến Thành**

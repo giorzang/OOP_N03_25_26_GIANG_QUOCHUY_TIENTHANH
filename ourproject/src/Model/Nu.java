@@ -1,8 +1,6 @@
 package Model;
 
 public class Nu {
-
-public class Nam {
     //thuoc tinh
     public String Name;
     public String Major;

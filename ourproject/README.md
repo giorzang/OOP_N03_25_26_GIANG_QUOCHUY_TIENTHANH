@@ -11,7 +11,7 @@ OUR PROJECT is Universites
 Universities(Trường đại học)
 1.maTruong
 2.tenTruong
-3.điaiem
+3.điaDiem
 
 Major(Nghành học)
 1.maTruong
@@ -26,4 +26,4 @@ Facilities(Cơ sở vật chất)
 4.chatLuongPhongHoc
 5.chatLuongGiaoVien
 6.heThongQuanLy
-7.chiSotrangThietBitheThao
+7.chiSoTrangThietBitheThao

@@ -1,4 +1,4 @@
-public class testUniversities {
+public class testUniversit {
     public static void main(String[] args) {
         // Tao doi tuong truong dai hoc
         Universities u1 = new Universities();

@@ -19,5 +19,8 @@ Chũ ký: Thành
 
 # Content [Nội dung]: Project 
 
+# Sô đồ khối yêu cầu
+
+<img width="858" height="460" alt="image" src="https://github.com/user-attachments/assets/4566000b-cbc6-4908-8efd-2a0ec6d4d522" />
 
 

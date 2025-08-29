@@ -1,7 +1,7 @@
 # Project(Nhóm ) Giang - Quốc Huy - Tiến Thành
 
 
-# Thanh viien:
+# Thành Viên: 
 
 **1. Vũ Trường Giang**
 ID: 

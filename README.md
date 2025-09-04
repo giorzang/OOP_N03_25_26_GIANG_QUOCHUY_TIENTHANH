@@ -17,7 +17,7 @@ Chũ ký:
 ID: 23010841
 Chũ ký: Thành
 
-# Ứng dụng quản lí siêu thị
+# Ứng dụng mua bán trực tuyến
 
 ### Sơ đồ khối
 
@@ -30,6 +30,8 @@ Chũ ký: Thành
     - `password`
     - `phone`
   - Phương thức:
+    - `addUser`
+    - `updateUser`
 - `Shop`
   - Thuộc tính: 
     - `id`
@@ -38,7 +40,6 @@ Chũ ký: Thành
   - Phương thức:
     - `addProduct()`
     - `updateProduct()`
-    - `deleteProduct()`
 - `Product`
   - Thuộc tính:
     - `id`

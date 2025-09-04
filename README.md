@@ -21,6 +21,6 @@ Chũ ký: Thành
 
 # Sô đồ khối yêu cầu
 
-<img width="858" height="460" alt="image" src="https://github.com/user-attachments/assets/4566000b-cbc6-4908-8efd-2a0ec6d4d522" />
+<img width="1132" height="777" alt="image" src="https://github.com/user-attachments/assets/05ba68c0-c146-4ab0-b62d-b9cd278c52d0" />
 
 

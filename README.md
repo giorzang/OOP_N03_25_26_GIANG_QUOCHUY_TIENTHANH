@@ -22,9 +22,59 @@ Chũ ký: Thành
 ### Sơ đồ khối
 
 ### Đối tượng
-- `User`:
-  - Thuộc tính:
+- `User`
+  - Thuộc tính: 
+    - `id`
+    - `name`
+    - `email`
+    - `password`
+    - `phone`
   - Phương thức:
-- `Product`:
+- `Shop`
+  - Thuộc tính: 
+    - `id`
+    - `name`
+    - `userId`
+  - Phương thức:
+    - `addProduct()`
+    - `updateProduct()`
+    - `deleteProduct()`
+- `Product`
   - Thuộc tính:
+    - `id`
+    - `name`
+    - `price`
+    - `stock`
+    - `shopId`
+  - Phương thức:
+- `Cart`
+  - Thuộc tính:
+    - `userId`
+    - `productId`
+    - `picked`
+  - Phương thức:
+    - `pickProduct()`
+    - `unpickProduct()`
+    - `calculateTotal()`
+- `Order`
+  - Thuộc tính:
+    - `id`
+    - `userId`
+    - `productId`
+    - `status`
+    - `shippingAddress`
+  - Phương thức:
+- `Delivery`
+  - Thuộc tính:
+    - `id`
+    - `orderId`
+    - `status`
+  - Phương thức:
+- `Review`
+  - Thuộc tính:
+    - `id`
+    - `userId`
+    - `productId`
+    - `rating`
+    - `comment`
   - Phương thức:

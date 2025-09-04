@@ -1,7 +1,5 @@
 
-
 import Model.Book;
-
 public class TestBook {
     public static void main (String[] agrs){
         Book b1 = new Book("Tien Thanh Test");

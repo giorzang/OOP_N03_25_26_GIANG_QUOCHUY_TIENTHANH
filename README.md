@@ -79,3 +79,4 @@ Chũ ký: Thành
     - `rating`
     - `comment`
   - Phương thức:
+<img width="1132" height="777" alt="image" src="https://github.com/user-attachments/assets/abf3b3af-b45b-4c37-9868-5c67d5f79373" />

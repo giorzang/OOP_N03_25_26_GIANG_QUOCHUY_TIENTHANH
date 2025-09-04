@@ -17,9 +17,14 @@ Chũ ký:
 ID: 23010841
 Chũ ký: Thành
 
-# Content [Nội dung]: Project 
+# Ứng dụng quản lí siêu thị
 
-# Sô đồ khối yêu cầu
+### Sơ đồ khối
 
-
-
+### Đối tượng
+- `User`:
+  - Thuộc tính:
+  - Phương thức:
+- `Product`:
+  - Thuộc tính:
+  - Phương thức:

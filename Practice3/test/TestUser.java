@@ -1,5 +1,3 @@
-//import User;
-
 public class TestUser {
     public static void test() {
         User u = new User("user123", "123*****");

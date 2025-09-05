@@ -9,8 +9,8 @@ Chũ ký: Giang
 
 
 **2. Trần Quốc Huy**
-ID: 
-Chũ ký: 
+ID: 22010241 
+Chũ ký: Huy
 
 
 **3. Nguyễn Tiến Thành**

@@ -1,7 +1,7 @@
 import Model.MyStudent;
 
 public class TestMyStudent {
-    public static void main(String[] args) {
+    public static void Test(String[] args) {
         // Tạo đối tượng bằng constructor mặc định
         MyStudent st1 = new MyStudent();
         st1.setName("Nguyen Van A");

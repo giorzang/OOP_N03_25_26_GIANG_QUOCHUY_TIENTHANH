@@ -1,3 +1,4 @@
+package Model;
 public class Major {
     public String maTruong;
     public String maNghanh;
@@ -11,7 +12,7 @@ public class Major {
         tenNghanh = tennghanh;
         diemChuan = diemchuan;
 
-        System.out.println("Ma truong: " + maTruong);
+        System.out.println("Ma truon " + maTruong);
         System.out.println("Ma nghanh: " + maNghanh);
         System.out.println("Ten nghanh: " + tenNghanh);
         System.out.println("Diem chuan: " + diemChuan);

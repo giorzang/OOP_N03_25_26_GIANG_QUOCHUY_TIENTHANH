@@ -1,7 +1,7 @@
 import Model.myNumber;
 
 public class TestNumber {
-    public static void main(String[] args) {
+    public static void Test(String[] args) {
         myNumber n1 = new myNumber();
         myNumber n2 = new myNumber();
 

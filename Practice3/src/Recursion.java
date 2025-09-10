@@ -4,5 +4,5 @@ public class Recursion {
             return 1;
         }
         return number * factorial(number - 1);
-    }
+    
 }

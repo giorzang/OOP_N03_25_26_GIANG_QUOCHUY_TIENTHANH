@@ -3,7 +3,7 @@ package model;
 public class User {
     private int id;
     private String name;
-    private String email;
+    public String email;
     private String password;
     private String phone;
 
@@ -29,4 +29,8 @@ public class User {
     public void setPhone(String phone) { this.phone = phone; }
 
     // Methods
+
+    public void update(String name, String email, String password, String phone){
+    ////implementation
+    }
 }

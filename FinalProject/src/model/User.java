@@ -33,7 +33,15 @@ public class User {
 
     // Methods
 
-    public void update(String name, String email, String password, String phone){
-    ////implementation
+    public boolean login(String email, String password) {
+        return this.email.equals(email) && this.password.equals(password);
     }
+    
+    public void update(String name, String email, String password, String phone){
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+    }
+
 }

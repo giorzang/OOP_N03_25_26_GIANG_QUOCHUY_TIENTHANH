@@ -1,26 +1,26 @@
 package service;
 
-import model.product;
+import model.Product;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService {
-    private List<product> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 
     // CREATE - Thêm sản phẩm mới
-    public void addProduct(product p) {
+    public void addProduct(Product p) {
         products.add(p);
         System.out.println("Them san pham thanh cong!");
     }
 
     // READ - Lấy toàn bộ danh sách sản phẩm
-    public List<product> getAllProducts() {
+    public List<Product> getAllProducts() {
         return products;
     }
 
     // READ - Tìm sản phẩm theo ID
-    public product findById(int id) {
-        for (product p : products) {
+    public Product findById(int id) {
+        for (Product p : products) {
             if (p.getId() == id) {
                 return p;
             }
@@ -29,8 +29,8 @@ public class ProductService {
     }
 
     // UPDATE - Cập nhật thông tin sản phẩm (trừ id và shopId)
-    public boolean updateProduct(int id, product newProduct) {
-        for (product p : products) {
+    public boolean updateProduct(int id, Product newProduct) {
+        for (Product p : products) {
             if (p.getId() == id) {
                 p.upDate(
                         newProduct.getName(),

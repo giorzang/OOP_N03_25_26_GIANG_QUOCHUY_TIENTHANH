@@ -1,55 +1,46 @@
-package service;
-
-import model.Product;
 import java.util.ArrayList;
 import java.util.List;
-
 public class ProductService {
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<>(); 
 
-    // CREATE - Thêm sản phẩm mới
+    //Create: them mot thanh vien moi
     public void addProduct(Product p) {
         products.add(p);
-        System.out.println("Them san pham thanh cong!");
     }
-
-    // READ - Lấy toàn bộ danh sách sản phẩm
+    //Read: doc het cac phan tu trong sanh sach mang
+    public void showAll() {
+        for(Product p : products) {
+            System.out.println(p);
+        }
+    }
     public List<Product> getAllProducts() {
         return products;
     }
-
-    // READ - Tìm sản phẩm theo ID
-    public Product findById(int id) {
-        for (Product p : products) {
-            if (p.getId() == id) {
-                return p;
+    //Update: cap nhap san phan theo id
+    public void updateProduct(int id, String name, int price, int stock, String category, String description, String image) {
+        for(Product p : products) {
+            if(p.getId() == id) {
+                p.upDate(name, price, stock, category, description, image);
+                System.out.println("Da cap nhap san phan co ID: " + id);
+                return;
+            }
+            System.out.println("Khong tim thay san pham co ID: " + id);
+        }
+    }
+    //Delete: xoa san pham theo id
+    public void deleteProduct(int id) {
+        Product temp = null;
+        for(Product p : products) {
+            if(p.getId() == id) {
+                temp = p;
+                break;
             }
         }
-        return null;
-    }
-
-    // UPDATE - Cập nhật thông tin sản phẩm (trừ id và shopId)
-    public boolean updateProduct(int id, Product newProduct) {
-        for (Product p : products) {
-            if (p.getId() == id) {
-                p.upDate(
-                        newProduct.getName(),
-                        newProduct.getPrice(),
-                        newProduct.getStock(),
-                        newProduct.getCategory(),
-                        newProduct.getDescription(),
-                        newProduct.getImage()
-                );
-                System.out.println("Cap nhat san pham thanh cong!");
-                return true;
-            }
+        if(temp != null) {
+            products.remove(id);
+            System.out.println("Đã xóa sản phẩm có ID = " + id);
+        } else {
+             System.out.println("Không tìm thấy sản phẩm có ID = " + id);
         }
-        System.out.println("Khong tim thay san pham co ID = " + id);
-        return false;
-    }
-
-    // DELETE - Xóa sản phẩm theo ID
-    public boolean deleteProduct(int id) {
-        return products.removeIf(p -> p.getId() == id);
     }
 }

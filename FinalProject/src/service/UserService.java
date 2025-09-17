@@ -1,8 +1,5 @@
-package service;
-
 import java.util.ArrayList;
 import java.util.List;
-import model.User;
 
 public class UserService {
     private List<User> users = new ArrayList<>();
@@ -39,4 +36,5 @@ public class UserService {
     }
 
     // DELETE user
+    
 }

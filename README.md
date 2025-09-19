@@ -35,7 +35,7 @@ Chũ ký: Thành
 | `isActive` | `boolean` | Người dùng này còn hoạt động |
 | `login()` | | Đăng nhập tài khoản |
 | `logout()` | | Đăng xuất tài khoản |
-| `register()` | | Đăng nhập tài khoản |
+| `register()` | | Đăng ký tài khoản mới |
 | `updateProfile()` | | Cập nhật thông tin tài khoản |
 
 **2. Product**
@@ -50,7 +50,7 @@ Chũ ký: Thành
 | `addProduct()` | | Thêm sản phản mới |
 | `getProduct()` | | Lấy thông tin sản phản |
 | `updateProduct()` | | Cập nhật thông tin sản phản |
-| `deleteProduct()` | | Xóa thông tin sản phản (bỏ qua) |
+| `deleteProduct()` | | Xóa thông tin sản phản **(bỏ qua)** |
 
 **3. Category**
 | **Attribute/Method** | **Data Type** | **Description** |
@@ -61,7 +61,7 @@ Chũ ký: Thành
 | `addCategory()` | | Thêm sản phản mới |
 | `getCategory()` | | Lấy thông tin sản phản |
 | `updateCategory()` | | Cập nhật thông tin sản phản |
-| `deleteCategory()` | | Xóa thông tin sản phản (bỏ qua) |
+| `deleteCategory()` | | Xóa thông tin sản phản **(bỏ qua)** |
 
 **4. Order**
 | **Attribute/Method** | **Data Type** | **Description** |

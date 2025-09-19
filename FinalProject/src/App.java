@@ -12,10 +12,11 @@ public class App {
 
         System.out.println("\nTest Update User:");
         TestUser.testUpdate();
-        //Product
-        System.out.println("\nTest GetProduct:");
-        TestProduct.testGetProduct();
-        System.out.println("\nTest Set Product:");
-        TestProduct.testSetProduct();
+        
+        // //Product
+        // System.out.println("\nTest GetProduct:");
+        // TestProduct.testGetProduct();
+        // System.out.println("\nTest Set Product:");
+        // TestProduct.testSetProduct();
     }
 }

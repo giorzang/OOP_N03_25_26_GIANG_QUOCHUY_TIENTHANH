@@ -14,7 +14,7 @@ public class User {
         this.phone = phone;
         this.password = password;
         this.address = address;
-        this.isActive = active;
+        this.isActive = isActive;
     }
 
     // Get&Set Attributes
@@ -41,10 +41,14 @@ public class User {
 
     // Methods
     public boolean login(String email, String password) {
-        return this.email.equals(email) && this.password.equals(password);
+        return this.isActive == true && this.email.equals(email) && this.password.equals(password);
     }
 
-    public void update(String name, String email, String phone, String password, String address, boolean isActive){
+    public void logout() {
+        System.out.println("Logged out");
+    }
+
+    public void updateProfile(String name, String email, String phone, String password, String address, boolean isActive){
         this.name = name;
         this.email = email;
         this.phone = phone;

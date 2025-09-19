@@ -7,5 +7,7 @@ Thành Viên:
 3. Nguyễn Tiến Thành ID:  Chũ ký:
 
 Content [Nội dung]: Project
+
 Sô đồ khối yêu cầu
+
 <img width="1132" height="777" alt="image" src="https://github.com/user-attachments/assets/f418c547-2865-4fe9-9c56-78bd1954b8b7" />

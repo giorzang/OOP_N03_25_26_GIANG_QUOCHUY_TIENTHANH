@@ -78,8 +78,7 @@ Chũ ký: Thành
 | `cancelOrder()` | | Hủy đơn hàng |
 
 
-# Sô đồ khối yêu cầu
-<img width="1178" height="711" alt="image" src="https://github.com/user-attachments/assets/1c939dd3-8647-4fa9-9dd4-f93016541d28" />
+# Sô đồ khối yêu cầu<img width="1062" height="648" alt="image" src="https://github.com/user-attachments/assets/65a055fa-7d94-4f83-8267-a213ffee452b" />
 
 
 

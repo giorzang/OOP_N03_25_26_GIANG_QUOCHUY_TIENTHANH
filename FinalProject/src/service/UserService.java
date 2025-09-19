@@ -4,13 +4,11 @@ import java.util.List;
 public class UserService {
     private List<User> users = new ArrayList<>();
 
-    // CREATE user
     public void createUser(User newUser) {
         users.add(newUser);
         System.out.println("Added user " + newUser.getName() + " successfully");
     }
 
-    // READ user
     public User getUserById(int id) {
         for (User user: users) {
             if (user.getId() == id) {
@@ -24,7 +22,6 @@ public class UserService {
         return users;
     }
 
-    // UPDATE user
     public void updateUser(int id, String name, String email, String password, String phone) {
         User user = getUserById(id);
         
@@ -35,6 +32,5 @@ public class UserService {
         System.out.println("Updated user " + id + " successfully");
     }
 
-    // DELETE user
     
 }

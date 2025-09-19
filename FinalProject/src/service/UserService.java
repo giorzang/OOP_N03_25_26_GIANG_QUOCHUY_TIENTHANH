@@ -16,7 +16,6 @@ public class UserService {
         System.out.println("Added user " + newUser.getName() + " successfully");
     }
 
-    // READ user
     public User getUserById(int id) {
         for (User user: users) {
             if (user.getId() == id) {
@@ -40,6 +39,7 @@ public class UserService {
         System.out.println("Updated user " + id + " successfully");
     }
 
+<<<<<<< HEAD
     // DELETE user
     public void deleteUser(int id) {
         User user = getUserById(id);
@@ -50,6 +50,8 @@ public class UserService {
         user.setIsActive(false);
         System.out.println("Deleted user " + id + " successfully");
     }
+=======
+>>>>>>> cf81cc52e30c78e179bc6078fe5a902cae9a5f01
     
     public boolean login(String email, String password) {
         for (User user: users) {

@@ -6,7 +6,7 @@ public class CategoryService {
 
     public void addCategory(Category c) {
         categories.add(c);
-        System.out.println("Added category " + c.getId() + " successfully");
+        System.out.println("Đã thêm category id=" + c.getId());
     }
 
     public List<Category> getAllCategories() {
@@ -15,21 +15,19 @@ public class CategoryService {
 
     public Category getCategoryById(int id) {
         for (Category c : categories) {
-            if (c.getId() == id) {
-                return c;
-            }
+            if (c.getId() == id) return c;
         }
         return null;
     }
 
     public void updateCategory(int id, String description, int productId) {
         Category c = getCategoryById(id);
-        if (c == null) {
-            System.out.println("Category " + id + " not found");
-            return;
+        if (c != null) {
+            c.update(description, productId);
+            System.out.println("Đã cập nhật category id=" + id);
+        } else {
+            System.out.println("Không tìm thấy category id=" + id);
         }
-        c.update(description, productId);
-        System.out.println("Updated category " + id + " successfully");
     }
 
     public void deleteCategory(int id) {
@@ -42,9 +40,9 @@ public class CategoryService {
         }
         if (temp != null) {
             categories.remove(temp);
-            System.out.println("Deleted category with ID = " + id);
+            System.out.println("Đã xóa category id=" + id);
         } else {
-            System.out.println("Category " + id + " not found");
+            System.out.println("Không tìm thấy category id=" + id);
         }
     }
 }

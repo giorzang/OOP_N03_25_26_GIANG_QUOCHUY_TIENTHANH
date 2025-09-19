@@ -9,14 +9,26 @@ public class Category {
         this.productId = productId;
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public int getProductId() { return productId; }
-    public void setProductId(int productId) { this.productId = productId; }
+    public int getProductId() {
+        return productId;
+    }
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
 
     public void update(String description, int productId) {
         this.description = description;
@@ -25,8 +37,8 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category [id=" + id +
-                ", description=" + description +
-                ", productId=" + productId + "]";
+        return "Category[ id=" + id +
+               ", description=" + description +
+               ", productId=" + productId + " ]";
     }
 }

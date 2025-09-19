@@ -1,28 +1,28 @@
 public class TestCategory {
     public static void testGetCategory() {
-        Category c = new Category(1, "Áo nam", 101);
-        System.out.println("id: " + c.getId());
-        System.out.println("description: " + c.getDescription());
-        System.out.println("productId: " + c.getProductId());
+        Category c = new Category(1, "Quần áo nam", 101);
+        System.out.println("id = " + c.getId());
+        System.out.println("description = " + c.getDescription());
+        System.out.println("productId = " + c.getProductId());
     }
 
     public static void testSetCategory() {
-        Category c = new Category(2, "Quần nữ", 202);
+        Category c = new Category(2, "Phụ kiện điện tử", 202);
         c.setId(3);
-        c.setDescription("Phụ kiện thời trang");
+        c.setDescription("Đồ gia dụng");
         c.setProductId(303);
 
-        System.out.println("id: " + c.getId());
-        System.out.println("description: " + c.getDescription());
-        System.out.println("productId: " + c.getProductId());
+        System.out.println("id = " + c.getId());
+        System.out.println("description = " + c.getDescription());
+        System.out.println("productId = " + c.getProductId());
     }
 
-    public static void testUpdate() {
-        Category c = new Category(4, "Giày dép", 404);
-        c.update("Giày thể thao", 505);
+    public static void testUpdateCategory() {
+        Category c = new Category(4, "Thời trang nữ", 404);
+        c.update("Thời trang trẻ em", 505);
 
-        System.out.println("id: " + c.getId());
-        System.out.println("description: " + c.getDescription());
-        System.out.println("productId: " + c.getProductId());
+        System.out.println("id = " + c.getId());
+        System.out.println("description = " + c.getDescription());
+        System.out.println("productId = " + c.getProductId());
     }
 }

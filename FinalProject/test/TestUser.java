@@ -30,13 +30,6 @@ public class TestUser {
         System.out.println("address = " + u.getAddress());
         System.out.println("isActive = " + u.getIsActive());
     }
-    
-    public static void testLogin() {
-        User u = new User(1, "Giang", "giorzang@gmail.com", "0818778269", "pass123", "DH Phenikaa", true);
-        
-        System.out.println("(" + u.login("giorzang@gmail.com", "pass321") + ") Sai email hoac mat khau.");
-        System.out.println("(" + u.login("giorzang@gmail.com", "pass123") + ") Dang nhap thanh cong!");
-    }
 
     public static void testUpdate() {
         User u = new User(1, "Giang", "giorzang@gmail.com", "0818778269", "pass123", "DH Phenikaa", true);

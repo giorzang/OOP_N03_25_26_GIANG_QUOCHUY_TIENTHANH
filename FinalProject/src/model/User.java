@@ -40,13 +40,6 @@ public class User {
     public void setIsActive(boolean isActive) { this.isActive = isActive; }
 
     // Methods
-    public boolean login(String email, String password) {
-        return this.isActive == true && this.email.equals(email) && this.password.equals(password);
-    }
-
-    public void logout() {
-        System.out.println("Logged out");
-    }
 
     public void updateProfile(String name, String email, String phone, String password, String address, boolean isActive){
         this.name = name;

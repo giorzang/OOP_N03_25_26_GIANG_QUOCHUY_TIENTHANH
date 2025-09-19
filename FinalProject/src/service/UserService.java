@@ -41,5 +41,26 @@ public class UserService {
     }
 
     // DELETE user
+    public void deleteUser(int id) {
+        User user = getUserById(id);
+
+        if (user == null || user.getIsActive() == true) {
+            System.out.println("User " + id + " not found");
+        }
+        user.setIsActive(false);
+        System.out.println("Deleted user " + id + " successfully");
+    }
     
+    public boolean login(String email, String password) {
+        for (User user: users) {
+            if (user.getEmail().equals(email) && user.getIsActive() == true && user.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void logout() {
+        System.out.println("Logged out");
+    }
 }

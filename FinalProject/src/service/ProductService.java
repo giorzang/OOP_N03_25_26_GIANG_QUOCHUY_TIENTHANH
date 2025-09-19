@@ -27,20 +27,22 @@ public class ProductService {
             System.out.println("Khong tim thay san pham co ID: " + id);
         }
     }
-    //Delete: xoa san pham theo id
-    public void deleteProduct(int id) {
-        Product temp = null;
-        for(Product p : products) {
-            if(p.getId() == id) {
-                temp = p;
-                break;
-            }
-        }
-        if(temp != null) {
-            products.remove(id);
-            System.out.println("Đã xóa sản phẩm có ID = " + id);
-        } else {
-             System.out.println("Không tìm thấy sản phẩm có ID = " + id);
-        }
-    }
 }
+
+//     //Delete: xoa san pham theo id
+//     public void deleteProduct(int id) {
+//         Product temp = null;
+//         for(Product p : products) {
+//             if(p.getId() == id) {
+//                 temp = p;
+//                 break;
+//             }
+//         }
+//         if(temp != null) {
+//             products.remove(id);
+//             System.out.println("Đã xóa sản phẩm có ID = " + id);
+//         } else {
+//              System.out.println("Không tìm thấy sản phẩm có ID = " + id);
+//         }
+//     }
+// }

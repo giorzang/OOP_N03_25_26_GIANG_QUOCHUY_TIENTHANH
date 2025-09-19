@@ -15,7 +15,7 @@ public class TestProductService {
 
         System.out.println("\n=== Danh sach san pham sau khi them ===");
         service.showAll();
-
+i
         // ===== TEST UPDATE =====
         service.updateProduct(2, "Quan kaki", 250, 8, "Thoi trang", "Quan kaki mau be", "quan_kaki.jpg");
 

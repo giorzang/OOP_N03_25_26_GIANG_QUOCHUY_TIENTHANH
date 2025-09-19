@@ -80,6 +80,7 @@ Chũ ký: Thành
 
 # Sô đồ khối yêu cầu
 
-<img width="1132" height="777" alt="image" src="https://github.com/user-attachments/assets/70128d74-5847-4014-8c12-963c65f9821c" />
+<img width="962" height="540" alt="image" src="https://github.com/user-attachments/assets/565611ee-088d-499e-b53b-169ed6106567" />
+
 
 

@@ -32,7 +32,7 @@ Chũ ký: Thành
 | `phone` | `String` | Số điện thoại liên lạc |
 | `password` | `String` | Mật khẩu đăng nhập |
 | `address` | `String` | Địa chỉ giao hàng của người dùng |
-| `isActivate` | `boolean` | Người dùng này còn hoạt động |
+| `isActive` | `boolean` | Người dùng này còn hoạt động |
 | `login()` | | Đăng nhập tài khoản |
 | `logout()` | | Đăng xuất tài khoản |
 | `register()` | | Đăng nhập tài khoản |

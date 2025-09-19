@@ -1,5 +1,3 @@
-package model;
-
 public class User {
     private int id;
     private String name;
@@ -32,11 +30,10 @@ public class User {
     public void setPhone(String phone) { this.phone = phone; }
 
     // Methods
-
     public boolean login(String email, String password) {
         return this.email.equals(email) && this.password.equals(password);
     }
-    
+
     public void update(String name, String email, String password, String phone){
         this.name = name;
         this.email = email;

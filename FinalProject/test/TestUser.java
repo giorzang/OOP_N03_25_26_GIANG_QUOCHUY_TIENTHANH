@@ -1,5 +1,3 @@
-import model.User;
-
 public class TestUser {
     public static void testGet() {
         User u = new User(1, "Giang", "giorzang@gmail.com", "pass123", "0818778269");

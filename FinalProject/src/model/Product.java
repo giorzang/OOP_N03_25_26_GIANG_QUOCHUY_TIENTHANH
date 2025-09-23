@@ -3,71 +3,37 @@ public class Product {
     private String name;
     private int price;
     private int stock;
+    private String category;
     private String description;
     private String image;
 
-    //Menthod
-    //Contructor
-    public Product(int id, String name, int price, int stock , int shopId, String description, String image) {
+    public Product(int id, String name, int price, int stock, String category, String description, String image) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.stock = stock;
+        this.category = category;
         this.description = description;
         this.image = image;
     }
-    // Getter & Setter
-    public int getId() { 
-        return id; 
+
+    public int getId() {
+        return id;
     }
 
-    public void setId(int id) { 
-        this.id = id; 
-    }
-
-    public String getName() { 
-        return name; 
-    }
-
-    public void setName(String name) { 
-        this.name = name; 
-    }
-
-    public int getPrice() { 
-        return price; 
-    }
-
-    public void setPrice(int price) { 
-        this.price = price; 
-    }
-
-    public int getStock() { 
-        return stock; 
-    }
-    public void setStock(int stock) {
-         this.stock = stock; 
-    }
-
-    public String getDescription() { 
-        return description; 
-    }
-    public void setDescription(String description) { 
-        this.description = description;
-    }
-
-    public String getImage() { 
-        return image;
-    }
-    public void setImage(String image) { 
-        this.image = image;
-    }
-
-    //update()
     public void upDate(String name, int price, int stock, String category, String description, String image) {
         this.name = name;
         this.price = price;
         this.stock = stock;
+        this.category = category;
         this.description = description;
         this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{id=" + id + ", name='" + name + "', price=" + price +
+               ", stock=" + stock + ", category='" + category + "', description='" +
+               description + "', image='" + image + "'}";
     }
 }

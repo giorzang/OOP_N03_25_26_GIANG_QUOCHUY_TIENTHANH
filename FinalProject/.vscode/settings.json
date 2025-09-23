@@ -1,8 +1,9 @@
 {
     "java.project.sourcePaths": [
+        "test",
         "src/service",
         "src/model",
-        "test"
+        "src"
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [],

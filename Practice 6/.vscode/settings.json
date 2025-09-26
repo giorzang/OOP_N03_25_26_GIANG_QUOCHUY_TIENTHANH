@@ -1,9 +1,10 @@
 {
     "java.project.sourcePaths": [
-        "src",
-        "Test",
         "src/Interface",
-        "src/Model"
+        "Review",
+        "src/Model",
+        "src/Abstract",
+        "Test"
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": []

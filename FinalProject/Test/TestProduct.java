@@ -1,23 +1,28 @@
 public class TestProduct {
-    public static void main(String[] args) {
-        // 1. Tạo sản phẩm bằng constructor
-        Product p = new Product(1, "Áo thun", 120000, 10, "Quần áo", "Áo thun cotton trắng", "ao1.jpg");
+    public void Test() {
+        ProductService productService = new ProductService();
 
-        System.out.println("=== Thông tin ban đầu ===");
-        System.out.println(p); // gọi toString()
+        // CREATE
+        System.out.println(">>> THEM SAN PHAM");
+        Product p1 = new Product(1, "Harry Potter", 120000, 10, "Fantasy", "Sach van hoc noi tieng", "harry.jpg");
+        Product p2 = new Product(2, "Java Programming", 250000, 5, "Technology", "Sach hoc lap trinh Java", "java.jpg");
+        productService.addProduct(p1);
+        productService.addProduct(p2);
 
-        // 2. Test getId()
-        System.out.println("\n=== Test getId() ===");
-        System.out.println("ID sản phẩm: " + p.getId());
+        // READ
+        System.out.println("\n>>> DANH SACH SAN PHAM");
+        productService.showAll();
 
-        // 3. Test upDate()
-        System.out.println("\n=== Cập nhật thông tin sản phẩm ===");
-        p.upDate("Áo hoodie", 250000, 5, "Áo khoác", "Áo hoodie đen ấm áp", "hoodie.jpg");
-        System.out.println(p);
+        // UPDATE
+        System.out.println("\n>>> CAP NHAT SAN PHAM ID=1");
+        productService.updateProduct(1, "Harry Potter - Update", 150000, 8, "Fantasy", "Phien ban moi nhat", "harry_new.jpg");
 
-        // 4. Test cập nhật lần nữa để chắc chắn hoạt động đúng
-        System.out.println("\n=== Cập nhật lần 2 ===");
-        p.upDate("Giày sneaker", 500000, 7, "Giày dép", "Giày sneaker trắng", "sneaker.jpg");
-        System.out.println(p);
+        // DELETE
+        System.out.println("\n>>> XOA SAN PHAM ID=2");
+        productService.deleteProduct(2);
+
+        // READ again
+        System.out.println("\n>>> DANH SACH SAU KHI XOA");
+        productService.showAll();
     }
 }

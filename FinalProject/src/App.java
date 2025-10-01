@@ -1,5 +1,7 @@
 public class App {
-    public  void main(String[] args) {
-
+    public static void main(String[] args) {
+        TestCategory.testGetCategory();
+        TestCategory.testSetCategory();
+        TestCategory.testUpdateCategory();
     }
 }

@@ -3,7 +3,8 @@
         "test",
         "src/service",
         "src/model",
-        "src"
+        "src",
+        "Test"
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [],

@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 
@@ -29,6 +31,11 @@ public class Product {
 
     @Column(name = "image")
     private String imageUrl; // Đường dẫn tới hình ảnh sản phẩm
+    
+    // -- THÊM MỐI QUAN HỆ VỚI CATEGORY TẠI ĐÂY --
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     // Constructors (hàm khởi tạo)
     public Product() {
@@ -36,7 +43,8 @@ public class Product {
     }
 
     // Getters and Setters
-    // Các phương thức để lấy và đặt giá trị cho các thuộc tính
+    // ... (các getter/setter cũ) ...
+
     public Long getId() {
         return id;
     }
@@ -84,4 +92,14 @@ public class Product {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+    
+    // Thêm getter và setter cho category
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
+

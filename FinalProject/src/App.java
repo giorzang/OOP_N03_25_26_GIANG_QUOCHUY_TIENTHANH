@@ -3,5 +3,9 @@ public class App {
         TestCategory.testGetCategory();
         TestCategory.testSetCategory();
         TestCategory.testUpdateCategory();
+        TestProductService.testProductService();
+        TestOrderService.testOrderService();
+        TestUserService.testRegister();
+        
     }
 }

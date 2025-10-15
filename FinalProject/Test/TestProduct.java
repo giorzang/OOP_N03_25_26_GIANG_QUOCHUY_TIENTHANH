@@ -1,5 +1,5 @@
 public class TestProduct {
-    public void Test() {
+    public static void Test() {
         ProductService productService = new ProductService();
 
         // CREATE

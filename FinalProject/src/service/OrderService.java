@@ -9,7 +9,7 @@ public class OrderService {
         orders.add(order);
         System.out.println("Đã thêm đơn hàng có ID: " + order.getId());
     }
-
+//dfádfsa
     // Read: Hiển thị toàn bộ đơn hàng
     public void showAllOrders() {
         if (orders.isEmpty()) {

@@ -1,11 +1,12 @@
 public class App {
     public static void main(String[] args) {
-        TestCategory.testGetCategory();
-        TestCategory.testSetCategory();
-        TestCategory.testUpdateCategory();
-        TestProductService.testProductService();
-        TestOrderService.testOrderService();
-        TestUserService.testRegister();
-        
+        System.out.println("=== RUNNING ALL TESTS ===");
+
+        UserServiceTest.runTests();
+        ProductServiceTest.runTests();
+        CategoryServiceTest.runTests();
+        OrderServiceTest.runTests();
+
+        System.out.println("=== ALL TESTS FINISHED ===");
     }
 }

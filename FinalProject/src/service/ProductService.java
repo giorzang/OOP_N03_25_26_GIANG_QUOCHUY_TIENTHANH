@@ -2,51 +2,64 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService {
-    private List<Product> products = new ArrayList<>(); 
+    private List<Product> products = new ArrayList<>();
 
-    // Create: them mot san pham moi
-    public void addProduct(Product p) {
-        products.add(p);
-        System.out.println("Da them san pham co ID: " + p.getId());
-    }
-
-    // Read: hien thi tat ca san pham
-    public void showAll() {
-        for(Product p : products) {
-            System.out.println(p);
+    // CREATE product
+    public void addProduct(Product newProduct) {
+        for (Product product : products) {
+            if (product.getId() == newProduct.getId()) {
+                System.out.println("Product with ID " + newProduct.getId() + " already exists");
+                return;
+            }
         }
+        products.add(newProduct);
+        System.out.println("Added product " + newProduct.getName() + " successfully");
     }
 
+    // READ product by ID
+    public Product getProductById(int id) {
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    // READ all products
     public List<Product> getAllProducts() {
         return products;
     }
 
-    // Update: cap nhat san pham theo id
-    public void updateProduct(int id, String name, int price, int stock, String category, String description, String image) {
-        for(Product p : products) {
-            if(p.getId() == id) {
-                p.upDate(name, price, stock, category, description, image);
-                System.out.println("Da cap nhat san pham co ID: " + id);
-                return;
-            }
+    // UPDATE product
+    public void updateProduct(int id, String name, String description, int price, int stock, String image, int categoryId) {
+        Product product = getProductById(id);
+
+        if (product == null) {
+            System.out.println("Product with ID " + id + " not found");
+            return;
         }
-        System.out.println("Khong tim thay san pham co ID: " + id);
+
+        product.setName(name);
+        product.setDescription(description);
+        product.setPrice(price);
+        product.setStock(stock);
+        product.setImage(image);
+        product.setCategoryId(categoryId);
+
+        System.out.println("Updated product " + id + " successfully");
     }
 
-    // Delete: xoa san pham theo id
+    // DELETE product
     public void deleteProduct(int id) {
-        Product temp = null;
-        for(Product p : products) {
-            if(p.getId() == id) {
-                temp = p;
-                break;
-            }
+        Product product = getProductById(id);
+
+        if (product == null) {
+            System.out.println("Product with ID " + id + " not found");
+            return;
         }
-        if(temp != null) {
-            products.remove(temp);
-            System.out.println("Da xoa san pham co ID = " + id);
-        } else {
-            System.out.println("Khong tim thay san pham co ID = " + id);
-        }
+
+        products.remove(product);
+        System.out.println("Deleted product " + id + " successfully");
     }
 }

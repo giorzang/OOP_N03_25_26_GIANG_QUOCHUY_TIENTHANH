@@ -1,25 +1,29 @@
 plugins {
-	id 'org.springframework.boot' version '3.3.0'
-	id 'java'
+    // 1. HẠ CẤP SPRING BOOT: Dùng 2.7.18 (phiên bản cuối cùng hỗ trợ Java 11)
+    id 'org.springframework.boot' version '2.7.18'
+    id 'java'
 }
 
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+
+// 2. HẠ CẤP JAVA: Đặt lại sourceCompatibility về 11
+sourceCompatibility = '11'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // Dependencies này sẽ tự động dùng phiên bản 2.7.18
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

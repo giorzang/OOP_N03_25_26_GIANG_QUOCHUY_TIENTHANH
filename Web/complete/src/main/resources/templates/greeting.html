@@ -1,10 +1,54 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head> 
-    <title>Getting Started: Serving Web Content</title> 
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 50px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px 60px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 90%;
+            border-top: 5px solid #007bff;
+        }
+        h1 {
+            color: #007bff;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <p th:text="|Hello, ${name}!|" />
+    <div class="container">
+        <h1>Hello!</h1>
+        <p>This is a Spring Boot web application template.</p>
+        <p>The parameter passed from the controller is:</p>
+        <!-- Thymeleaf expression to display the 'name' attribute from the Model -->
+        <p class="highlight" th:text="'Hello, ' + ${name} + '!'" /> 
+        <p>Try appending `?name=YourName` to the URL to change the greeting!</p>
+    </div>
 </body>
 </html>

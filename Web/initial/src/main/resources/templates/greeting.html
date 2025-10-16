@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<!-- Thêm khai báo DOCTYPE và lang để tuân thủ tiêu chuẩn web -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Trang Chào Mừng Spring Boot</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Thêm viewport meta để responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #f0f0f0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #34495e;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .container {
+            background-color: #ecf0f1;
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            max-width: 90%;
+            text-align: center;
+            border: 1px solid #bdc3c7;
+        }
+        .success-message {
+            color: #27ae60;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>XIN CHÀO!</h1>
+        <p th:text="'Chào mừng đến với ứng dụng Spring Boot, ' + ${name} + '!'"></p>
+        <p class="success-message">Ứng dụng đã chạy thành công trên Java 11 và Spring Boot 2.7!</p>
+    </div>
+</body>
+</html>

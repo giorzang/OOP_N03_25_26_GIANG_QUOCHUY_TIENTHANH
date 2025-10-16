@@ -19,7 +19,7 @@ Chũ ký: Thành
 
 # Content [Nội dung]: Project 
 
-# Ứng dụng mua bán trực tuyến
+# Quản lý bán hàng sau sạch online
 
 ### Classes
 

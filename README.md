@@ -47,6 +47,7 @@ Chũ ký: Thành
 | `price` | `int` | Đơn giá sản phẩm |
 | `stock` | `int` | Tồn kho của sản phẩm |
 | `image` | `String` | Hình ảnh sẩn phẩm |
+| `categoryId` | `int` | ID loại sản phẩm |
 | `addProduct()` | | Thêm sản phản mới |
 | `getProduct()` | | Lấy thông tin sản phản |
 | `updateProduct()` | | Cập nhật thông tin sản phản |
@@ -57,7 +58,6 @@ Chũ ký: Thành
 |----------------------|---------------|-----------------|
 | `id` | `int` | ID loại sản phẩm |
 | `description` | `String` | Mô tả loại sản phẩm |
-| `productId` | `int` | Mô tả loại sản phẩm |
 | `addCategory()` | | Thêm sản phản mới |
 | `getCategory()` | | Lấy thông tin sản phản |
 | `updateCategory()` | | Cập nhật thông tin sản phản |
@@ -77,8 +77,16 @@ Chũ ký: Thành
 | `updateOrder()` | | Cập nhật thông tin đơn hàng |
 | `cancelOrder()` | | Hủy đơn hàng |
 
+**5. OrderDetail**
+| **Attribute/Method** | **Data Type** | **Description** |
+|----------------------|---------------|-----------------|
+| `orderId` | `int` | ID đơn hàng |
+| `productId` | `int` | ID sản  |
+| `quantity` | `int` | Số lượng sản phẩm |
+| `price` | `int` | Giá của sản phẩm tại thời điểm mua hàng |
+| `totalAmount` | `int` | Tổng giá trị đơn hàng |
 
-<img width="1161" height="538" alt="image" src="https://github.com/user-attachments/assets/f434b84a-2133-4ef4-8a7b-62898507432e" />
+<img width="1087" height="542" alt="image" src="https://github.com/user-attachments/assets/c014ddca-c758-4523-a605-1897b66a1fc5" />
 
 
 

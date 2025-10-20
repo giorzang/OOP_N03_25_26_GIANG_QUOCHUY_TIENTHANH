@@ -1,6 +1,6 @@
 package com.example.servingwebcontent.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "order_details")
@@ -22,11 +22,11 @@ public class OrderDetail {
 
     private double price; // Giá tại thời điểm mua
 
-    // Constructors
+    // Các hàm khởi tạo
     public OrderDetail() {
     }
 
-    // Getters and Setters
+    // Phương thức truy xuất và thiết lập
     public Long getId() {
         return id;
     }

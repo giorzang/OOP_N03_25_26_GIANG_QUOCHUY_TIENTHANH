@@ -1,12 +1,14 @@
-package com.example.servingwebcontent.controllers;
+package com.example.servingwebcontent.controller; 
 
-import com.example.servingwebcontent.entities.Order;
-import com.example.servingwebcontent.exceptions.InsufficientStockException;
-import com.example.servingwebcontent.services.OrderService;
+import com.example.servingwebcontent.Model.Order;
+import com.example.servingwebcontent.Services.OrderService;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.Map;
 import java.util.HashMap;
@@ -15,7 +17,8 @@ import java.util.HashMap;
 @RequestMapping("/order")
 public class OrderController {
 
-    @Autowired private OrderService orderService;
+    @Autowired 
+    private OrderService orderService;
 
     // Hiển thị trang thanh toán
     @GetMapping("/checkout")
@@ -40,13 +43,13 @@ public class OrderController {
         // --------------------------------------------------------------------------
 
         try {
+            // Gọi dịch vụ để tạo đơn hàng
             Order newOrder = orderService.createOrder(userId, cartItems, shippingAddress);
             // Thành công: Chuyển hướng đến trang cảm ơn
             return "redirect:/order/success?id=" + newOrder.getId();
 
         } catch (InsufficientStockException e) {
             // Lỗi tồn kho được bắt, thông báo lỗi được gắn vào Model và trả về View
-            // (GlobalExceptionHandler có thể bắt lỗi này, nhưng bắt ở đây giúp kiểm soát View dễ hơn)
             model.addAttribute("error", e.getMessage());
             // Cần load lại dữ liệu giỏ hàng/thông tin người dùng vào Model nếu muốn hiển thị lại
             return "checkout_view"; 
@@ -60,3 +63,4 @@ public class OrderController {
         return "order_success"; // Tạo file order_success.html
     }
 }
+

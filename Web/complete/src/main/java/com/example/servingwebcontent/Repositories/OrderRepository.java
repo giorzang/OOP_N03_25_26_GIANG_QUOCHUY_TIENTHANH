@@ -1,7 +1,7 @@
-package com.example.servingwebcontent.repositories;
+package com.example.servingwebcontent.Repositories;
 
-import com.example.servingwebcontent.entities.Order;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.servingwebcontent.Model.Order;
+import org.springframework.data.jpa.repository.JpaRepository; 
 import org.springframework.stereotype.Repository;
 
 @Repository

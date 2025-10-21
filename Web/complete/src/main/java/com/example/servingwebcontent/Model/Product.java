@@ -1,4 +1,4 @@
-package com.example.servingwebcontent.entities;
+package com.example.servingwebcontent.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,43 +7,35 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Column;
 
+/**
+ * Lớp Product này đại diện cho một thực thể (entity) sản phẩm trong cơ sở dữ liệu.
+ * Nó chứa các thông tin cơ bản của một sản phẩm như tên, giá, mô tả, số lượng tồn kho
+ * và danh mục mà nó thuộc về.
+ */
 @Entity
-@Table(name = "products")
+@Table(name = "products") // Đặt tên cho bảng trong cơ sở dữ liệu
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Mã sản phẩm (khóa chính)
+    private Long id;
 
-    @Column(name = "name", nullable = false, length = 255)
-    private String name; // Tên sản phẩm
-
-    @Column(name = "description", length = 1000)
-    private String description; // Mô tả sản phẩm
-
-    @Column(name = "price")
-    private double price; // Đơn giá sản phẩm
-
-    @Column(name = "stock")
-    private int stock; // Tồn kho của sản phẩm
-
-    @Column(name = "image")
-    private String imageUrl; // Đường dẫn tới hình ảnh sản phẩm
+    private String name;
+    private double price;
+    private String description;
     
-    // -- THÊM MỐI QUAN HỆ VỚI CATEGORY TẠI ĐÂY --
+    // Trường này dùng để quản lý số lượng sản phẩm còn lại trong kho.
+    private int stock; 
+
+    // Mối quan hệ nhiều-một: nhiều sản phẩm có thể thuộc về một danh mục.
+    // Khóa ngoại trong bảng 'products' sẽ là 'category_id'.
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    // Constructors (hàm khởi tạo)
     public Product() {
-        // Constructor rỗng là bắt buộc đối với JPA
     }
-
-    // Getters and Setters
-    // ... (các getter/setter cũ) ...
 
     public Long getId() {
         return id;
@@ -61,20 +53,20 @@ public class Product {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public double getPrice() {
         return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getStock() {
@@ -85,15 +77,6 @@ public class Product {
         this.stock = stock;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-    
-    // Thêm getter và setter cho category
     public Category getCategory() {
         return category;
     }
@@ -102,4 +85,3 @@ public class Product {
         this.category = category;
     }
 }
-

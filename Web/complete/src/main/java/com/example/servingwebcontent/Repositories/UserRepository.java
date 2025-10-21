@@ -1,6 +1,6 @@
-package com.example.servingwebcontent.repositories;
+package com.example.servingwebcontent.Repositories;
 
-import com.example.servingwebcontent.entities.User;
+import com.example.servingwebcontent.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

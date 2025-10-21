@@ -1,6 +1,6 @@
-package com.example.services;
-import com.example.servingwebcontent.entities.Product;
-import com.example.servingwebcontent.repositories.ProductRepository;
+package com.example.servingwebcontent.Services;
+import com.example.servingwebcontent.Model.Product;
+import com.example.servingwebcontent.Repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +41,8 @@ public class ProductService {
      * @return Danh sách các sản phẩm thuộc danh mục đó.
      */
     public List<Product> findByCategoryId(Long categoryId) {
-        return productRepository.findByCategoryId(categoryId);
+        // Đã sửa: Thêm dấu gạch dưới để khớp với ProductRepository
+        return productRepository.findByCategory_Id(categoryId);
     }
 
     /**
@@ -53,4 +54,3 @@ public class ProductService {
         return productRepository.findByNameContainingIgnoreCase(keyword);
     }
 }
-

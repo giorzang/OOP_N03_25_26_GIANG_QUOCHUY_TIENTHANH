@@ -1,7 +1,7 @@
-package com.example.services;
+package com.example.servingwebcontent.Services;
 
-import com.example.servingwebcontent.entities.User;
-import com.example.servingwebcontent.repositories.UserRepository;
+import com.example.servingwebcontent.Model.User;
+import com.example.servingwebcontent.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

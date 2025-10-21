@@ -1,7 +1,6 @@
-package com.example.servingwebcontent.repositories;
-
-import com.example.servingwebcontent.entities.Category;
+package com.example.servingwebcontent.Repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.servingwebcontent.Model.Category;
 import org.springframework.stereotype.Repository;
 
 @Repository

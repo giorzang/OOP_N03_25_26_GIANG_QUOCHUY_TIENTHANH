@@ -1,12 +1,6 @@
-package com.example.servingwebcontent.entities;
+package com.example.servingwebcontent.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
@@ -15,19 +9,27 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; // ma danh muc
 
-    @Column(name = "name", nullable = false, unique = true)
-    private String name;
+    @Column(nullable = false, unique = true, length = 255)
+    private String name; // ten danh muc
 
-    @OneToMany(mappedBy = "category")
+    @Column(length = 1000)
+    private String description; // mo ta danh muc
+
+    // lien ket voi product
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Product> products;
 
-    // Constructors
-    public Category() {
+    // constructor rong bat buoc cho JPA
+    public Category() {}
+
+    public Category(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
-    // Getters and Setters
+    // getter va setter
     public Long getId() {
         return id;
     }
@@ -42,6 +44,14 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Product> getProducts() {

@@ -1,15 +1,22 @@
 // src/main/java/.../services/OrderService.java
-package com.example.servingwebcontent.services;
+package com.example.servingwebcontent.Services;
 
-import com.example.servingwebcontent.entities.*;
-import com.example.servingwebcontent.repositories.*; // Đảm bảo bạn có các Repositories này
-import com.example.servingwebcontent.exceptions.*; // Đảm bảo bạn có các Exceptions này
+import com.example.servingwebcontent.Model.Order;
+import com.example.servingwebcontent.Model.OrderDetail;
+import com.example.servingwebcontent.Model.Product;
+import com.example.servingwebcontent.Model.User;
+import com.example.servingwebcontent.Repositories.OrderRepository;
+import com.example.servingwebcontent.Repositories.ProductRepository;
+import com.example.servingwebcontent.Repositories.UserRepository;
+import com.example.servingwebcontent.controller.InsufficientStockException;
+import com.example.servingwebcontent.controller.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 
 @Service
 public class OrderService {

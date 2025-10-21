@@ -1,7 +1,5 @@
-package com.example.servingwebcontent.controllers;
+package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.exceptions.InsufficientStockException;
-import com.example.servingwebcontent.exceptions.ResourceNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;

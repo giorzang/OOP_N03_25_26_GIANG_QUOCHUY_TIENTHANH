@@ -1,6 +1,7 @@
-package com.example.services;
-import com.example.servingwebcontent.entities.Category;
-import com.example.servingwebcontent.repositories.CategoryRepository;
+package com.example.servingwebcontent.Services;
+
+import com.example.servingwebcontent.Model.Category;
+import com.example.servingwebcontent.Repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

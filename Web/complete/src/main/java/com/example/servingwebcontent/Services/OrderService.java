@@ -8,8 +8,9 @@ import com.example.servingwebcontent.Model.User;
 import com.example.servingwebcontent.Repositories.OrderRepository;
 import com.example.servingwebcontent.Repositories.ProductRepository;
 import com.example.servingwebcontent.Repositories.UserRepository;
-import com.example.servingwebcontent.controller.InsufficientStockException;
-import com.example.servingwebcontent.controller.ResourceNotFoundException;
+import com.example.servingwebcontent.exception.InsufficientStockException;
+import com.example.servingwebcontent.exception.ResourceNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;

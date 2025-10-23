@@ -1,4 +1,4 @@
-package com.example.servingwebcontent.controller;
+package com.example.servingwebcontent.exception;
 
 // Lớp ngoại lệ tùy chỉnh khi không tìm thấy tài nguyên (ví dụ: Product, Category, User, ...)
 public class ResourceNotFoundException extends RuntimeException {

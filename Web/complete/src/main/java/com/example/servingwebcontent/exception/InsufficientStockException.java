@@ -1,4 +1,4 @@
-package com.example.servingwebcontent.controller;
+package com.example.servingwebcontent.exception;
 public class InsufficientStockException extends RuntimeException {
 
     /**

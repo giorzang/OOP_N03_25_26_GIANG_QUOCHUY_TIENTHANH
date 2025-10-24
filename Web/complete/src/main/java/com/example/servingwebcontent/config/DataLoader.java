@@ -1,0 +1,102 @@
+package com.example.sellinggreens.config; // LƯU Ý: ĐIỀU CHỈNH LẠI GÓI CỦA BẠN NẾU CẦN
+
+import com.example.sellinggreens.model.Category;
+import com.example.sellinggreens.model.Product;
+import com.example.sellinggreens.model.User;
+import com.example.sellinggreens.model.User.Role;
+import com.example.sellinggreens.repository.CategoryRepository;
+import com.example.sellinggreens.repository.ProductRepository;
+import com.example.sellinggreens.repository.UserRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder; // <-- IMPORT MỚI
+import org.springframework.stereotype.Component;
+
+/**
+ * Class này dùng để chèn dữ liệu mẫu vào CSDL khi ứng dụng khởi động.
+ * Đã được cập nhật để mã hóa mật khẩu bằng PasswordEncoder.
+ */
+@Component
+public class DataLoader implements CommandLineRunner {
+
+    private final UserRepository userRepository;
+    private final CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
+    private final PasswordEncoder passwordEncoder; // <-- TIÊM ĐỐI TƯỢNG MÃ HÓA
+
+    // Constructor để Spring tự động tiêm các dependencies
+    public DataLoader(UserRepository userRepository, CategoryRepository categoryRepository, ProductRepository productRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.categoryRepository = categoryRepository;
+        this.productRepository = productRepository;
+        this.passwordEncoder = passwordEncoder; 
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        // Kiểm tra để tránh chèn dữ liệu nhiều lần
+        if (categoryRepository.count() > 0 && userRepository.count() > 0) {
+            System.out.println("Dữ liệu mẫu đã tồn tại. Bỏ qua Data Seeding.");
+            return;
+        }
+
+        System.out.println("Bắt đầu chèn dữ liệu mẫu...");
+
+        // 1. Tạo User Mẫu (Admin và Khách hàng)
+        User admin = new User();
+        admin.setName("Admin Quản Trị");
+        admin.setEmail("admin@rausach.com");
+        admin.setPassword(passwordEncoder.encode("123456")); // <-- MÃ HÓA MẬT KHẨU ADMIN
+        admin.setRole(Role.ADMIN);
+        userRepository.save(admin);
+        
+        User customer = new User();
+        customer.setName("Khách Hàng Thử Nghiệm");
+        customer.setEmail("customer@gmail.com");
+        customer.setPassword(passwordEncoder.encode("123456")); // <-- MÃ HÓA MẬT KHẨU CUSTOMER
+        customer.setRole(Role.CUSTOMER);
+        userRepository.save(customer);
+
+        // 2. Tạo Category Mẫu
+        Category rauAnLa = new Category();
+        rauAnLa.setName("Rau Ăn Lá");
+        rauAnLa.setDescription("Các loại rau xanh, tươi, sạch.");
+        categoryRepository.save(rauAnLa);
+
+        Category cuQua = new Category();
+        cuQua.setName("Củ và Quả");
+        cuQua.setDescription("Các loại củ, quả sạch theo mùa.");
+        categoryRepository.save(cuQua);
+
+
+        // 3. Tạo Product Mẫu
+        Product caiXanh = new Product();
+        caiXanh.setName("Cải Xanh Hữu Cơ");
+        caiXanh.setDescription("Cải xanh được trồng theo phương pháp hữu cơ.");
+        caiXanh.setPrice(35000);
+        caiXanh.setStock(10); 
+        caiXanh.setCategory(rauAnLa);
+        caiXanh.setImageUrl("https://placehold.co/400x300/0d9488/FFFFFF?text=Cai+Xanh");
+        productRepository.save(caiXanh);
+
+        Product xaLach = new Product();
+        xaLach.setName("Xà Lách Xoong Đà Lạt");
+        xaLach.setDescription("Xà lách tươi ngon, nhập từ Đà Lạt.");
+        xaLach.setPrice(40000);
+        xaLach.setStock(5); 
+        xaLach.setCategory(rauAnLa);
+        xaLach.setImageUrl("https://placehold.co/400x300/0d9488/FFFFFF?text=Xa+Lach");
+        productRepository.save(xaLach);
+        
+        Product caChua = new Product();
+        caChua.setName("Cà Chua Bi Sạch");
+        caChua.setDescription("Cà chua bi mọng nước, không hóa chất.");
+        caChua.setPrice(55000);
+        caChua.setStock(20);
+        caChua.setCategory(cuQua);
+        caChua.setImageUrl("https://placehold.co/400x300/0d9488/FFFFFF?text=Ca+Chua");
+        productRepository.save(caChua);
+
+
+        System.out.println("Đã chèn dữ liệu mẫu thành công!");
+    }
+}

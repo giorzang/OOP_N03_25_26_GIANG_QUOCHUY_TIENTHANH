@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> <!-- Khai báo namespace cho Spring Security -->
+<head>
+    <meta charset="UTF-8">
+    <title>Sản Phẩm Rau Sạch Hữu Cơ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* CSS cho thiết kế rau sạch */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fdee; /* Light background for organic feel */
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh;
+        }
+        .main-content {
+            flex: 1;
+        }
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #d1fae5;
+            overflow: hidden;
+            height: 100%; /* Giúp các card cùng chiều cao */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+        .product-image {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        .btn-green {
+            background-color: #10b981;
+            border-color: #10b981;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .btn-green:hover {
+            background-color: #059669;
+            border-color: #059669;
+            color: white;
+        }
+        .badge-stock {
+            background-color: #ef4444; /* Red for low stock */
+            color: white;
+            font-weight: 600;
+        }
+        .badge-available {
+            background-color: #10b981; /* Green for available */
+            color: white;
+            font-weight: 600;
+        }
+        .cart-title {
+            color: #0d9488;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header (Dùng fragment) -->
+    <div th:replace="~{fragments :: header}"></div>
+
+    <div class="main-content container py-5">
+        
+        <h1 class="text-center mb-5 fw-bold" style="color: #0d9488;">DANH MỤC RAU CỦ HỮU CƠ</h1>
+
+        <!-- Hiển thị thông báo sau khi Đặt hàng thành công hoặc Lỗi -->
+        <div th:if="${message}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i> <span th:text="${message}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <!-- Danh sách Sản phẩm -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="col" th:each="product : ${products}">
+                <div class="card">
+                    <img th:src="${product.imageUrl}" class="product-image" 
+                         alt="Hình ảnh sản phẩm"
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x300/a7f3d0/0d9488?text=Rau+Sạch';">
+                    
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold text-success" th:text="${product.name}">Tên Sản Phẩm</h5>
+                        <p class="card-text text-muted small mb-2" th:text="${product.description}">Mô tả ngắn gọn...</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-3 mt-auto">
+                            <h4 class="text-danger fw-bold m-0" th:text="${#numbers.formatDecimal(product.price, 0, 'POINT', 0, 'POINT') + 'đ'}">50.000đ</h4>
+                            
+                            <!-- Hiển thị Tồn kho -->
+                            <span th:classappend="${product.stock > 0 and product.stock <= 5 ? 'badge-stock' : (product.stock > 5 ? 'badge-available' : 'badge-stock')}" 
+                                  class="badge rounded-pill p-2">
+                                <i class="fas fa-box-open me-1"></i> 
+                                Tồn: <span th:text="${product.stock}">10</span>
+                            </span>
+                        </div>
+
+                        <!-- Form Thêm vào Giỏ hàng -->
+                        <form th:action="@{/add-to-cart}" method="post" class="mt-2">
+                            <input type="hidden" name="productId" th:value="${product.id}" />
+                            <input type="hidden" name="productName" th:value="${product.name}" />
+                            <input type="hidden" name="productPrice" th:value="${product.price}" />
+                            
+                            <div class="d-flex">
+                                <input type="number" name="quantity" min="1" max="99" value="1" 
+                                       class="form-control me-2 text-center" 
+                                       style="max-width: 80px;" 
+                                       th:disabled="${product.stock <= 0}" />
+                                
+                                <button type="submit" class="btn btn-green w-100" th:disabled="${product.stock <= 0}">
+                                    <i class="fas fa-cart-plus me-1"></i> 
+                                    <span th:if="${product.stock > 0}">Đặt Hàng</span>
+                                    <span th:if="${product.stock <= 0}">Hết Hàng</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal Giỏ hàng -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success-subtle">
+                    <h5 class="modal-title cart-title" id="cartModalLabel"><i class="fas fa-shopping-basket me-2"></i> Giỏ Hàng Của Bạn</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    
+                    <!-- Form Đặt hàng chính thức -->
+                    <form th:action="@{/place-order}" method="post">
+                        
+                        <!-- Bảng hiển thị các món hàng -->
+                        <div th:if="${session.cart and not #lists.isEmpty(session.cart)}" class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Sản Phẩm</th>
+                                        <th class="text-end">Giá</th>
+                                        <th class="text-center">SL</th>
+                                        <th class="text-end">Tổng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="item : ${session.cart}">
+                                        <td th:text="${item.productName}" class="fw-medium text-wrap">Cải Xanh</td>
+                                        <td th:text="${#numbers.formatDecimal(item.productPrice, 0, 'POINT', 0, 'POINT')}" class="text-end">35,000</td>
+                                        <td th:text="${item.quantity}" class="text-center">2</td>
+                                        <td class="text-danger fw-bold text-end" th:with="total=${item.productPrice * item.quantity}" th:text="${#numbers.formatDecimal(total, 0, 'POINT', 0, 'POINT') + 'đ'}">70,000đ</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="text-end fw-bold">TỔNG CỘNG ĐƠN HÀNG:</td>
+                                        <td class="text-danger fw-bold text-end" th:with="grandTotal=${T(java.util.stream.Collectors).summingLong(item -> item.productPrice * item.quantity).apply(#lists.stream(session.cart))}"
+                                            th:text="${#numbers.formatDecimal(grandTotal, 0, 'POINT', 0, 'POINT') + 'đ'}">105,000đ</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Thông báo nếu giỏ hàng trống -->
+                        <div th:unless="${session.cart and not #lists.isEmpty(session.cart)}" class="alert alert-warning text-center">
+                            <i class="fas fa-exclamation-circle me-2"></i> Giỏ hàng của bạn đang trống.
+                        </div>
+
+                        <!-- Địa chỉ giao hàng (Ví dụ đơn giản) -->
+                        <div th:if="${session.cart and not #lists.isEmpty(session.cart)}" class="mt-4 p-3 border rounded">
+                            <h6 class="fw-bold text-primary mb-3"><i class="fas fa-map-marker-alt me-2"></i>Thông tin Giao hàng:</h6>
+                            <div class="mb-3">
+                                <label for="address" class="form-label small">Địa chỉ (Ví dụ: 123 Đường Sạch, Phường X)</label>
+                                <textarea class="form-control" id="address" name="address" rows="2" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer d-block">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tiếp tục Mua hàng</button>
+                            <!-- Nút Đặt hàng chỉ hiển thị khi giỏ hàng có đồ -->
+                            <button type="submit" class="btn btn-green float-end" th:if="${session.cart and not #lists.isEmpty(session.cart)}">
+                                <i class="fas fa-paper-plane me-2"></i> Xác nhận Đặt hàng
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Dùng fragment) -->
+    <div th:replace="~{fragments :: footer}"></div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Hiển thị Modal Giỏ hàng sau khi thêm sản phẩm thành công
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('cartAdded')) {
+                const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+                cartModal.show();
+            }
+        };
+    </script>
+</body>
+</html>

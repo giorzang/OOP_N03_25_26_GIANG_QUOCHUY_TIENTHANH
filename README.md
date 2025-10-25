@@ -22,44 +22,8 @@ Hệ thống Quản lý Bán hàng Siêu Sạch
 2. Mục tiêu dự án
 
 Dự án “Quản lý Bán hàng Siêu Sạch” được xây dựng nhằm hỗ trợ các cửa hàng kinh doanh sản phẩm sạch (như rau củ quả, thịt cá hữu cơ, sản phẩm nông nghiệp an toàn, v.v.) trong việc quản lý bán hàng, kho hàng, đơn đặt hàng và khách hàng một cách hiệu quả, chính xác và tự động hóa.
-Hệ thống giúp giảm thiểu sai sót trong quá trình quản lý thủ công, tiết kiệm thời gian, nâng cao năng suất và mang lại trải nghiệm tốt hơn cho cả người bán và khách hàng.
 
-3. Chức năng chính của hệ thống
-
-a. Quản lý sản phẩm
-
-Thêm, sửa, xóa và tìm kiếm sản phẩm.
-
-Quản lý thông tin chi tiết: tên sản phẩm, danh mục, giá bán, đơn vị tính, số lượng tồn kho, hạn sử dụng.
-
-Phân loại sản phẩm theo nhóm (rau củ, trái cây, thịt cá, hàng khô, v.v.).
-
-b. Quản lý danh mục (Category)
-
-Tạo, chỉnh sửa, xóa danh mục sản phẩm.
-
-Giúp sắp xếp và lọc sản phẩm dễ dàng trong hệ thống.
-
-c. Quản lý khách hàng (User/Customer)
-
-Lưu trữ thông tin khách hàng: họ tên, địa chỉ, số điện thoại, email.
-
-Theo dõi lịch sử mua hàng của từng khách.
-
-Hỗ trợ phân loại khách hàng thân thiết.
-
-d. Quản lý đơn hàng (Order)
-
-Tạo đơn hàng mới từ giỏ hàng của khách.
-
-Cập nhật trạng thái đơn hàng: “Chờ xử lý”, “Đang giao”, “Hoàn thành”, “Đã hủy”.
-
-Tính tổng tiền đơn hàng, bao gồm giảm giá và thuế (nếu có).
-
-Tự động trừ hàng trong kho sau khi đơn được xác nhận.
-
-
-### CLASS
+3CURD
 
 **1. User**
 | **Attribute/Method** | **Data Type** | **Description** |

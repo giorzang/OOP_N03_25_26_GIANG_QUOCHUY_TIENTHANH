@@ -1,18 +1,29 @@
-# Project (Nhóm) Giang - Quốc Huy - Tiến Thành
-# Thành Viên: 
+## Project (Nhóm) Giang - Quốc Huy - Tiến Thành
+## Thành Viên: 
 **1. Vũ Trường Giang**
 ID: 23010257
 Chũ ký: Giang
+
 **2. Trần Quốc Huy**
 ID: 22010241
 Chũ ký: Huy
+
 **3. Nguyễn Tiến Thành**
 ID: 23010841
 Chũ ký: Thành
 
-# Content [Quản lý bán hàng rau sạch online]: Project 
+## Content [Quản lý bán hàng rau sạch online]:
 
-### I. CLASS
+## Giới Thiệu Dự Án
+1. Tên dự án
+
+Hệ thống Quản lý Bán hàng Siêu Sạch
+
+2. Mục tiêu dự án
+
+Dự án “Quản lý Bán hàng Siêu Sạch” được xây dựng nhằm hỗ trợ các cửa hàng kinh doanh sản phẩm sạch (như rau củ quả, thịt cá hữu cơ, sản phẩm nông nghiệp an toàn, v.v.) trong việc quản lý bán hàng, kho hàng, đơn đặt hàng và khách hàng một cách hiệu quả, chính xác và tự động hóa.
+
+## Chi tiết lớp Model/CURD
 
 **1. User**
 | **Attribute/Method** | **Data Type** | **Description** |
@@ -77,18 +88,11 @@ Chũ ký: Thành
 | `price` | `int` | Giá của sản phẩm tại thời điểm mua hàng |
 | `totalAmount` | `int` | Tổng giá trị đơn hàng |
 
-II. CÔNG NGHỆ ĐÃ SỬ DỤNG:
-Backend: Framework chính để phát triển ứng dụng web (theo kiến trúc MVC)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white) 
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
-Database: CSDL quan hệ để lưu trữ đơn hàng, sản phẩm, khách hàng...
-![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
-Build Tool: Quản lý thư viện và biên dịch dự án
-![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
-### III. SƠ ĐỒ CẤU TRÚCTRÚC
-**1. Sơ đồ class diagram**
-<img width="1087" height="542" alt="image" src="https://github.com/user-attachments/assets/c014ddca-c758-4523-a605-1897b66a1fc5" />
-**1. Sơ đồ sequence diagram**
+##  UML DIAGRAM
+**1. UML class diagram**
+<img width="1139" height="440" alt="image" src="https://github.com/user-attachments/assets/a34933a8-3ef3-4cb4-a032-02006ffbf89e" />
+
+**2. UML sequence diagram**
 
 
 

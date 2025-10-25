@@ -89,11 +89,16 @@ Dự án “Quản lý Bán hàng Siêu Sạch” được xây dựng nhằm h�
 | `totalAmount` | `int` | Tổng giá trị đơn hàng |
 
 ##  UML DIAGRAM
-**1. UML class diagram**
-<img width="1139" height="440" alt="image" src="https://github.com/user-attachments/assets/a34933a8-3ef3-4cb4-a032-02006ffbf89e" />
+**1. UML class diagram** <img width="1139" height="440" alt="image" src="https://github.com/user-attachments/assets/a34933a8-3ef3-4cb4-a032-02006ffbf89e" />
+
 
 **2. UML sequence diagram**
 
+**2.1 Create Product (Thêm sản phẩm mới)** <img width="1231" height="780" alt="image" src="https://github.com/user-attachments/assets/3a101792-4e5f-4efe-9bcd-8ca7fb89332c" />
 
+**2.2 Read Product (Xem thông tin sản phẩm)** <img width="1271" height="661" alt="image" src="https://github.com/user-attachments/assets/15bdc55a-46ea-4b2e-8571-2c978e0696a7" />
 
+**2.3 Update Product (Cập nhật sản phẩm)** <img width="1187" height="680" alt="image" src="https://github.com/user-attachments/assets/d446dc81-5164-493e-a707-ff9f912c0308" />
+
+**2.4 Delete Product (Xóa sản phẩm)** <img width="1055" height="515" alt="image" src="https://github.com/user-attachments/assets/32d4a648-dc4e-46cf-80fe-b57fc1868eb8" />
 

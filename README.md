@@ -3,16 +3,63 @@
 **1. Vũ Trường Giang**
 ID: 23010257
 Chũ ký: Giang
+
 **2. Trần Quốc Huy**
 ID: 22010241
 Chũ ký: Huy
+
 **3. Nguyễn Tiến Thành**
 ID: 23010841
 Chũ ký: Thành
 
-# Content [Quản lý bán hàng rau sạch online]: Project 
+## Content [Quản lý bán hàng rau sạch online]:
 
-### I. CLASS
+## Giới Thiệu Dự Án
+1. Tên dự án
+
+Hệ thống Quản lý Bán hàng Siêu Sạch
+
+2. Mục tiêu dự án
+
+Dự án “Quản lý Bán hàng Siêu Sạch” được xây dựng nhằm hỗ trợ các cửa hàng kinh doanh sản phẩm sạch (như rau củ quả, thịt cá hữu cơ, sản phẩm nông nghiệp an toàn, v.v.) trong việc quản lý bán hàng, kho hàng, đơn đặt hàng và khách hàng một cách hiệu quả, chính xác và tự động hóa.
+Hệ thống giúp giảm thiểu sai sót trong quá trình quản lý thủ công, tiết kiệm thời gian, nâng cao năng suất và mang lại trải nghiệm tốt hơn cho cả người bán và khách hàng.
+
+3. Chức năng chính của hệ thống
+
+a. Quản lý sản phẩm
+
+Thêm, sửa, xóa và tìm kiếm sản phẩm.
+
+Quản lý thông tin chi tiết: tên sản phẩm, danh mục, giá bán, đơn vị tính, số lượng tồn kho, hạn sử dụng.
+
+Phân loại sản phẩm theo nhóm (rau củ, trái cây, thịt cá, hàng khô, v.v.).
+
+b. Quản lý danh mục (Category)
+
+Tạo, chỉnh sửa, xóa danh mục sản phẩm.
+
+Giúp sắp xếp và lọc sản phẩm dễ dàng trong hệ thống.
+
+c. Quản lý khách hàng (User/Customer)
+
+Lưu trữ thông tin khách hàng: họ tên, địa chỉ, số điện thoại, email.
+
+Theo dõi lịch sử mua hàng của từng khách.
+
+Hỗ trợ phân loại khách hàng thân thiết.
+
+d. Quản lý đơn hàng (Order)
+
+Tạo đơn hàng mới từ giỏ hàng của khách.
+
+Cập nhật trạng thái đơn hàng: “Chờ xử lý”, “Đang giao”, “Hoàn thành”, “Đã hủy”.
+
+Tính tổng tiền đơn hàng, bao gồm giảm giá và thuế (nếu có).
+
+Tự động trừ hàng trong kho sau khi đơn được xác nhận.
+
+
+### CLASS
 
 **1. User**
 | **Attribute/Method** | **Data Type** | **Description** |
@@ -77,18 +124,11 @@ Chũ ký: Thành
 | `price` | `int` | Giá của sản phẩm tại thời điểm mua hàng |
 | `totalAmount` | `int` | Tổng giá trị đơn hàng |
 
-II. CÔNG NGHỆ ĐÃ SỬ DỤNG:
-Backend: Framework chính để phát triển ứng dụng web (theo kiến trúc MVC)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white) 
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
-Database: CSDL quan hệ để lưu trữ đơn hàng, sản phẩm, khách hàng...
-![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
-Build Tool: Quản lý thư viện và biên dịch dự án
-![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
-### III. SƠ ĐỒ CẤU TRÚCTRÚC
-**1. Sơ đồ class diagram**
-<img width="1087" height="542" alt="image" src="https://github.com/user-attachments/assets/c014ddca-c758-4523-a605-1897b66a1fc5" />
-**1. Sơ đồ sequence diagram**
+###  UML DIAGRAM
+**1. UML class diagram**
+<img width="1139" height="440" alt="image" src="https://github.com/user-attachments/assets/a34933a8-3ef3-4cb4-a032-02006ffbf89e" />
+
+**2. UML sequence diagram**
 
 
 

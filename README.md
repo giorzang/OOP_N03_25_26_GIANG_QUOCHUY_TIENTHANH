@@ -1,5 +1,5 @@
-# Project (Nhóm) Giang - Quốc Huy - Tiến Thành
-# Thành Viên: 
+## Project (Nhóm) Giang - Quốc Huy - Tiến Thành
+## Thành Viên: 
 **1. Vũ Trường Giang**
 ID: 23010257
 Chũ ký: Giang
@@ -23,7 +23,7 @@ Hệ thống Quản lý Bán hàng Siêu Sạch
 
 Dự án “Quản lý Bán hàng Siêu Sạch” được xây dựng nhằm hỗ trợ các cửa hàng kinh doanh sản phẩm sạch (như rau củ quả, thịt cá hữu cơ, sản phẩm nông nghiệp an toàn, v.v.) trong việc quản lý bán hàng, kho hàng, đơn đặt hàng và khách hàng một cách hiệu quả, chính xác và tự động hóa.
 
-3CURD
+## Chi tiết lớp Model/CURD
 
 **1. User**
 | **Attribute/Method** | **Data Type** | **Description** |
@@ -88,7 +88,7 @@ Dự án “Quản lý Bán hàng Siêu Sạch” được xây dựng nhằm h�
 | `price` | `int` | Giá của sản phẩm tại thời điểm mua hàng |
 | `totalAmount` | `int` | Tổng giá trị đơn hàng |
 
-###  UML DIAGRAM
+##  UML DIAGRAM
 **1. UML class diagram**
 <img width="1139" height="440" alt="image" src="https://github.com/user-attachments/assets/a34933a8-3ef3-4cb4-a032-02006ffbf89e" />
 

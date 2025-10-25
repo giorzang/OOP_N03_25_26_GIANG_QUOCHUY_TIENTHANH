@@ -1,7 +1,8 @@
-package com.example.sellinggreens.service;
+package com.example.servingwebcontent.Services;
 
-import com.example.sellinggreens.model.User;
-import com.example.sellinggreens.repository.UserRepository;
+import com.example.servingwebcontent.Model.User;
+import com.example.servingwebcontent.Repositories.UserRepository
+;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

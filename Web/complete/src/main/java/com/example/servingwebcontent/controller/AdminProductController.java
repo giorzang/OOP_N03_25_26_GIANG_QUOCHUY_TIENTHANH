@@ -1,14 +1,12 @@
-package com.example.sellinggreens.controller;
+package com.example.servingwebcontent.controller;
+import com.example.servingwebcontent.Model.Product;
+import com.example.servingwebcontent.Services.CategoryService;
+import com.example.servingwebcontent.Services.ProductService;
 
-import com.example.sellinggreens.model.Product;
-import com.example.sellinggreens.service.ProductService;
-import com.example.sellinggreens.service.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin/products")

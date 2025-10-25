@@ -24,7 +24,8 @@ public class Product {
     private String name;
     private double price;
     private String description;
-    
+    private String imageUrl;
+
     // Trường này dùng để quản lý số lượng sản phẩm còn lại trong kho.
     private int stock; 
 
@@ -83,5 +84,12 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+    public String getImageUrl() {
+        return imageUrl;
     }
 }

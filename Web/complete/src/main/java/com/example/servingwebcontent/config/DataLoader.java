@@ -1,12 +1,13 @@
-package com.example.sellinggreens.config; // LƯU Ý: ĐIỀU CHỈNH LẠI GÓI CỦA BẠN NẾU CẦN
+package com.example.servingwebcontent.config;
 
-import com.example.sellinggreens.model.Category;
-import com.example.sellinggreens.model.Product;
-import com.example.sellinggreens.model.User;
-import com.example.sellinggreens.model.User.Role;
-import com.example.sellinggreens.repository.CategoryRepository;
-import com.example.sellinggreens.repository.ProductRepository;
-import com.example.sellinggreens.repository.UserRepository;
+import com.example.servingwebcontent.Model.Category;
+import com.example.servingwebcontent.Model.Product;
+import com.example.servingwebcontent.Model.User;
+import com.example.servingwebcontent.Model.Role;
+import com.example.servingwebcontent.Repositories.CategoryRepository;
+import com.example.servingwebcontent.Repositories.ProductRepository;
+import com.example.servingwebcontent.Repositories.UserRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder; // <-- IMPORT MỚI
 import org.springframework.stereotype.Component;
@@ -43,14 +44,14 @@ public class DataLoader implements CommandLineRunner {
 
         // 1. Tạo User Mẫu (Admin và Khách hàng)
         User admin = new User();
-        admin.setName("Admin Quản Trị");
+        admin.setFullName("Admin Quản Trị");
         admin.setEmail("admin@rausach.com");
         admin.setPassword(passwordEncoder.encode("123456")); // <-- MÃ HÓA MẬT KHẨU ADMIN
         admin.setRole(Role.ADMIN);
         userRepository.save(admin);
         
         User customer = new User();
-        customer.setName("Khách Hàng Thử Nghiệm");
+        customer.setFullName("Khách Hàng Thử Nghiệm");
         customer.setEmail("customer@gmail.com");
         customer.setPassword(passwordEncoder.encode("123456")); // <-- MÃ HÓA MẬT KHẨU CUSTOMER
         customer.setRole(Role.CUSTOMER);

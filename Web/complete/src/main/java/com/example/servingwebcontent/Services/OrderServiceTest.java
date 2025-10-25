@@ -1,12 +1,13 @@
-package com.example.sellinggreens.service;
+package com.example.servingwebcontent.Services;
 
-import com.example.sellinggreens.controller.CartItem;
-import com.example.sellinggreens.exception.InsufficientStockException;
-import com.example.sellinggreens.model.Product;
-import com.example.sellinggreens.model.User;
-import com.example.sellinggreens.repository.OrderRepository;
-import com.example.sellinggreens.repository.ProductRepository;
-import com.example.sellinggreens.repository.UserRepository;
+import com.example.servingwebcontent.Model.CartItem;
+import com.example.servingwebcontent.Model.Product;
+import com.example.servingwebcontent.Model.User;
+import com.example.servingwebcontent.Repositories.OrderRepository;
+import com.example.servingwebcontent.Repositories.ProductRepository;
+import com.example.servingwebcontent.Repositories.UserRepository;
+import com.example.servingwebcontent.exception.InsufficientStockException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

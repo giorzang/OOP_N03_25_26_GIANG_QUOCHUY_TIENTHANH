@@ -15,14 +15,14 @@ public class HomeController {
 	 * @param model The model to pass attributes to the view.
 	 * @return The name of the Thymeleaf template ("greeting").
 	 */
-	@GetMapping({"/", "/greeting"})
-	public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+	@GetMapping({"/"})
+	public String Home(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		
 		// Thêm thuộc tính 'name' vào Model để Thymeleaf có thể truy cập
 		model.addAttribute("name", name);
 
 		// Trả về tên của template Thymeleaf ("greeting"), sẽ tìm src/main/resources/templates/greeting.html
-		return "greeting";
+		return "index";
 	}
 
 }

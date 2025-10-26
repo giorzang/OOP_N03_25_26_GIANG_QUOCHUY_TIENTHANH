@@ -41,72 +41,26 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetail> orderDetails;
 
-    public Product() {
-    }
+    public Product() {}
 
     // Getters and Setters
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public String getName() { return name; }
+    public BigDecimal getPrice() { return price; }
+    public String getDescription() { return description; }
+    public int getStock() { return stock; }
+    public Category getCategory() { return category; }
+    public String getImageUrl() { return imageUrl; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // SỬA kiểu dữ liệu trả về
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    // SỬA kiểu dữ liệu đầu vào
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public List<OrderDetail> getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(List<OrderDetail> orderDetails) {
-        this.orderDetails = orderDetails;
-    }
+    public void setId(Long id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
+    public void setPrice(BigDecimal price) { this.price = price; }
+    public void setDescription(String description) { this.description = description; }
+    public void setStock(int stock) { this.stock = stock; }
+    public void setCategory(Category category) { this.category = category; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+    
+    // Getters and Setter cho danh sách Order
+    public List<OrderDetail> getOrderDetails() { return orderDetails; }
+    public void setOrderDetails(List<OrderDetail> orderDetails) { this.orderDetails = orderDetails; }
 }

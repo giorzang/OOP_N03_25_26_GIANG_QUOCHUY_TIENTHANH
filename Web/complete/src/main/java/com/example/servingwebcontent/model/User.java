@@ -1,17 +1,7 @@
 package com.example.servingwebcontent.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import java.util.List; // Import cho List
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -21,10 +11,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Tên người dùng phải là duy nhất và không được null
-    @Column(unique = true, nullable = false, length = 100)
-    private String username;
-
+    // SỬA LỖI: Bỏ cột 'username' (không cần thiết) và sử dụng email làm ID đăng nhập.
+    // @Column(unique = true, nullable = false, length = 100)
+    // private String username; // XÓA DÒNG NÀY HOÀN TOÀN
+    
     // Lưu trữ mật khẩu đã mã hóa
     @Column(nullable = false)
     private String password;
@@ -35,38 +25,39 @@ public class User {
     @Column(length = 500)
     private String address;
     
-    // Đặt email là duy nhất (nên làm)
-    @Column(unique = true, length = 255)
+    // Cột này là ID đăng nhập chính (Username trong Spring Security)
+    @Column(unique = true, nullable = false, length = 255) // Đã sửa nullable = false
     private String email;
     
     @Column(length = 20)
     private String phone;
 
-    // BẮT BUỘC: Annotation để lưu enum dưới dạng chuỗi (String)
+    // Đã xác nhận: @Enumerated(EnumType.STRING) là đúng để khớp với chuỗi "ADMIN" trong DB
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false) // Đảm bảo role không bị null
+    @Column(nullable = false)
     private Role role;
 
-    // BỔ SUNG: Mối quan hệ One-to-Many với Order
-    // mappedBy trỏ đến tên trường "user" trong Entity Order
+    // ... (Phần OneToMany không thay đổi)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Order> orders;
     
     // Constructors
     public User() {}
 
-    // Getters and Setters
+    // Getters and Setters (Đã sửa đổi)
     public Long getId() { return id; }
-    public String getUsername() { return username; }
+    // public String getUsername() { return username; } // XÓA HOẶC SỬA METHOD NÀY
+    // Giả sử CustomUserDetailsService vẫn sử dụng getEmail().
+    
     public String getPassword() { return password; }
     public String getFullName() { return fullName; }
     public String getAddress() { return address; }
-    public String getEmail() { return email; }
+    public String getEmail() { return email; } // Dùng Email để tìm User
     public String getPhone() { return phone; }
-    public Role getRole() { return role; }
+    public Role getRole() { return role; } // Dùng Role để lấy Authorities
 
     public void setId(Long id) { this.id = id; }
-    public void setUsername(String username) { this.username = username; }
+    // public void setUsername(String username) { this.username = username; } // XÓA METHOD NÀY
     public void setPassword(String password) { this.password = password; }
     public void setFullName(String fullName) { this.fullName = fullName; }
     public void setAddress(String address) { this.address = address; }
@@ -74,7 +65,6 @@ public class User {
     public void setPhone(String phone) { this.phone = phone; }
     public void setRole(Role role) { this.role = role; }
 
-    // BỔ SUNG: Getter và Setter cho danh sách đơn hàng
     public List<Order> getOrders() { return orders; }
     public void setOrders(List<Order> orders) { this.orders = orders; }
 }

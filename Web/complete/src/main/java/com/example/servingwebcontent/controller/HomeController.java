@@ -8,21 +8,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 
-	/**
-	 * Maps the root path "/" and "/greeting" to the "greeting" template.
-	 * Passes a 'name' attribute to the Thymeleaf template.
-	 * @param name The name to greet, defaults to "World".
-	 * @param model The model to pass attributes to the view.
-	 * @return The name of the Thymeleaf template ("greeting").
-	 */
-	@GetMapping({"/"})
-	public String Home(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		
-		// Thêm thuộc tính 'name' vào Model để Thymeleaf có thể truy cập
-		model.addAttribute("name", name);
+    /**
+     * Ánh xạ đường dẫn gốc "/" và "/greeting" đến trang chủ "index" (Carousel).
+     */
+    @GetMapping({"/", "/greeting"})
+    public String index(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        
+        // Thêm thuộc tính 'name' vào Model để Thymeleaf có thể truy cập
+        model.addAttribute("name", name);
 
-		// Trả về tên của template Thymeleaf ("greeting"), sẽ tìm src/main/resources/templates/greeting.html
-		return "index";
-	}
+        // Trả về template "index", sẽ tìm src/main/resources/templates/index.html
+        return "index";
+    }
 
+    // =========================================================
+    // PHƯƠNG THỨC QUAN TRỌNG: ÁNH XẠ TRANG ĐĂNG NHẬP
+    // Phương thức này khắc phục lỗi "No static resource login"
+    // =========================================================
+    @GetMapping("/login")
+    public String login() {
+        // Trả về tên của template Thymeleaf ("login"), sẽ tìm src/main/resources/templates/login.html
+        return "login"; 
+    }
 }

@@ -1,8 +1,6 @@
 package com.example.servingwebcontent.services;
 
-// SỬA LỖI: Model -> model
 import com.example.servingwebcontent.model.User;
-// SỬA LỖI: Repositories -> repositories
 import com.example.servingwebcontent.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,9 +24,10 @@ public class UserService {
         return userRepository.findById(id);
     }
     
-    // Tìm người dùng theo username
-    public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    // SỬA LỖI: Thay thế tìm kiếm theo username bằng tìm kiếm theo email
+    public Optional<User> findByEmail(String email) { 
+        // Lỗi cũ: return userRepository.findByUsername(username);
+        return userRepository.findByEmail(email); // <-- SỬA LỖI TẠI ĐÂY
     }
 
     // Lưu người dùng

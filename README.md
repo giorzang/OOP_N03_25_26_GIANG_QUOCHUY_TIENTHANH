@@ -102,3 +102,6 @@ Dự án “Quản lý Bán hàng Siêu Sạch” được xây dựng nhằm h�
 
 **2.4 Delete Product (Xóa sản phẩm)** <img width="1055" height="515" alt="image" src="https://github.com/user-attachments/assets/32d4a648-dc4e-46cf-80fe-b57fc1868eb8" />
 
+**2.5 Chức năng lõi Create Order "Tạo Đơn Hàng"**  <img width="1193" height="633" alt="image" src="https://github.com/user-attachments/assets/3933d576-3984-4ccf-b81f-cac727571d31" />
+
+

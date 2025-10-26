@@ -1,6 +1,7 @@
 package com.example.servingwebcontent.config;
 
-import com.example.servingwebcontent.Model.Role;
+// SỬA LỖI: Model -> model
+import com.example.servingwebcontent.model.Role; 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,7 +33,7 @@ public class SecurityConfig {
             // Cấu hình ủy quyền (Authorization)
             .authorizeHttpRequests(authorize -> authorize
                 // Cho phép truy cập công khai vào trang chủ, CSS/JS
-                .requestMatchers("/", "/css/**", "/js/**", "/images/**", "/add-to-cart", "/place-order", "/error").permitAll()
+                .requestMatchers("/", "/css/**", "/js/**", "/images/**", "/add-to-cart", "/place-order", "/error", "/login", "/register").permitAll() // Thêm /register nếu có
                 
                 // Yêu cầu vai trò ADMIN để truy cập /admin
                 .requestMatchers("/admin/**").hasAuthority(Role.ADMIN.name())

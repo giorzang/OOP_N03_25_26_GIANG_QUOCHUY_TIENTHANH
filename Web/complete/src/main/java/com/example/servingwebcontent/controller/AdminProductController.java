@@ -1,7 +1,9 @@
 package com.example.servingwebcontent.controller;
-import com.example.servingwebcontent.Model.Product;
-import com.example.servingwebcontent.Services.CategoryService;
-import com.example.servingwebcontent.Services.ProductService;
+// SỬA LỖI: Model -> model
+import com.example.servingwebcontent.model.Product;
+// SỬA LỖI: Services -> services
+import com.example.servingwebcontent.services.CategoryService;
+import com.example.servingwebcontent.services.ProductService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

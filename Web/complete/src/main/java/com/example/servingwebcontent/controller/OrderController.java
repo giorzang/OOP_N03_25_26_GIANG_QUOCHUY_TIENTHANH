@@ -1,7 +1,9 @@
 package com.example.servingwebcontent.controller; 
 
-import com.example.servingwebcontent.Model.Order;
-import com.example.servingwebcontent.Services.OrderService;
+// SỬA LỖI: Model -> model
+import com.example.servingwebcontent.model.Order;
+// SỬA LỖI: Services -> services
+import com.example.servingwebcontent.services.OrderService;
 import com.example.servingwebcontent.exception.InsufficientStockException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,4 +65,3 @@ public class OrderController {
         return "order_success"; // Tạo file order_success.html
     }
 }
-

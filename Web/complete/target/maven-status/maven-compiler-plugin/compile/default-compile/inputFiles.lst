@@ -10,6 +10,7 @@
 /workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/model/Role.java
 /workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/services/ProductService.java
 /workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/model/User.java
+/workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/repositories/RoleRepository.java
 /workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/services/UserService.java
 /workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/repositories/UserRepository.java
 /workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/services/CategoryService.java

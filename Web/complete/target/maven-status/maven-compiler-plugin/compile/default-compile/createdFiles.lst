@@ -21,5 +21,6 @@ com/example/servingwebcontent/repositories/UserRepository.class
 com/example/servingwebcontent/config/DataLoader.class
 com/example/servingwebcontent/repositories/CategoryRepository.class
 com/example/servingwebcontent/services/ProductService.class
+com/example/servingwebcontent/repositories/RoleRepository.class
 com/example/servingwebcontent/model/Role.class
 com/example/servingwebcontent/exception/ResourceNotFoundException.class

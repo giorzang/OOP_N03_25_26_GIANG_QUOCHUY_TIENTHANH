@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đăng Ký Tài Khoản Mới</title>
+    
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* Layout tổng thể */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f7fdee;
+        }
+        header, footer {
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background-color: #e0f2f1;
+            border-bottom: 1px solid #b2dfdb;
+        }
+
+        /* Nội dung chính */
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        /* Thẻ đăng ký */
+        .register-card {
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 16px;
+            background-color: #fff;
+            border: 1px solid #d1fae5;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-green-submit {
+            background: linear-gradient(135deg, #0d9488 0%, #10b981 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        .btn-green-submit:hover {
+            opacity: 0.9;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="text-secondary fw-bold">HỆ THỐNG QUẢN TRỊ</header>
+
+    <main class="content container">
+        <div class="register-card text-center">
+            <h2 class="mb-4 text-success fw-bold">
+                <i class="fas fa-user-plus me-2"></i> ĐĂNG KÝ TÀI KHOẢN
+            </h2>
+            <p class="text-muted mb-4">Tham gia cùng chúng tôi ngay hôm nay để trải nghiệm dịch vụ.</p>
+            
+            <div th:if="${registrationError}" class="alert alert-danger fade show mb-3" role="alert">
+                <i class="fas fa-times-circle me-2"></i> <span th:text="${registrationError}"></span>
+            </div>
+
+            <form th:action="@{/register}" th:object="${user}" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Họ và Tên" required>
+                    <label for="name">Họ và Tên</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="name@example.com" required>
+                    <label for="email">Địa chỉ Email</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Mật khẩu" required>
+                    <label for="password">Mật khẩu</label>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Nhập lại Mật khẩu" required>
+                    <label for="confirmPassword">Nhập lại Mật khẩu</label>
+                </div>
+                
+                <button type="submit" class="btn btn-green-submit btn-lg w-100 mb-3">
+                    <i class="fas fa-user-check me-2"></i> Đăng Ký
+                </button>
+            </form>
+
+            <div class="mt-3">
+                <p class="text-muted small m-0">
+                    Đã có tài khoản? <a th:href="@{/login}" class="text-success fw-bold">Đăng nhập ngay</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-secondary small">© 2025 Dự án Mẫu - All Rights Reserved</footer>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

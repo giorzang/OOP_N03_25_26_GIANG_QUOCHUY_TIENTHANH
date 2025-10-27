@@ -11,60 +11,52 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // SỬA LỖI: Bỏ cột 'username' (không cần thiết) và sử dụng email làm ID đăng nhập.
-    // @Column(unique = true, nullable = false, length = 100)
-    // private String username; // XÓA DÒNG NÀY HOÀN TOÀN
+    // Trường Name (Họ và Tên) - Khớp với th:field="*{name}" trong form
+    @Column(nullable = false, length = 255)
+    private String name; 
     
     // Lưu trữ mật khẩu đã mã hóa
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "full_name", length = 255)
-    private String fullName;
-    
     @Column(length = 500)
     private String address;
     
     // Cột này là ID đăng nhập chính (Username trong Spring Security)
-    @Column(unique = true, nullable = false, length = 255) // Đã sửa nullable = false
+    @Column(unique = true, nullable = false, length = 255) 
     private String email;
     
     @Column(length = 20)
     private String phone;
 
-    // Đã xác nhận: @Enumerated(EnumType.STRING) là đúng để khớp với chuỗi "ADMIN" trong DB
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
+    // SỬA LỖI: Sử dụng mối quan hệ @ManyToOne với Role Entity
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", nullable = false) // role_id là khóa ngoại
+    private Role role; // Kiểu dữ liệu là Role Entity
 
-    // ... (Phần OneToMany không thay đổi)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Order> orders;
     
     // Constructors
     public User() {}
 
-    // Getters and Setters (Đã sửa đổi)
-    public Long getId() { return id; }
-    // public String getUsername() { return username; } // XÓA HOẶC SỬA METHOD NÀY
-    // Giả sử CustomUserDetailsService vẫn sử dụng getEmail().
+    // Getters and Setters (Đã điều chỉnh tên biến)
     
+    public Long getId() { return id; }
+    public String getName() { return name; }
     public String getPassword() { return password; }
-    public String getFullName() { return fullName; }
     public String getAddress() { return address; }
-    public String getEmail() { return email; } // Dùng Email để tìm User
+    public String getEmail() { return email; }
     public String getPhone() { return phone; }
-    public Role getRole() { return role; } // Dùng Role để lấy Authorities
-
+    public Role getRole() { return role; } 
+    public List<Order> getOrders() { return orders; }
+    
     public void setId(Long id) { this.id = id; }
-    // public void setUsername(String username) { this.username = username; } // XÓA METHOD NÀY
+    public void setName(String name) { this.name = name; }
     public void setPassword(String password) { this.password = password; }
-    public void setFullName(String fullName) { this.fullName = fullName; }
     public void setAddress(String address) { this.address = address; }
     public void setEmail(String email) { this.email = email; }
     public void setPhone(String phone) { this.phone = phone; }
     public void setRole(Role role) { this.role = role; }
-
-    public List<Order> getOrders() { return orders; }
     public void setOrders(List<Order> orders) { this.orders = orders; }
 }

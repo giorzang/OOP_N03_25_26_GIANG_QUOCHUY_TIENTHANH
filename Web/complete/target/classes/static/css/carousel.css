@@ -1,0 +1,76 @@
+/*
+ * CUSTOM STYLES CHO BOOTSTRAP CAROUSEL
+ * Tệp này định kiểu cho các thành phần:
+ * 1. Chiều cao của Carousel
+ * 2. Vị trí của Chú thích (Caption)
+ * 3. Khoảng cách cho phần Marketing và Featurettes
+ */
+
+
+/* CÁC ĐIỀU CHỈNH CHUNG CHO PHẦN MARKETING VÀ FEATURETTES
+-------------------------------------------------- */
+
+/* Đặt khoảng cách (padding) cho phần nội dung dưới Carousel */
+.marketing {
+    padding: 4rem 1.5rem;
+    margin-bottom: -3rem; 
+}
+
+/* Khoảng cách giữa các Featurette (các khối văn bản/hình ảnh) */
+.featurette-divider {
+    margin: 5rem 0; 
+}
+
+/* Làm mỏng tiêu đề Featurette (giảm letter-spacing) */
+.featurette-heading {
+    letter-spacing: -.05rem;
+}
+
+
+/* TÙY CHỈNH CAROUSEL
+-------------------------------------------------- */
+
+/* Đặt lề dưới cho Carousel */
+.carousel {
+    margin-bottom: 4rem;
+}
+
+/* Đặt chiều cao cố định cho mỗi slide */
+.carousel-item {
+    height: 32rem; /* Chiều cao cố định (điểm chuẩn cho màn hình nhỏ) */
+}
+
+/* Định vị và định kiểu cho hình ảnh giữ chỗ (placeholder SVG) */
+.carousel-item > svg { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem; /* Phải khớp với chiều cao .carousel-item */
+    background-color: var(--bs-secondary-color);
+}
+
+/* Vị trí của chú thích (caption text) */
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+}
+
+
+/* MEDIA QUERIES (Tối ưu hóa cho màn hình lớn)
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+    /* Tăng chiều cao Carousel trên máy tính bảng và máy tính để bàn */
+    .carousel-item {
+        height: 40rem;
+    }
+    .carousel-item > svg {
+        height: 40rem;
+    }
+    
+    /* Điều chỉnh font-size cho tiêu đề featurette trên màn hình lớn */
+    .featurette-heading {
+        font-size: 50px;
+    }
+}

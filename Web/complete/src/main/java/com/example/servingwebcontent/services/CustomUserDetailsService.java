@@ -1,7 +1,7 @@
 package com.example.servingwebcontent.services;
 
 import com.example.servingwebcontent.model.User;
-import com.example.servingwebcontent.model.Role; // Cần import nếu chưa có
+import com.example.servingwebcontent.model.Role; // Giữ lại import cho Role Entity
 import com.example.servingwebcontent.repositories.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,19 +28,19 @@ public class CustomUserDetailsService implements UserDetailsService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Không tìm thấy người dùng với email: " + email));
 
-        // BẮT LỖI: Kiểm tra Role (quyền hạn) có bị NULL không.
-        // Đây là nguyên nhân có thể gây ra NullPointerException, dẫn đến lỗi đăng nhập.
+        // Kiểm tra Role có tồn tại không (Đảm bảo người dùng có quyền hợp lệ)
         if (user.getRole() == null) {
-            // Nếu Role là NULL, từ chối xác thực để tránh lỗi không mong muốn
             throw new UsernameNotFoundException("Người dùng " + email + " không có Role hợp lệ.");
         }
 
         // Chuyển Role thành GrantedAuthority
+        // LỖI ĐÃ SỬA: Thay thế user.getRole().name() bằng user.getRole().getName()
+        // vì Role hiện tại là JPA Entity Class, không phải Enum.
         List<GrantedAuthority> authorities = Collections.singletonList(
-                new SimpleGrantedAuthority(user.getRole().name())
+                new SimpleGrantedAuthority(user.getRole().getName())
         );
 
-        // Trả về đối tượng UserDetails
+        // Trả về đối tượng UserDetails (sử dụng Email làm username)
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
                 user.getPassword(),

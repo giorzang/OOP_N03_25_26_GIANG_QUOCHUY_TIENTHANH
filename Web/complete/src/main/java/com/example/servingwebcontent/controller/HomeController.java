@@ -1,13 +1,8 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.model.User; // Cần import model User
-import com.example.servingwebcontent.repositories.UserRepository; // Cần import UserService
-import org.springframework.beans.factory.annotation.Autowired; // Cần import Autowired
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute; // Cần import ModelAttribute
-import org.springframework.web.bind.annotation.PostMapping; // Cần import PostMapping
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller

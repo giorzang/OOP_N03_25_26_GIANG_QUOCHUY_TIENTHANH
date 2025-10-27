@@ -1,36 +1,31 @@
 package com.example.servingwebcontent.config;
 
-import com.example.servingwebcontent.model.Category;
-import com.example.servingwebcontent.model.Product;
 import com.example.servingwebcontent.model.Role; // Role Entity
 import com.example.servingwebcontent.model.User;
 import com.example.servingwebcontent.repositories.CategoryRepository; 
-import com.example.servingwebcontent.repositories.ProductRepository;
+// import com.example.servingwebcontent.repositories.ProductRepository;
 import com.example.servingwebcontent.repositories.UserRepository;
 import com.example.servingwebcontent.repositories.RoleRepository; // BỔ SUNG
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal; 
-import java.util.Optional; 
-
 @Component
 public class DataLoader implements CommandLineRunner {
 
     private final CategoryRepository categoryRepository;
-    private final ProductRepository productRepository;
+    // private final ProductRepository productRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository; // BỔ SUNG
 
     public DataLoader(CategoryRepository categoryRepository,
-                      ProductRepository productRepository,
+                      // ProductRepository productRepository,
                       UserRepository userRepository,
                       PasswordEncoder passwordEncoder,
                       RoleRepository roleRepository) { // BỔ SUNG VÀO CONSTRUCTOR
         this.categoryRepository = categoryRepository;
-        this.productRepository = productRepository;
+        // this.productRepository = productRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository; // GÁN

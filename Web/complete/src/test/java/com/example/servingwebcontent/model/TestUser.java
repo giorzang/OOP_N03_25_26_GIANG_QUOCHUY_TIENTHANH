@@ -1,7 +1,5 @@
 package com.example.servingwebcontent.model;
 
-import java.util.Collections;
-
 // Class này không cần @Test, nó chỉ là một class utility để kiểm tra Model thủ công.
 
 public class TestUser {

@@ -1,7 +1,11 @@
 package com.example.servingwebcontent.services;
 
 import com.example.servingwebcontent.model.User;
+<<<<<<< HEAD
 import com.example.servingwebcontent.model.Role; // Giữ lại import cho Role Entity
+=======
+// import com.example.servingwebcontent.model.Role; // Cần import nếu chưa có
+>>>>>>> 0813e46cc2ae5a928682aff23592aea83a5f457b
 import com.example.servingwebcontent.repositories.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

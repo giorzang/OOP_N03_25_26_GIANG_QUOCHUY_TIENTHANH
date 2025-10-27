@@ -12,11 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
-
-    // Tiêm (Inject) UserService để lưu thông tin người dùng mới
-    @Autowired
-    private UserRepository userRepository; 
-
     /**
      * Ánh xạ đường dẫn gốc "/" và "/greeting" đến trang chủ "index" (Carousel).
      */

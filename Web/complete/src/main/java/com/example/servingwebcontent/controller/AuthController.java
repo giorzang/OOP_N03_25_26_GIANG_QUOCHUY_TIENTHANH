@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute; // Cần import M
 import org.springframework.web.bind.annotation.PostMapping; // Cần import PostMapping
 import org.springframework.web.bind.annotation.RequestParam;
 
+@Controller
 public class AuthController {
     // =========================================================
     // PHƯƠNG THỨC QUAN TRỌNG: ÁNH XẠ TRANG ĐĂNG NHẬP
@@ -20,15 +21,12 @@ public class AuthController {
         // Trả về tên của template Thymeleaf ("login"), sẽ tìm src/main/resources/templates/login.html
         return "login"; 
     }
-    
-    // =========================================================
-    // PHƯƠNG THỨC QUAN TRỌNG: ÁNH XẠ TRANG ĐĂNG NHẬP
-    // =========================================================
-    @GetMapping("/login")
-    public String login() {
-        return "login"; 
-    }
 
+
+    // Tiêm (Inject) UserService để lưu thông tin người dùng mới
+    @Autowired
+    private UserRepository userRepository;
+    
     // =========================================================
     // SỬA ĐỔI: HIỂN THỊ FORM ĐĂNG KÝ (GET)
     // Thêm đối tượng User vào Model để form Thymeleaf có thể binding

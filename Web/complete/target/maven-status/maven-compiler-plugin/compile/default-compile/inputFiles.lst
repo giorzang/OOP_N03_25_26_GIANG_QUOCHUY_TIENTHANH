@@ -23,4 +23,5 @@
 /workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/services/CustomUserDetailsService.java
 /workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/model/CartItem.java
 /workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/model/Category.java
+/workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/controller/AuthController.java
 /workspaces/OOP_N03_25_26_GIANG_QUOCHUY_TIENTHANH/Web/complete/src/main/java/com/example/servingwebcontent/exception/GlobalExceptionHandler.java

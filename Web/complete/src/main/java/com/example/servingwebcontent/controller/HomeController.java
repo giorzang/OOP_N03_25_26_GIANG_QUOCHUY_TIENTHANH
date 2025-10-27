@@ -11,23 +11,14 @@ public class HomeController {
     /**
      * Ánh xạ đường dẫn gốc "/" và "/greeting" đến trang chủ "index" (Carousel).
      */
-    @GetMapping({"/", "/greeting"})
-    public String index(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        
-        // Thêm thuộc tính 'name' vào Model để Thymeleaf có thể truy cập
+    @GetMapping("/greeting")
+    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
-
-        // Trả về template "index", sẽ tìm src/main/resources/templates/index.html
-        return "index";
+        return "greeting";
     }
 
-    // =========================================================
-    // PHƯƠNG THỨC QUAN TRỌNG: ÁNH XẠ TRANG ĐĂNG NHẬP
-    // Phương thức này khắc phục lỗi "No static resource login"
-    // =========================================================
-    @GetMapping("/login")
-    public String login() {
-        // Trả về tên của template Thymeleaf ("login"), sẽ tìm src/main/resources/templates/login.html
-        return "login"; 
+    @GetMapping("/")
+    public String index() {
+        return "index";
     }
 }

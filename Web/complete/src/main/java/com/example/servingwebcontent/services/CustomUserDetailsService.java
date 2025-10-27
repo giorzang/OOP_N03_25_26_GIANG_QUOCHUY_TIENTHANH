@@ -1,8 +1,7 @@
 package com.example.servingwebcontent.services;
 
-// SỬA LỖI: Model -> model
 import com.example.servingwebcontent.model.User;
-// SỬA LỖI: Repositories -> repositories
+import com.example.servingwebcontent.model.Role; // Cần import nếu chưa có
 import com.example.servingwebcontent.repositories.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,24 +22,28 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    /**
-     * Phương thức bắt buộc của UserDetailsService để tải thông tin người dùng bằng email (username).
-     */
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        // Tìm User trong CSDL bằng email
+        
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Không tìm thấy người dùng với email: " + email));
 
-        // Chuyển Role của User thành GrantedAuthority
+        // BẮT LỖI: Kiểm tra Role (quyền hạn) có bị NULL không.
+        // Đây là nguyên nhân có thể gây ra NullPointerException, dẫn đến lỗi đăng nhập.
+        if (user.getRole() == null) {
+            // Nếu Role là NULL, từ chối xác thực để tránh lỗi không mong muốn
+            throw new UsernameNotFoundException("Người dùng " + email + " không có Role hợp lệ.");
+        }
+
+        // Chuyển Role thành GrantedAuthority
         List<GrantedAuthority> authorities = Collections.singletonList(
                 new SimpleGrantedAuthority(user.getRole().name())
         );
 
-        // Trả về đối tượng UserDetails mà Spring Security sử dụng
+        // Trả về đối tượng UserDetails
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
-                user.getPassword(), // Lưu ý: Mật khẩu PHẢI đã được mã hóa trong CSDL
+                user.getPassword(),
                 authorities
         );
     }

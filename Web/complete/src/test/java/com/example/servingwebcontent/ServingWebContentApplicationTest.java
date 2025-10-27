@@ -10,5 +10,6 @@ public class ServingWebContentApplicationTest {
 	public void testModel() throws Exception {
 		TestUser.test();
         TestProduct.test();
+		TestCategory.test();
 	}
 }

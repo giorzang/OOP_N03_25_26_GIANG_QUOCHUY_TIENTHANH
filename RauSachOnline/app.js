@@ -4,6 +4,7 @@ const session = require('express-session');
 
 // Import Routes
 const authRoutes = require('./routes/authRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 });
 
 // Sử dụng Routes
+app.use('/admin', adminRoutes);
 app.use(authRoutes);
 
 // START Server GOGO

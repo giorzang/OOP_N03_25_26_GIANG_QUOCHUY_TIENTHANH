@@ -2,8 +2,6 @@ const Product = require('../models/product');
 const Category = require('../models/category');
 
 // Create sản phẩm
-
-/// Hiển thị trang "Thêm sản phẩm"
 exports.getAddProduct = async (req, res, next) => {
     try {
         // Lấy tất cả category
@@ -18,7 +16,6 @@ exports.getAddProduct = async (req, res, next) => {
     }
 };
 
-/// POST: "Thêm sản phẩm"
 exports.postAddProduct = async (req, res, next) => {
     const { name, price, description, image_url, category_id } = req.body;
 
@@ -50,8 +47,6 @@ exports.getAdminProducts = async (req, res, next) => {
 };
 
 // Update Product
-
-/// GET: 'Sửa sản phẩm'
 exports.getEditProduct = async (req, res, next) => {
     // Lấy product id từ URL (ví dụ: /admin/edit-product/1)
     const prodId = req.params.productId;
@@ -71,7 +66,6 @@ exports.getEditProduct = async (req, res, next) => {
     } catch (err) { console.log(err); }
 };
 
-/// POST: 'Sửa sản phẩm'
 exports.postEditProduct = async (req, res, next) => {
     const { productId, name, price, description, image_url, category_id } = req.body;
 
@@ -89,7 +83,6 @@ exports.postEditProduct = async (req, res, next) => {
     } catch (err) { console.log(err); }
 };
 
-
 // Delete sản phẩm
 exports.postDeleteProduct = async (req, res, next) => {
     const { productId } = req.body;
@@ -97,5 +90,50 @@ exports.postDeleteProduct = async (req, res, next) => {
         // Gọi phương thức static .deleteById()
         await Product.deleteById(productId);
         res.redirect('/admin/products');
+    } catch (err) { console.log(err); }
+};
+
+// Create category
+exports.postAddCategory = async (req, res, next) => {
+    const { name } = req.body;
+    const category = new Category(null, name);
+    try {
+        await category.save();
+        res.redirect('/admin/categories');
+    } catch (err) { console.log(err); }
+};
+
+// Read category
+exports.getCategories = async (req, res, next) => {
+    try {
+        const categories = await Category.fetchAll();
+        res.status(200).json({ categories: categories }); // Tạm trả JSON
+    } catch (err) { console.log(err); }
+};
+
+// Update category
+exports.getEditCategory = async (req, res, next) => {
+    const catId = req.params.categoryId;
+    try {
+        const category = await Category.findById(catId);
+        res.status(200).json({ category: category }); // Tạm trả JSON
+    } catch (err) { console.log(err); }
+};
+
+exports.postEditCategory = async (req, res, next) => {
+    const { categoryId, name } = req.body;
+    const category = new Category(categoryId, name);
+    try {
+        await category.update();
+        res.redirect('/admin/categories');
+    } catch (err) { console.log(err); }
+};
+
+// Delete category
+exports.postDeleteCategory = async (req, res, next) => {
+    const { categoryId } = req.body;
+    try {
+        await Category.deleteById(categoryId);
+        res.redirect('/admin/categories');
     } catch (err) { console.log(err); }
 };

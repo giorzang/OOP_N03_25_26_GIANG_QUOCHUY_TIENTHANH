@@ -10,7 +10,7 @@ class Product {
         this.category_id = category_id
     }
 
-    // 'save' (để dùng khi admin tạo sp)
+    // Create product
     async save() {
         return db.execute(
             'INSERT INTO products (name, price, description, image_url, category_id) VALUES (?, ?, ?, ?, ?)',
@@ -18,7 +18,8 @@ class Product {
         );
     }
 
-    // Dùng JOIN để lấy tên category
+    // Read product
+    /// Dùng JOIN để lấy tên category
     static async fetchAll() {
         const [rows] = await db.execute(
             `SELECT p.*, c.name AS category_name 
@@ -62,7 +63,7 @@ class Product {
         return null;
     }
 
-    // UPDATE (Instance method)
+    // Update product (Instance method)
     async update() {
         // Cập nhật sản phẩm dựa trên this.id
         return db.execute(
@@ -84,7 +85,7 @@ class Product {
         );
     }
 
-    // DELETE (Static method)
+    // Delete product (Static method)
     static async deleteById(id) {
         return db.execute('DELETE FROM products WHERE id = ?', [id]);
     }

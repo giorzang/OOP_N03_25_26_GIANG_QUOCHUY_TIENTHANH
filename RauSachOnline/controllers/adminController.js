@@ -1,5 +1,6 @@
 const Product = require('../models/product');
 const Category = require('../models/category');
+const User = require('../models/user');
 
 // Create sản phẩm
 exports.getAddProduct = async (req, res, next) => {
@@ -135,5 +136,23 @@ exports.postDeleteCategory = async (req, res, next) => {
     try {
         await Category.deleteById(categoryId);
         res.redirect('/admin/categories');
+    } catch (err) { console.log(err); }
+};
+
+// Create user trong auth/register
+// Read user
+exports.getUsers = async (req, res, next) => {
+    try {
+        const users = await User.fetchAll();
+        res.status(200).json({ users: users });
+    } catch (err) { console.log(err); }
+};
+
+// Delete user
+exports.deleteUser = async (req, res, next) => {
+    const { userId } = req.body;
+    try {
+        await User.deleteById(userId);
+        res.redirect('/admin/users'); 
     } catch (err) { console.log(err); }
 };

@@ -32,11 +32,15 @@ class User {
 
     /// Read (admin)
     static async fetchAll() {
-        const [rows] = await db.execute('SELECT id, username, email, name, phone, address FROM users');
+        const [rows] = await db.execute('SELECT id, email, phone, name, address FROM users');
         // Không gửi password ra ngoài!
         return rows.map(row => new User(
-            row.id, row.username, row.email, null, // Không gửi pass
-            row.name, row.phone, row.address
+            row.id,
+            row.email,
+            row.phone,
+            null, // Không gửi pass
+            row.name,
+            row.address
         ));
     }
     //// findById
@@ -45,8 +49,12 @@ class User {
         if (rows.length > 0) {
             const row = rows[0];
             return new User(
-                row.id, row.username, row.email, row.password, // Cần pass để login
-                row.name, row.phone, row.address
+                row.id,
+                row.email,
+                row.phone,
+                row.password, // Cần pass để login
+                row.name,
+                row.address
             );
         }
         return null;

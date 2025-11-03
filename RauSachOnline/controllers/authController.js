@@ -3,11 +3,19 @@ const bcrypt = require('bcryptjs');
 
 // Hiển thị trang/form đăng ký (GET)
 exports.getRegister = (req, res, next) => {
+    // (Tạm thời trả JSON, sau này sẽ là res.render)
+    res.status(200).json({ 
+        message: 'Trang đăng ký',
+        errorMessage: null 
+    });
+/*
+    // Code EJS sẽ là:
     res.render('auth/register', {
         path: '/register',
         pageTitle: 'Đăng Ký',
-        errorMessage: null // Chưa có lỗi gì
+        errorMessage: null 
     });
+    */
 };
 
 // Xử lý logic khi người dùng nhấn nút "Đăng ký" (POST)
@@ -17,33 +25,28 @@ exports.postRegister = async (req, res, next) => {
 
     // Bắt lỗi & Xác thực
     if (password !== confirmPassword) {
+        return res.status(422).json({ errorMessage: 'Mật khẩu xác nhận không khớp!' });
+        /*
+        // Code EJS:
         return res.status(422).render('auth/register', {
             path: '/register',
             pageTitle: 'Đăng Ký',
             errorMessage: 'Mật khẩu xác nhận không khớp!'
         });
+        */
     }
 
-    // Kiểm tra user/email tồn tại
-    const userByEmail = await User.findByEmail(email);
-    if (userByEmail) {
-        return res.status(422).render('auth/register', {
-            path: '/register',
-            pageTitle: 'Đăng Ký',
-            errorMessage: 'Email này đã được sử dụng!'
-        });
-    }
-    const userByPhone = await User.findByPhone(phone);
-    if (userByPhone) {
-        return res.status(422).render('auth/register', {
-            path: '/register',
-            pageTitle: 'Đăng Ký',
-            errorMessage: 'Username này đã tồn tại!'
-        });
-    }
-
-    // Nếu mọi thứ OK -> Tạo đối tượng User và lưu
     try {
+        // Kiểm tra user/email tồn tại
+        const userByEmail = await User.findByEmail(email);
+        if (userByEmail) {
+            return res.status(422).json({ errorMessage: 'Email này đã được sử dụng!' });
+        }
+        const userByPhone = await User.findByPhone(phone);
+        if (userByPhone) {
+            return res.status(422).json({ errorMessage: 'Số điện thoại này đã tồn tại!' });
+        }
+
         const newUser = new User(
             null,
             email,
@@ -64,18 +67,25 @@ exports.postRegister = async (req, res, next) => {
 
 // Hiển thị trang/form đăng nhập
 exports.getLogin = (req, res, next) => {
+    res.status(200).json({ 
+        message: 'Trang đăng nhập', 
+        errorMessage: null 
+    });
+    
+    /*
+    // Code EJS:
     res.render('auth/login', {
         path: '/login',
         pageTitle: 'Đăng Nhập',
-        errorMessage: null // Ban đầu không có lỗi
+        errorMessage: null
     });
+    */
 };
 
 // Xử lý logic khi người dùng nhấn nút "Đăng nhập" (POST)
 exports.postLogin = async (req, res, next) => {
     // Lấy email/phone và password từ form
-    const emailOrPhone = req.body.emailOrPhone;
-    const password = req.body.password;
+    const { emailOrPhone, password } = req.body;
 
     try {
         // Tìm user trong CSDL (Dùng phương thức Tĩnh)
@@ -83,11 +93,7 @@ exports.postLogin = async (req, res, next) => {
 
         // Bắt lỗi: User không tồn tại
         if (!user) {
-            return res.status(422).render('auth/login', {
-                path: '/login',
-                pageTitle: 'Đăng Nhập',
-                errorMessage: 'Tên đăng nhập hoặc mật khẩu không đúng!'
-            });
+            return res.status(422).json({ errorMessage: 'Email/Số điện thoại hoặc mật khẩu không đúng!' });
         }
 
         // User tồn tại -> So sánh mật khẩu
@@ -96,11 +102,7 @@ exports.postLogin = async (req, res, next) => {
 
         // 5. Bắt lỗi: Sai mật khẩu
         if (!isMatch) {
-            return res.status(422).render('auth/login', {
-                path: '/login',
-                pageTitle: 'Đăng Nhập',
-                errorMessage: 'Tên đăng nhập hoặc mật khẩu không đúng!'
-            });
+            return res.status(422).json({ errorMessage: 'Email/Số điện thoại hoặc mật khẩu không đúng!' });
         }
 
         // ĐĂNG NHẬP THÀNH CÔNG

@@ -3,13 +3,21 @@ const express = require('express');
 const session = require('express-session');
 
 // Import Routes
+/// Routes công khai
+const productRoutes = require('./routes/productRoutes');
 const authRoutes = require('./routes/authRoutes');
-const adminRoutes = require('./routes/adminRoutes');
+/// Routes của User
+const userProfileRoutes = require('./routes/userProfileRoutes');
+const cartRoutes = require('./routes/cartRoutes');
+/// Routes của Admin
+const adminProductRoutes = require('./routes/adminProductRoutes');
+const adminCategoryRoutes = require('./routes/adminCategoryRoutes');
+const adminUserRoutes = require('./routes/adminUserRoutes');
 
 const app = express();
 
 app.set('view engine', 'ejs');
-app.set('views', 'views'); // Chỉ định thư mục views
+app.set('views', 'views');
 
 // Cấu hình xử lý (Middleware)
 app.use(express.urlencoded({ extended: false }));
@@ -31,7 +39,15 @@ app.use((req, res, next) => {
 });
 
 // Sử dụng Routes
-app.use('/admin', adminRoutes);
+app.use('/admin', adminProductRoutes);
+app.use('/admin', adminCategoryRoutes);
+app.use('/admin', adminUserRoutes);
+
+app.use('/profile', userProfileRoutes);
+
+app.use('/cart', cartRoutes);
+
+app.use(productRoutes);
 app.use(authRoutes);
 
 // START Server GOGO

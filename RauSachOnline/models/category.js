@@ -14,14 +14,6 @@ class Category {
         );
     }
 
-    // Update category
-    async update() {
-        return db.execute(
-            'UPDATE categories SET name = ? WHERE id = ?',
-            [this.name, this.id]
-        );
-    }
-
     // Read category
     /// Phương thức tĩnh để lấy tất cả category
     static async fetchAll() {
@@ -36,6 +28,14 @@ class Category {
             return new Category(row.id, row.name);
         }
         return null;
+    }
+    
+    // Update category
+    async update() {
+        return db.execute(
+            'UPDATE categories SET name = ? WHERE id = ?',
+            [this.name, this.id]
+        );
     }
 
     // Delete category

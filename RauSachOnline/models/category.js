@@ -1,4 +1,4 @@
-const db = require('../utils/database');
+const db = require('../config/database');
 
 class Category {
     constructor(id, name) {

@@ -10,22 +10,16 @@ exports.getCart = async (req, res, next) => {
             total += p.quantity * p.price;
         });
 
-        // Tạm thời trả JSON
-        res.status(200).json({ 
-            products: products, 
-            totalPrice: total 
-        });
-        
-        /*
-        // Code EJS sau này:
+        // res.status(200).json({ 
+        //     products: products, 
+        //     totalPrice: total 
+        // });
         res.render('cart/cart', {
             path: '/cart',
             pageTitle: 'Giỏ hàng của bạn',
             products: products,
             totalPrice: total
         });
-        */
-        
     } catch (err) { console.log(err); }
 };
 

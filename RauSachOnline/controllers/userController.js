@@ -1,6 +1,15 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 
+exports.getProfilePage = (req, res, next) => {
+    res.render('profile/profile', {
+        pageTitle: 'Hồ sơ của bạn',
+        path: '/profile',
+        user: req.session.user,
+        message: null
+    });
+};
+
 // === (USER) Cập nhật hồ sơ (ví dụ: Tên, SĐT, Địa chỉ) ===
 // Logic này được gọi bởi route: /profile/update-profile
 exports.postUpdateProfile = async (req, res, next) => {
@@ -21,19 +30,16 @@ exports.postUpdateProfile = async (req, res, next) => {
             if (err) {
                 console.log(err);
             }
-            // (Khi làm EJS, chuyển hướng về trang hồ sơ)
-            // res.redirect('/profile'); 
-            
-            // Tạm thời trả JSON
-            res.status(200).json({ 
-                message: 'Cập nhật hồ sơ thành công', 
-                user: user 
+            // res.status(200).json({ 
+            //     message: 'Cập nhật hồ sơ thành công', 
+            //     user: user 
+            // });
+            res.render('profile/profile', {
+                pageTitle: 'Hồ sơ của bạn',
+                path: '/profile',
+                user: req.session.user,
+                message: 'Cập nhật hồ sơ thành công!'
             });
         });
-    } catch (err) { 
-        console.log(err); 
-    }
+    } catch (err) { console.log(err); }
 };
-
-// (Sau này, chúng ta sẽ thêm 'exports.getProfilePage' vào đây
-// để hiển thị trang EJS cho người dùng cập nhật hồ sơ)

@@ -8,9 +8,15 @@ exports.getAddProduct = async (req, res, next) => {
         // Lấy tất cả category
         const categories = await Category.fetchAll();
 
-        res.status(200).json({ 
-            message: "Sẵn sàng thêm sản phẩm", 
-            categories: categories 
+        // res.status(200).json({ 
+        //     message: "Sẵn sàng thêm sản phẩm", 
+        //     categories: categories 
+        // });
+        res.render('admin/edit-product', {
+            pageTitle: 'Thêm Sản phẩm',
+            path: '/admin/add-product',
+            editing: false, // form trong
+            categories: categories
         });
     } catch (err) {
         console.log(err);
@@ -40,9 +46,14 @@ exports.getAdminProducts = async (req, res, next) => {
     try {
         const products = await Product.fetchAll();
 
-        res.status(200).json({ 
-            message: "Lấy danh sách sản phẩm (admin)", 
-            products: products 
+        // res.status(200).json({ 
+        //     message: "Lấy danh sách sản phẩm (admin)", 
+        //     products: products 
+        // });
+        res.render('admin/products', {
+            prods: products,
+            pageTitle: 'Quản lý Sản phẩm',
+            path: '/admin/products'
         });
     } catch (err) { console.log(err); }
 };
@@ -59,10 +70,17 @@ exports.getEditProduct = async (req, res, next) => {
             return res.redirect('/');
         }
 
-        res.status(200).json({ 
-            message: "Sẵn sàng sửa sản phẩm", 
-            product: product, 
-            categories: categories 
+        // res.status(200).json({ 
+        //     message: "Sẵn sàng sửa sản phẩm", 
+        //     product: product, 
+        //     categories: categories 
+        // });
+        res.render('admin/edit-product', {
+            pageTitle: 'Sửa Sản phẩm',
+            path: '/admin/edit-product',
+            editing: true, // form data cu
+            product: product,
+            categories: categories
         });
     } catch (err) { console.log(err); }
 };
@@ -108,7 +126,13 @@ exports.postAddCategory = async (req, res, next) => {
 exports.getCategories = async (req, res, next) => {
     try {
         const categories = await Category.fetchAll();
-        res.status(200).json({ categories: categories }); // Tạm trả JSON
+        // res.status(200).json({ categories: categories }); // Tạm trả JSON
+        res.render('admin/categories', {
+            pageTitle: 'Quản lý Phân loại',
+            path: '/admin/categories',
+            categories: categories,
+            editing: false // Không ở chế độ Sửa
+        });
     } catch (err) { console.log(err); }
 };
 
@@ -117,7 +141,20 @@ exports.getEditCategory = async (req, res, next) => {
     const catId = req.params.categoryId;
     try {
         const category = await Category.findById(catId);
-        res.status(200).json({ category: category }); // Tạm trả JSON
+        const categories = await Category.fetchAll();
+        
+        if (!category) {
+            return res.redirect('/admin/categories');
+        }
+
+        // res.status(200).json({ category: category }); // Tạm trả JSON
+        res.render('admin/categories', {
+            pageTitle: 'Sửa Phân loại',
+            path: '/admin/categories',
+            categories: categories,
+            editing: true, // Bật chế độ Sửa
+            category: category // Gửi data của category cần sửa
+        });
     } catch (err) { console.log(err); }
 };
 
@@ -144,7 +181,12 @@ exports.postDeleteCategory = async (req, res, next) => {
 exports.getUsers = async (req, res, next) => {
     try {
         const users = await User.fetchAll();
-        res.status(200).json({ users: users });
+        // res.status(200).json({ users: users });
+        res.render('admin/users', {
+            pageTitle: 'Quản lý User',
+            path: '/admin/users',
+            users: users
+        });
     } catch (err) { console.log(err); }
 };
 

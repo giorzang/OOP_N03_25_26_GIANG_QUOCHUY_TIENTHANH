@@ -82,7 +82,22 @@ class Order {
     
     // === READ: Lấy tất cả đơn hàng của 1 user ===
     static async findByUserId(userId) {
-        // ... (Logic lấy lịch sử đơn hàng) ...
+        const [orders] = await db.execute(
+            'SELECT * FROM orders WHERE user_id = ? ORDER BY created_at DESC',
+            [userId]
+        );
+
+        // Với mỗi đơn hàng, lấy các item
+        for (const order of orders) {
+            const [items] = await db.execute(
+                'SELECT * FROM order_items WHERE order_id = ?',
+                [order.id]
+            );
+            // Gán mảng items vào đơn hàng
+            order.items = items;
+        }
+
+        return orders;
     }
 }
 

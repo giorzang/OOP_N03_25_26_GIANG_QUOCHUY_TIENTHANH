@@ -3,19 +3,15 @@ const bcrypt = require('bcryptjs');
 
 // Hiển thị trang/form đăng ký (GET)
 exports.getRegister = (req, res, next) => {
-    // (Tạm thời trả JSON, sau này sẽ là res.render)
-    res.status(200).json({ 
-        message: 'Trang đăng ký',
-        errorMessage: null 
-    });
-/*
-    // Code EJS sẽ là:
+    // res.status(200).json({ 
+    //     message: 'Trang đăng ký',
+    //     errorMessage: null 
+    // });
     res.render('auth/register', {
         path: '/register',
         pageTitle: 'Đăng Ký',
         errorMessage: null 
     });
-    */
 };
 
 // Xử lý logic khi người dùng nhấn nút "Đăng ký" (POST)
@@ -25,15 +21,12 @@ exports.postRegister = async (req, res, next) => {
 
     // Bắt lỗi & Xác thực
     if (password !== confirmPassword) {
-        return res.status(422).json({ errorMessage: 'Mật khẩu xác nhận không khớp!' });
-        /*
-        // Code EJS:
+        // return res.status(422).json({ errorMessage: 'Mật khẩu xác nhận không khớp!' });
         return res.status(422).render('auth/register', {
             path: '/register',
             pageTitle: 'Đăng Ký',
             errorMessage: 'Mật khẩu xác nhận không khớp!'
         });
-        */
     }
 
     try {
@@ -67,19 +60,15 @@ exports.postRegister = async (req, res, next) => {
 
 // Hiển thị trang/form đăng nhập
 exports.getLogin = (req, res, next) => {
-    res.status(200).json({ 
-        message: 'Trang đăng nhập', 
-        errorMessage: null 
-    });
-    
-    /*
-    // Code EJS:
+    // res.status(200).json({ 
+    //     message: 'Trang đăng nhập', 
+    //     errorMessage: null 
+    // });
     res.render('auth/login', {
         path: '/login',
         pageTitle: 'Đăng Nhập',
         errorMessage: null
     });
-    */
 };
 
 // Xử lý logic khi người dùng nhấn nút "Đăng nhập" (POST)

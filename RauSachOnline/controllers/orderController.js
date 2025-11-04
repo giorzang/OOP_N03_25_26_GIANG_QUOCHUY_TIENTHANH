@@ -27,17 +27,17 @@ exports.postCreateOrder = async (req, res, next) => {
 
 // Xem lịch sử đơn hàng
 exports.getOrders = async (req, res, next) => {
-    // (Logic xem lịch sử đơn hàng sẽ ở đây)
-    res.status(200).json({ 
-        message: 'Trang lịch sử đơn hàng của bạn'
-    });
-    
-    /*
-    // Code EJS:
-    const orders = await Order.findByUserId(req.session.user.id);
-    res.render('shop/orders', {
-        pageTitle: 'Đơn hàng của bạn',
-        orders: orders
-    });
-    */
+    // res.status(200).json({ 
+    //     message: 'Trang lịch sử đơn hàng của bạn'
+    // });
+    try {
+        const orders = await Order.findByUserId(req.session.user.id);
+        res.render('shop/orders', {
+            path: '/orders',
+            pageTitle: 'Đơn hàng của bạn',
+            orders: orders
+        });
+    } catch (err) {
+        console.log(err);
+    }
 };

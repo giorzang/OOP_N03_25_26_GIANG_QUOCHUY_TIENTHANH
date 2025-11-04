@@ -4,8 +4,7 @@ const isAuth = require('../middleware/isAuth');
 
 const router = express.Router();
 
+router.get('/', isAuth, userController.getProfilePage);
 router.post('/update-profile', isAuth, userController.postUpdateProfile);
-// (Sau này thêm route xem trang hồ sơ)
-// router.get('/', isAuth, userController.getProfilePage);
 
 module.exports = router;

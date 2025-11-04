@@ -1,0 +1,52 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Rau Sạch Online</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">Giỏ hàng</a>
+                    </li>
+                    <% if (isAuthenticated) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/orders">Đơn hàng</a>
+                        </li>
+                    <% } %>
+                </ul>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                    <% if (isAuthenticated) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile">Chào, <%= user.name %></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/products">Quản lý</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <form action="/logout" method="POST" class="d-flex">
+                                <button class="btn btn-outline-danger" type="submit">Đăng xuất</button>
+                            </form>
+                        </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Đăng nhập</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Đăng ký</a>
+                        </li>
+                    <% } %>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>

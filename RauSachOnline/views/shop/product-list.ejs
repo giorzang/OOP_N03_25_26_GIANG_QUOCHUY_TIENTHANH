@@ -1,0 +1,70 @@
+<%- include('../includes/head.ejs') %>
+
+<%- include('../includes/navigation.ejs') %>
+
+<main>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <svg class="bd-placeholder-img" width="100%" height="400px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <h1>Rau Sạch Tươi Ngon.</h1>
+                        <p>100% hữu cơ, giao hàng tận nơi trong ngày.</p>
+                        <p><a class="btn btn-lg btn-primary" href="/register">Đăng ký ngay</a></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                <% if (prods.length > 0) { %>
+                    <% for (let product of prods) { %>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img src="<%= product.imageUrl %>" alt="<%= product.name %>" class="bd-placeholder-img card-img-top" width="100%" height="225">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= product.name %></h5>
+                                    <p class="card-text"><%= product.description %></p>
+                                    <p class="card-text text-danger fw-bold"><%= product.price.toLocaleString('vi-VN') %> VND</p>
+                                    <small class="text-muted">Phân loại: <%= product.category_name %></small>
+                                    <div class="d-flex justify-content-between align-items-center mt-2">
+                                        <div class="btn-group">
+                                            <a href="#" class="btn btn-sm btn-outline-secondary">Xem</a>
+                                            
+                                            <form action="/cart/add-to-cart" method="POST">
+                                                <input type="hidden" name="productId" value="<%= product.id %>">
+                                                <button type="submit" class="btn btn-sm btn-primary">Thêm vào giỏ</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } else { %>
+                    <p>Không có sản phẩm nào để hiển thị.</p>
+                <% } %>
+                
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="container py-5">
+    <p class_="float-end"><a href="#">Trở lại đầu trang</a></p>
+    <p>&copy; 2025 Rau Sạch Online &middot; <a href="#">Quyền riêng tư</a> &middot; <a href="#">Điều khoản</a></p>
+</footer>
+
+<%- include('../includes/end.ejs') %>

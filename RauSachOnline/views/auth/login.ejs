@@ -1,8 +1,41 @@
-<main>
-    <% if (errorMessage) { %>
-        <div style="color: red;"><%= errorMessage %></div>
-    <% } %>
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %>
 
-    <form action="/login" method="POST">
-        </form>
+<main>
+    <div class="container" style="max-width: 500px; margin-top: 100px;">
+        <div class="card shadow-sm p-4">
+
+            <h2 class="text-center mb-4">Đăng nhập</h2>
+
+            <% if (errorMessage) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= errorMessage %>
+                </div>
+            <% } %>
+
+            <form action="/login" method="POST">
+                
+                <div class="mb-3">
+                    <label for="emailOrPhone" class="form-label">Email hoặc Số điện thoại</label>
+                    <input type="text" class="form-control" id="emailOrPhone" name="emailOrPhone" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Đăng nhập</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-3">
+                <p>Chưa có tài khoản? <a href="/register">Tạo tài khoản mới</a></p>
+            </div>
+            
+        </div>
+    </div>
 </main>
+
+<%- include('../includes/end.ejs') %>

@@ -1,8 +1,65 @@
-<main>
-    <% if (errorMessage) { %>
-        <div style="color: red;"><%= errorMessage %></div>
-    <% } %>
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %>
 
-    <form action="/register" method="POST">
-        </form>
+<main>
+    <div class="container" style="max-width: 500px; margin-top: 100px;">
+        <div class="card shadow-sm p-4">
+
+            <h2 class="text-center mb-4">Tạo tài khoản</h2>
+
+            <% if (errorMessage) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= errorMessage %>
+                </div>
+            <% } %>
+
+            <form action="/register" method="POST">
+                
+                <div class="mb-3">
+                    <label for="name" class="form-label">Họ và Tên *</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email *</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Số điện thoại *</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address" class="form-label">Địa chỉ</label>
+                    <textarea class="form-control" id="address" name="address" rows="2"></textarea>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mật khẩu *</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Xác nhận mật khẩu *</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Đăng ký</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-3">
+                <p>Đã có tài khoản? <a href="/login">Đăng nhập ngay</a></p>
+            </div>
+            
+        </div>
+    </div>
 </main>
+
+<div style="height: 100px;"></div>
+
+<%- include('../includes/end.ejs') %>

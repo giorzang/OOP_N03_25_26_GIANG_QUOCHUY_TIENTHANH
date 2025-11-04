@@ -1,95 +1,93 @@
 <%- include('../includes/head.ejs') %>
+<body class="custom-bg"> 
+<%- include('../includes/navigation.ejs') %>
 
-<body class="custom-bg">
-    <%- include('../includes/navigation.ejs') %>
-
-    <main>
-        <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            </div>
-
-            <div class="carousel-inner">
-                <div class="carousel-item active" style="background-color: #28a745; height: 400px;"> 
-                    <div class="container h-100 d-flex align-items-center">
-                        <div class="carousel-caption text-start w-75">
-                            <h1 class="display-3 fw-bolder text-white animate__animated animate__fadeInLeft">
-                                RAU SẠCH TƯƠI NGON.
-                            </h1>
-                            <p class="lead text-light mb-4 animate__animated animate__fadeInLeft animate__delay-1s">
-                                100% hữu cơ, giao hàng tận nơi trong ngày.
-                            </p>
-                            <p class="animate__animated animate__fadeInUp animate__delay-2s">
-                                <a class="btn btn-lg btn-warning fw-bold shadow-lg custom-btn-secondary" href="/register">
-                                    <i class="fas fa-user-plus me-2"></i> Đăng ký ngay
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                </div>
+<main>
+    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         </div>
 
-        <div class="album py-5">
-            <div class="container">
-                <h3 class="text-center fw-bold mb-5 text-success">
-                    <i class="fas fa-leaf me-2"></i> KHÁM PHÁ SẢN PHẨM HỮU CƠ
-                </h3>
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-color: #28a745; height: 400px;"> 
+                <div class="container h-100 d-flex align-items-center">
+                    <div class="carousel-caption text-start w-75">
+                        <h1 class="display-3 fw-bolder text-white animate__animated animate__fadeInLeft">
+                            RAU SẠCH TƯƠI NGON.
+                        </h1>
+                        <p class="lead text-light mb-4 animate__animated animate__fadeInLeft animate__delay-1s">
+                            100% hữu cơ, giao hàng tận nơi trong ngày.
+                        </p>
+                        <p class="animate__animated animate__fadeInUp animate__delay-2s">
+                            <a class="btn btn-lg btn-warning fw-bold shadow-lg custom-btn-secondary" href="/register">
+                                <i class="fas fa-user-plus me-2"></i> Đăng ký ngay
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
 
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-                    <% if (prods && prods.length > 0) { %>
-                        <% for (let product of prods) { %>
-                            <div class="col">
-                                <div class="card product-card shadow-sm border-0 rounded-3 h-100 transition-shadow">
-                                    <img 
-                                        src="<%= product.image_url %>" 
-                                        alt="<%= product.name %>" 
-                                        class="card-img-top product-img" 
-                                        style="height: 250px; object-fit: cover;"
-                                    >
-                                    <div class="card-body text-center d-flex flex-column justify-content-between">
-                                        <div>
-                                            <h5 class="product-title fw-bolder text-dark mb-1"><%= product.name %></h5>
-                                            <p class="card-text text-muted small mb-2 text-truncate"><%= product.description %></p>
-                                            
-                                            <p class="product-price text-danger fw-bold fs-4 mb-1">
-                                                <%= product.price.toLocaleString('vi-VN') %> VND
-                                            </p>
-                                            <small class="text-success fw-semibold">Phân loại: <%= product.category_name %></small>
-                                        </div>
+    <div class="album py-5">
+        <div class="container">
+            <h3 class="text-center fw-bold mb-5 text-success">
+                <i class="fas fa-leaf me-2"></i> KHÁM PHÁ SẢN PHẨM HỮU CƠ
+            </h3>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                <% if (prods && prods.length > 0) { %>
+                    <% for (let product of prods) { %>
+                        <div class="col">
+                            <div class="card product-card shadow-sm border-0 rounded-3 h-100 transition-shadow">
+                                <img 
+                                    src="<%= product.image_url %>" 
+                                    alt="<%= product.name %>" 
+                                    class="card-img-top product-img" 
+                                    style="height: 250px; object-fit: cover;"
+                                >
+                                <div class="card-body text-center d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h5 class="product-title fw-bolder text-dark mb-1"><%= product.name %></h5>
+                                        <p class="card-text text-muted small mb-2 text-truncate"><%= product.description %></p>
                                         
-                                        <div class="d-grid mt-3">
-                                            <form action="/cart/add-to-cart" method="POST">
-                                                <input type="hidden" name="productId" value="<%= product.id %>">
-                                                <button type="submit" class="btn custom-btn-add-cart btn-lg">
-                                                    <i class="fas fa-cart-plus me-2"></i> Thêm vào giỏ
-                                                </button>
-                                            </form>
-                                        </div>
+                                        <p class="product-price text-danger fw-bold fs-4 mb-1">
+                                            <%= parseFloat(product.price).toLocaleString('vi-VN') %> VND
+                                        </p>
+                                        <small class="text-success fw-semibold">Phân loại: <%= product.category_name %></small>
+                                    </div>
+                                    
+                                    <div class="d-grid mt-3">
+                                        <form action="/cart/add-to-cart" method="POST">
+                                            <input type="hidden" name="productId" value="<%= product.id %>">
+                                            <button type="submit" class="btn custom-btn-add-cart btn-lg">
+                                                <i class="fas fa-cart-plus me-2"></i> Thêm vào giỏ
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        <% } %>
-                    <% } else { %>
-                        <div class="col-12">
-                            <div class="alert alert-info text-center" role="alert">
-                                <i class="fas fa-info-circle me-2"></i> Không có sản phẩm nào để hiển thị.
-                            </div>
                         </div>
                     <% } %>
-                </div>
+                <% } else { %>
+                    <div class="col-12">
+                        <div class="alert alert-info text-center" role="alert">
+                            <i class="fas fa-info-circle me-2"></i> Không có sản phẩm nào để hiển thị.
+                        </div>
+                    </div>
+                <% } %>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 
-    <footer class="container py-4 border-top">
-        <p class="float-end mb-0"><a href="#" class="text-success">Trở lại đầu trang</a></p>
-        <p class="mb-0 text-muted">
-            &copy; 2025 Rau Sạch Online &middot;
-            <a href="#" class="text-success">Quyền riêng tư</a> &middot;
-            <a href="#" class="text-success">Điều khoản</a>
-        </p>
-    </footer>
-</body>
+<footer class="container py-4 border-top">
+    <p class="float-end mb-0"><a href="#" class="text-success">Trở lại đầu trang</a></p>
+    <p class="mb-0 text-muted">
+        &copy; 2025 Rau Sạch Online &middot;
+        <a href="#" class="text-success">Quyền riêng tư</a> &middot;
+        <a href="#" class="text-success">Điều khoản</a>
+    </p>
+</footer>
 
-<%- include('../includes/end.ejs') %> 
+<%- include('../includes/end.ejs') %>

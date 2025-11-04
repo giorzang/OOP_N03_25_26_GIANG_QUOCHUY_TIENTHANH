@@ -1,19 +1,21 @@
 <%- include('../includes/head.ejs') %>
-<body class="custom-bg"> <%- include('../includes/navigation.ejs') %>
+<body class="custom-bg"> 
+<%- include('../includes/navigation.ejs') %>
 
 <main>
     <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="text-success fw-bold"><i class="fas fa-boxes me-2"></i> Quản lý Sản phẩm</h2>
-            <a href="/admin/add-product" class="btn btn-success custom-btn-add-cart">
+            <h2 class="admin-page-title mb-0"><i class="fas fa-boxes me-2"></i> Quản lý Sản phẩm</h2>
+            
+            <a href="/admin/add-product" class="btn btn-admin-primary">
                 <i class="fas fa-plus me-1"></i> Thêm sản phẩm mới
             </a>
         </div>
 
         <% if (prods.length > 0) { %>
-            <div class="table-responsive shadow-sm bg-white rounded-3 overflow-hidden">
-                <table class="table table-hover align-middle mb-0">
-                    <thead class="cart-table"> 
+            <div class="table-responsive overflow-hidden">
+                <table class="table admin-table align-middle mb-0">
+                    <thead> 
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Tên sản phẩm</th>
@@ -32,16 +34,16 @@
                                         <strong><%= product.name %></strong>
                                     </div>
                                 </td>
-                                <td><span class="product-price small"><%= product.price.toLocaleString('vi-VN') %> VND</span></td>
+                                <td><span class="product-price small"><%= parseFloat(product.price).toLocaleString('vi-VN') %> VND</span></td>
                                 <td><%= product.category_name %></td>
                                 <td class="text-center">
-                                    <a href="/admin/edit-product/<%= product.id %>" class="btn btn-sm btn-primary me-2">
+                                    <a href="/admin/edit-product/<%= product.id %>" class="btn btn-action-edit me-2">
                                         <i class="fas fa-edit"></i> Sửa
                                     </a>
                                     
                                     <form action="/admin/delete-product" method="POST" class="d-inline">
                                         <input type="hidden" name="productId" value="<%= product.id %>">
-                                        <button type="submit" class="btn btn-sm btn-danger">
+                                        <button type="submit" class="btn btn-action-delete">
                                             <i class="fas fa-trash-alt"></i> Xóa
                                         </button>
                                     </form>
@@ -62,4 +64,3 @@
 <div style="height: 100px;"></div>
 
 <%- include('../includes/end.ejs') %>
-</body>

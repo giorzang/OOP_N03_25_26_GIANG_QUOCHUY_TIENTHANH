@@ -38,12 +38,12 @@
                                                     <strong class="product-title"><%= p.name %></strong>
                                                 </div>
                                             </td>
-                                            <td class="text-center text-danger fw-bold"><%= p.price.toLocaleString('vi-VN') %> VND</td>
+                                            <td class="text-center text-danger fw-bold"><%= parseFloat(p.price).toLocaleString('vi-VN') %> VND</td>
                                             <td class="text-center">
                                                 <span class="badge bg-secondary"><%= p.quantity %></span>
                                             </td>
                                             <td class="text-center text-success fw-bold fs-6">
-                                                <%= (p.price * p.quantity).toLocaleString('vi-VN') %> VND
+                                                <%= (parseFloat(p.price) * p.quantity).toLocaleString('vi-VN') %> VND
                                             </td>
                                             <td class="text-center">
                                                 <form action="/cart/delete-from-cart" method="POST">
@@ -68,7 +68,7 @@
                             <ul class="list-group list-group-flush mb-3">
                                 <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent px-0">
                                     Tạm tính
-                                    <strong><%= totalPrice.toLocaleString('vi-VN') %> VND</strong>
+                                    <strong><%= parseFloat(totalPrice).toLocaleString('vi-VN') %> VND</strong>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent px-0">
                                     Phí giao hàng
@@ -76,7 +76,7 @@
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent px-0 border-top mt-2 pt-2">
                                     Tổng cộng
-                                    <span class="fs-4 fw-bold text-success"><%= totalPrice.toLocaleString('vi-VN') %> VND</span>
+                                    <span class="fs-4 fw-bold text-success"><%= parseFloat(totalPrice).toLocaleString('vi-VN') %> VND</span>
                                 </li>
                             </ul>
                             
@@ -97,4 +97,3 @@
 <div style="height: 100px;"></div>
 
 <%- include('../includes/end.ejs') %>
-</body> 

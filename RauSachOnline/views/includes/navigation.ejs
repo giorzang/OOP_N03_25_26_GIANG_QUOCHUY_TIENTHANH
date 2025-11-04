@@ -37,12 +37,16 @@
                             </a>
                         </li>
 
-                        <li class="nav-item me-3">
-                            <a class="nav-link" href="/admin/products">
+                        <li class="nav-item dropdown me-3">
+                            <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-cog me-1"></i> Quản lý
                             </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+                                <li><a class="dropdown-item" href="/admin/users">Người dùng</a></li>
+                                <li><a class="dropdown-item" href="/admin/products">Sản phẩm</a></li>
+                                <li><a class="dropdown-item" href="/admin/categories">Danh mục</a></li>
+                            </ul>
                         </li>
-                        
                         <li class="nav-item">
                             <form action="/logout" method="POST" class="d-flex">
                                 <button class="btn btn-sm btn-logout" type="submit">

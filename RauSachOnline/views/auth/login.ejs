@@ -4,7 +4,7 @@
 
 <main>
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 85vh;">
-        <div class="card p-5 custom-login-card shadow-lg rounded-3" style="width: 100%; max-width: 480px;">
+        <div class="card p-5 custom-login-card shadow-lg rounded-3 border-success border-2" style="width: 100%; max-width: 480px;">
             <div class="card-body p-0">
                 
                 <div class="text-center mb-4">
@@ -24,7 +24,7 @@
 
                 <form action="/login" method="POST" novalidate>
                     <div class="mb-3">
-                        <label for="emailOrPhone" class="form-label">Tài khoản đăng nhập</label>
+                        <label for="emailOrPhone" class="form-label fw-bold small">Tài khoản đăng nhập</label>
                         <input 
                             type="text" 
                             class="form-control rounded-3" 
@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="password" class="form-label">Mật khẩu</label>
+                        <label for="password" class="form-label fw-bold small">Mật khẩu</label>
                         <input 
                             type="password" 
                             class="form-control rounded-3" 
@@ -48,8 +48,8 @@
                     </div>
 
                     <div class="d-grid mt-4">
-                        <button type="submit" class="btn btn-lg custom-btn-login">
-                            <i class="fas fa-arrow-right me-2"></i> Đăng nhập
+                        <button type="submit" class="btn btn-lg custom-btn-login shadow-sm">
+                            <i class="fas fa-sign-in-alt me-2"></i> Đăng nhập
                         </button>
                     </div>
                 </form>
@@ -66,6 +66,4 @@
     </div>
 </main>
 
-<%- include('../includes/end.ejs') %>
-</body>
-</html>
+<%- include('../includes/end.ejs') %>   

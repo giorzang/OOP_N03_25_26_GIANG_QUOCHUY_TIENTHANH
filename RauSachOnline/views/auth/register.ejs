@@ -1,66 +1,68 @@
 <%- include('../includes/head.ejs') %>
+<body class="custom-bg"> 
 <%- include('../includes/navigation.ejs') %>
 
-<body class="custom-bg"> 
 <main>
-    <div class="container" style="max-width: 550px; margin-top: 50px; margin-bottom: 50px;"> 
+    <div class="container d-flex justify-content-center align-items-center py-5">
         
-        <div class="card p-4 custom-login-card">
+        <div class="card p-4 custom-login-card shadow-lg rounded-3 border-success border-2" style="width: 100%; max-width: 550px;">
 
-            <div class="custom-login-header">
-                <h2><i class="fas fa-user-plus me-2"></i> TẠO TÀI KHOẢN</h2> 
-                <p class="text-muted">Vui lòng điền đầy đủ thông tin để trở thành khách hàng.</p>
+            <div class="text-center mb-4">
+                <h2 class="text-success fw-bold mb-2">
+                    <i class="fas fa-user-plus me-2"></i> TẠO TÀI KHOẢN
+                </h2> 
+                <p class="text-muted small">Vui lòng điền đầy đủ thông tin để trở thành khách hàng.</p>
             </div>
 
             <% if (errorMessage) { %>
-                <div class="alert alert-danger" role="alert">
-                    <%= errorMessage %>
+                <div class="alert alert-danger text-center" role="alert">
+                    <i class="fas fa-exclamation-triangle me-2"></i> <%= errorMessage %>
                 </div>
             <% } %>
 
-            <form action="/register" method="POST">
+            <form action="/register" method="POST" novalidate>
                 
                 <div class="mb-3">
-                    <label for="name" class="form-label">Họ và Tên *</label>
+                    <label for="name" class="form-label fw-bold small">Họ và Tên *</label>
                     <input type="text" class="form-control rounded-3" id="name" name="name" required>
                 </div>
                 
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email *</label>
+                    <label for="email" class="form-label fw-bold small">Email *</label>
                     <input type="email" class="form-control rounded-3" id="email" name="email" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="phone" class="form-label">Số điện thoại *</label>
+                    <label for="phone" class="form-label fw-bold small">Số điện thoại *</label>
                     <input type="tel" class="form-control rounded-3" id="phone" name="phone" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="address" class="form-label">Địa chỉ</label>
+                    <label for="address" class="form-label fw-bold small">Địa chỉ</label>
                     <textarea class="form-control rounded-3" id="address" name="address" rows="2"></textarea>
                 </div>
 
                 <hr class="my-4">
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Mật khẩu *</label>
+                    <label for="password" class="form-label fw-bold small">Mật khẩu *</label>
                     <input type="password" class="form-control rounded-3" id="password" name="password" required>
                 </div>
 
-                <div class="mb-3">
-                    <label for="confirmPassword" class="form-label">Xác nhận mật khẩu *</label>
+                <div class="mb-4">
+                    <label for="confirmPassword" class="form-label fw-bold small">Xác nhận mật khẩu *</label>
                     <input type="password" class="form-control rounded-3" id="confirmPassword" name="confirmPassword" required>
                 </div>
 
                 <div class="d-grid mt-4">
-                    <button type="submit" class="btn btn-lg custom-btn-login">
+                    <button type="submit" class="btn btn-lg custom-btn-login shadow-sm">
                         <i class="fas fa-clipboard-check me-2"></i> Đăng ký
                     </button>
                 </div>
             </form>
 
-            <div class="text-center mt-3">
-                <p>Đã có tài khoản? <a href="/login" class="text-success fw-bold">Đăng nhập ngay</a></p>
+            <div class="text-center mt-3 pt-3 border-top">
+                <p class="mb-0 small">Đã có tài khoản? <a href="/login" class="text-success fw-bold text-decoration-none">Đăng nhập ngay</a></p>
             </div>
             
         </div>
@@ -68,4 +70,4 @@
 </main>
 </body> 
 
-<%- include('../includes/end.ejs') %> 
+<%- include('../includes/end.ejs') %>

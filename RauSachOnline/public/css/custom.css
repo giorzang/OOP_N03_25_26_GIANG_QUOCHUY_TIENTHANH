@@ -366,3 +366,125 @@
     background-color: #c82333 !important;
     border-color: #c82333 !important;
 }
+.custom-btn-secondary {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.custom-btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* --- PRODUCT CARD NÂNG CẤP --- */
+.professional-card {
+    border: 1px solid #e9ecef;
+    transition: box-shadow 0.3s, transform 0.3s;
+    border-radius: 12px; /* Bo tròn góc thẻ */
+}
+
+/* Hiệu ứng phóng to khi di chuột qua thẻ */
+.professional-card:hover {
+    transform: translateY(-5px); /* Nâng thẻ lên một chút */
+    box-shadow: 0 10px 30px rgba(40, 167, 69, 0.25) !important; /* Đổ bóng màu xanh lá */
+}
+
+/* Hiệu ứng phóng to hình ảnh khi di chuột */
+.professional-card:hover .product-img {
+    transform: scale(1.05);
+}
+
+/* --- TIÊU ĐỀ PHÂN CÁCH --- */
+hr.border-success {
+    opacity: 1; /* Đảm bảo gạch ngang hiển thị rõ */
+}
+
+/* --- TÙY CHỈNH NÚT THÊM VÀO GIỎ --- */
+.custom-btn-add-cart {
+    background-color: #28a745;
+    color: white;
+    border: 1px solid #28a745;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-weight: bold;
+}
+
+.custom-btn-add-cart:hover {
+    background-color: #1e7e34;
+    border-color: #1c7430;
+    color: white;
+}
+.admin-page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #343a40; /* Màu tối hơn cho tiêu đề */
+    border-bottom: 3px solid #28a745;
+    padding-bottom: 10px;
+}
+
+.admin-table thead {
+    border-bottom: 2px solid #1e7e34;
+}
+
+/* Tăng cường khả năng đọc của bảng */
+.admin-table tbody tr:nth-child(even) {
+    background-color: #f7fcf7; /* Màu xanh lá nhạt cho hàng chẵn */
+}
+
+/* Nút Admin */
+.btn-admin-primary {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+.btn-admin-primary:hover {
+    background-color: #1e7e34;
+    color: white;
+}
+
+/* Nút Sửa */
+.btn-action-edit {
+    background-color: #ffc107;
+    color: #343a40;
+    border: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+}
+.btn-action-edit:hover {
+    background-color: #e0a800;
+    color: #343a40;
+}
+
+/* Nút Xóa */
+.btn-action-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+}
+.btn-action-delete:hover {
+    background-color: #c82333;
+    color: white;
+}
+
+/* --- CART PAGE ENHANCEMENTS --- */
+.cart-product-table thead th {
+    font-weight: 700;
+    color: #343a40;
+}
+
+.order-summary-card {
+    border-radius: 12px;
+}
+
+.btn-checkout {
+    /* Đã được áp dụng trong style ở trên */
+    background-color: #28a745;
+    color: white;
+}
+.btn-checkout:hover {
+    background-color: #1e7e34;
+    color: white;
+}

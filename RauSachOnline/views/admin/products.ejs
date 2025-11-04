@@ -5,17 +5,17 @@
 <main>
     <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="admin-page-title mb-0"><i class="fas fa-boxes me-2"></i> Quản lý Sản phẩm</h2>
+            <h2 class="admin-page-title mb-0"><i class="fas fa-boxes me-2 text-success"></i> Quản lý Sản phẩm</h2>
             
-            <a href="/admin/add-product" class="btn btn-admin-primary">
+            <a href="/admin/add-product" class="btn btn-admin-primary btn-lg">
                 <i class="fas fa-plus me-1"></i> Thêm sản phẩm mới
             </a>
         </div>
 
         <% if (prods.length > 0) { %>
-            <div class="table-responsive overflow-hidden">
-                <table class="table admin-table align-middle mb-0">
-                    <thead> 
+            <div class="table-responsive shadow-sm rounded overflow-hidden">
+                <table class="table admin-table align-middle mb-0 table-hover">
+                    <thead class="bg-success text-white"> 
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Tên sản phẩm</th>
@@ -30,20 +30,20 @@
                                 <td><%= product.id %></td>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="<%= product.imageUrl %>" alt="<%= product.name %>" style="width: 45px; height: 45px; object-fit: cover; margin-right: 10px; border-radius: 4px;">
-                                        <strong><%= product.name %></strong>
+                                        <img src="<%= product.imageUrl %>" alt="<%= product.name %>" style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px; border-radius: 4px; border: 1px solid #ddd;">
+                                        <strong class="text-dark"><%= product.name %></strong>
                                     </div>
                                 </td>
-                                <td><span class="product-price small"><%= parseFloat(product.price).toLocaleString('vi-VN') %> VND</span></td>
-                                <td><%= product.category_name %></td>
+                                <td><span class="product-price fw-bold text-danger"><%= parseFloat(product.price).toLocaleString('vi-VN') %> VND</span></td>
+                                <td><span class="badge bg-secondary"><%= product.category_name %></span></td>
                                 <td class="text-center">
-                                    <a href="/admin/edit-product/<%= product.id %>" class="btn btn-action-edit me-2">
+                                    <a href="/admin/edit-product/<%= product.id %>" class="btn btn-action-edit btn-sm me-2">
                                         <i class="fas fa-edit"></i> Sửa
                                     </a>
                                     
                                     <form action="/admin/delete-product" method="POST" class="d-inline">
                                         <input type="hidden" name="productId" value="<%= product.id %>">
-                                        <button type="submit" class="btn btn-action-delete">
+                                        <button type="submit" class="btn btn-action-delete btn-sm">
                                             <i class="fas fa-trash-alt"></i> Xóa
                                         </button>
                                     </form>

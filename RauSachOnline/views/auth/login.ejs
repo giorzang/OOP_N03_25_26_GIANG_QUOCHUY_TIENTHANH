@@ -24,13 +24,13 @@
 
                 <form action="/login" method="POST" novalidate>
                     <div class="mb-3">
-                        <label for="emailOrPhone" class="form-label">Địa chỉ Email</label>
+                        <label for="emailOrPhone" class="form-label">Tài khoản đăng nhập</label>
                         <input 
                             type="text" 
                             class="form-control rounded-3" 
                             id="emailOrPhone" 
                             name="emailOrPhone" 
-                            placeholder="Nhập Email của bạn"
+                            placeholder="Nhập địa chỉ Email hoặc Số điện thoại"
                             required
                         >
                     </div>
@@ -55,12 +55,9 @@
                 </form>
 
                 <div class="text-center mt-3 pt-3 border-top">
-                    <p class="mb-1 small">
+                    <p class="mb-0 small">
                         Chưa có tài khoản? 
                         <a href="/register" class="text-success fw-bold text-decoration-none">Tạo tài khoản mới</a>
-                    </p>
-                    <p class="mb-0 small">
-                        <a href="/reset-password" class="text-secondary text-decoration-none">Quên mật khẩu?</a>
                     </p>
                 </div>
 
@@ -71,4 +68,4 @@
 
 <%- include('../includes/end.ejs') %>
 </body>
-</html> 
+</html>

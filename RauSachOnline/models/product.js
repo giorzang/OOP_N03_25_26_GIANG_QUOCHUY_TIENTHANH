@@ -1,13 +1,14 @@
 const db = require('../config/database');
 
 class Product {
-    constructor(id, name, price, description, image_url, category_id) {
+    constructor(id, name, price, description, image_url, category_id, category_name) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.image_url = image_url;
-        this.category_id = category_id
+        this.category_id = category_id;
+        this.category_name = category_name;
     }
 
     // Create product
@@ -35,7 +36,8 @@ class Product {
                 row.price,
                 row.description,
                 row.image_url,
-                row.category_id
+                row.category_id,
+                row.category_name
             )
         );
     }
@@ -57,7 +59,8 @@ class Product {
                 row.price,
                 row.description,
                 row.image_url,
-                row.category_id
+                row.category_id,
+                row.category_name
             );
         }
         return null;

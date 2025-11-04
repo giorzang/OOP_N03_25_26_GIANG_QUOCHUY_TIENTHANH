@@ -1,5 +1,5 @@
 ## Project (Nhóm) Giang - Quốc Huy - Tiến Thành
-## Thành Viên: 
+## Thành Viên Nóm: 
 **1. Vũ Trường Giang**
 ID: 23010257
 Chũ ký: Giang
@@ -23,85 +23,48 @@ Hệ thống Quản lý Bán hàng Siêu Sạch
 
 Dự án “Quản lý Bán hàng Siêu Sạch” được xây dựng nhằm hỗ trợ các cửa hàng kinh doanh sản phẩm sạch (như rau củ quả, thịt cá hữu cơ, sản phẩm nông nghiệp an toàn, v.v.) trong việc quản lý bán hàng, kho hàng, đơn đặt hàng và khách hàng một cách hiệu quả, chính xác và tự động hóa.
 
-## Chi tiết lớp Model/CURD
+## Chức Năng Chính
+Dăng ký, đăng nhập tài khoản người dung
 
-**1. User**
-| **Attribute/Method** | **Data Type** | **Description** |
-|----------------------|---------------|-----------------|
-| `id` | `int` | ID của người dùng |
-| `name` | `String` | Tên người dùng |
-| `email` | `String` | Email người dùng để đăng nhập |
-| `phone` | `String` | Số điện thoại liên lạc |
-| `password` | `String` | Mật khẩu đăng nhập |
-| `address` | `String` | Địa chỉ giao hàng của người dùng |
-| `isActive` | `boolean` | Người dùng này còn hoạt động |
-| `login()` | | Đăng nhập tài khoản |
-| `logout()` | | Đăng xuất tài khoản |
-| `register()` | | Đăng ký tài khoản mới |
-| `updateProfile()` | | Cập nhật thông tin tài khoản |
+Dặt hàng
 
-**2. Product**
-| **Attribute/Method** | **Data Type** | **Description** |
-|----------------------|---------------|-----------------|
-| `id` | `int` | ID của sản phẩm |
-| `name` | `String` | Tên sản phẩm |
-| `description` | `String` | Mô tả sản phẩm |
-| `price` | `int` | Đơn giá sản phẩm |
-| `stock` | `int` | Tồn kho của sản phẩm |
-| `image` | `String` | Hình ảnh sẩn phẩm |
-| `categoryId` | `int` | ID loại sản phẩm |
-| `addProduct()` | | Thêm sản phản mới |
-| `getProduct()` | | Lấy thông tin sản phản |
-| `updateProduct()` | | Cập nhật thông tin sản phản |
-| `deleteProduct()` | | Xóa thông tin sản phản **(bỏ qua)** |
+Hiển thị danh sach hàng đã đặt (Khách hàng), hiển thị danh sách hàng chung (Admin)
 
-**3. Category**
-| **Attribute/Method** | **Data Type** | **Description** |
-|----------------------|---------------|-----------------|
-| `id` | `int` | ID loại sản phẩm |
-| `description` | `String` | Mô tả loại sản phẩm |
-| `addCategory()` | | Thêm sản phản mới |
-| `getCategory()` | | Lấy thông tin sản phản |
-| `updateCategory()` | | Cập nhật thông tin sản phản |
-| `deleteCategory()` | | Xóa thông tin sản phản **(bỏ qua)** |
+thêm sửa xóa thông tin
 
-**4. Order**
-| **Attribute/Method** | **Data Type** | **Description** |
-|----------------------|---------------|-----------------|
-| `id` | `int` | ID của sản phẩm |
-| `userId` | `int` | Người dùng mua hàng |
-| `orderDate` | `String` | Thời gian tạo đơn hàng |
-| `status` | `int` | Trạng thái đơn hàng |
-| `totalAmount` | `int` | Tổng giá trị đơn hàng |
-| `shippingAddress` | `String` | Địa chỉ giao hàng |
-| `createOrder()` | | Thêm sản phản mới |
-| `viewOrder()` | | Lấy thông tin đơn hàng |
-| `updateOrder()` | | Cập nhật thông tin đơn hàng |
-| `cancelOrder()` | | Hủy đơn hàng |
 
-**5. OrderDetail**
-| **Attribute/Method** | **Data Type** | **Description** |
-|----------------------|---------------|-----------------|
-| `orderId` | `int` | ID đơn hàng |
-| `productId` | `int` | ID sản  |
-| `quantity` | `int` | Số lượng sản phẩm |
-| `price` | `int` | Giá của sản phẩm tại thời điểm mua hàng |
-| `totalAmount` | `int` | Tổng giá trị đơn hàng |
+##  UML Dự Án
+**1. UML class diagram** <img width="975" height="1273" alt="image" src="https://github.com/user-attachments/assets/8ecaae02-a1d7-4bf9-990f-3909c9bc8841" />
 
-##  UML DIAGRAM
-**1. UML class diagram** <img width="1139" height="440" alt="image" src="https://github.com/user-attachments/assets/a34933a8-3ef3-4cb4-a032-02006ffbf89e" />
 
 
 **2. UML sequence diagram**
 
-**2.1 Create Product (Thêm sản phẩm mới)** <img width="1231" height="780" alt="image" src="https://github.com/user-attachments/assets/3a101792-4e5f-4efe-9bcd-8ca7fb89332c" />
+2.1. CRUD (Create): Thêm sản phẩm mới (Admin) <img width="975" height="497" alt="image" src="https://github.com/user-attachments/assets/9e32b5ca-9665-4ff6-8325-23b5477119fe" />
 
-**2.2 Read Product (Xem thông tin sản phẩm)** <img width="1271" height="661" alt="image" src="https://github.com/user-attachments/assets/15bdc55a-46ea-4b2e-8571-2c978e0696a7" />
+ 
+2.2. CRUD (Read): Xem danh sách người dùng (Admin) <img width="975" height="510" alt="image" src="https://github.com/user-attachments/assets/4e8344c2-ae09-44ec-8e7a-b085879c9885" />
 
-**2.3 Update Product (Cập nhật sản phẩm)** <img width="1187" height="680" alt="image" src="https://github.com/user-attachments/assets/d446dc81-5164-493e-a707-ff9f912c0308" />
+ 
 
-**2.4 Delete Product (Xóa sản phẩm)** <img width="1055" height="515" alt="image" src="https://github.com/user-attachments/assets/32d4a648-dc4e-46cf-80fe-b57fc1868eb8" />
+2.3. CRUD (Update): Cập nhật hồ sơ cá nhân (User) <img width="975" height="602" alt="image" src="https://github.com/user-attachments/assets/2da2a565-1afc-49a4-914a-8320ef2d3163" />
 
-**2.5 Chức năng lõi Create Order "Tạo Đơn Hàng"**  <img width="1193" height="633" alt="image" src="https://github.com/user-attachments/assets/3933d576-3984-4ccf-b81f-cac727571d31" />
+ 
+2.4. CRUD (Delete): Xóa một danh mục (Admin) <img width="975" height="465" alt="image" src="https://github.com/user-attachments/assets/cd9f76ed-f614-4a09-8d43-4fab067d63d0" />
+
+ 
+2.5. Sơ đồ chức năng lõi: Đặt hàng (Place Order) <img width="975" height="703" alt="image" src="https://github.com/user-attachments/assets/178bf47d-b4ae-4d8e-91db-5973244a866f" />
+
+## Giao Diện Ứng Dụng
+
+## Ưu Diểm Ứng Dụng
+
+## Kết luận Và Phát Triển Tương Lai
+
+
+
+ 
+
+
 
 

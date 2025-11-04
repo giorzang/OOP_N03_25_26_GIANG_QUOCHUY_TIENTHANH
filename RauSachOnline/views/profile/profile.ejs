@@ -1,0 +1,52 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+
+<main>
+    <div class="container" style="max-width: 600px; margin-top: 100px;">
+        <div class="card shadow-sm p-4">
+
+            <h2 class="text-center mb-4">Hồ sơ của bạn</h2>
+
+            <% if (message) { %>
+                <div class="alert alert-success" role="alert">
+                    <%= message %>
+                </div>
+            <% } %>
+
+            <form action="/profile/update-profile" method="POST">
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email (Không thể thay đổi)</label>
+                    <input type="email" class="form-control" id="email" name="email" 
+                           value="<%= user.email %>" disabled>
+                </div>
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Họ và Tên</label>
+                    <input type="text" class="form-control" id="name" name="name" 
+                           value="<%= user.name %>" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Số điện thoại</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" 
+                           value="<%= user.phone %>" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address" class="form-label">Địa chỉ</label>
+                    <textarea class="form-control" id="address" name="address" rows="3"><%= user.address %></textarea>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Cập nhật hồ sơ</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</main>
+
+<div style="height: 100px;"></div>
+
+<%- include('../includes/end.ejs') %>

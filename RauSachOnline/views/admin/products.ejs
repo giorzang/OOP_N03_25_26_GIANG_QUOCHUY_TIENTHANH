@@ -1,0 +1,60 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+
+<main>
+    <div class="container" style="margin-top: 100px;">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Quản lý Sản phẩm</h2>
+            <a href="/admin/add-product" class="btn btn-primary">Thêm sản phẩm mới</a>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Phân loại</th>
+                            <th scope="col">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (prods.length > 0) { %>
+                            <% for (let product of prods) { %>
+                                <tr>
+                                    <td><%= product.id %></td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="<%= product.imageUrl %>" alt="<%= product.name %>" style="width: 45px; height: 45px; object-fit: cover; margin-right: 10px;">
+                                            <%= product.name %>
+                                        </div>
+                                    </td>
+                                    <td><%= product.price.toLocaleString('vi-VN') %> VND</td>
+                                    <td><%= product.category_name %></td>
+                                    <td>
+                                        <a href="/admin/edit-product/<%= product.id %>" class="btn btn-sm btn-warning me-2">Sửa</a>
+                                        
+                                        <form action="/admin/delete-product" method="POST" class="d-inline">
+                                            <input type="hidden" name="productId" value="<%= product.id %>">
+                                            <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="5" class="text-center">Chưa có sản phẩm nào.</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div style="height: 100px;"></div>
+
+<%- include('../includes/end.ejs') %>

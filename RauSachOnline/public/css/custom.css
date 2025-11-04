@@ -487,4 +487,114 @@ hr.border-success {
 .btn-checkout:hover {
     background-color: #1e7e34;
     color: white;
+    .navbar-nav .nav-link {
+    color: #ffffff !important; /* Chữ trắng */
+    transition: color 0.2s ease, background-color 0.2s ease; /* Thêm hiệu ứng chuyển đổi mượt mà */
+    padding: 8px 15px; /* Tăng padding để dễ nhấn hơn */
+    border-radius: 5px; /* Bo góc nhẹ */
+}
+
+/* Hiệu ứng khi di chuột qua (Hover) */
+.navbar-nav .nav-link:hover {
+    color: #000000 !important; /* Đổi sang màu Đen khi hover */
+    background-color: #f7d54c; /* Nền Vàng nhạt (Màu nổi bật/cảnh báo) */
+    font-weight: 700 !important; /* Làm đậm chữ hơn khi hover */
+}
+
+/* Hiệu ứng cho liên kết active (Trang hiện tại) */
+.navbar-nav .nav-link.active-nav-link {
+    background-color: #0a8f0a; /* Màu xanh đậm hơn/hoặc màu tương phản nhẹ */
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+/* Thiết lập màu cho Dropdown Toggle Quản lý (đã to hơn ở EJS) */
+.navbar-nav .dropdown-toggle {
+    background-color: #28a745; /* Nền xanh lá sáng hơn */
+    border-radius: 5px;
+}
+.navbar-nav .dropdown-toggle:hover {
+    background-color: #f7d54c; /* Vàng khi hover */
+    color: #000000 !important;
+}
+
+/* Nút Đăng xuất (màu đỏ) - Hiệu ứng nhấn */
+.btn-danger {
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.btn-danger:hover {
+    background-color: #c82333 !important; /* Đỏ đậm hơn khi hover */
+}
+.btn-danger:active {
+    transform: scale(0.95); /* Hiệu ứng nhấn (nhỏ lại) */
+}
+
+/* Nút Đăng ký (màu vàng) - Hiệu ứng nhấn */
+.btn-warning {
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.btn-warning:hover {
+    background-color: #e0a800 !important; /* Vàng đậm hơn khi hover */
+}
+.btn-warning:active {
+    transform: scale(0.95); /* Hiệu ứng nhấn (nhỏ lại) */
+}
+}.profile-card {
+    /* Đã có sẵn trong hình ảnh bạn gửi, làm cho nó nổi bật hơn */
+    background-color: #ffffff; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+    padding: 30px;
+    margin-top: 20px;
+}
+
+/* Tiêu đề */
+.profile-title {
+    color: #1e7e34; /* Xanh lá đậm */
+    font-weight: 700;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e0ffe0; /* Gạch dưới nhẹ */
+}
+
+/* Trường input (để trông sạch sẽ hơn) */
+.form-control:focus {
+    border-color: #28a745; 
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+}
+
+/* Nút Lưu Thay Đổi */
+.btn-save-changes {
+    background-color: #28a745; 
+    border-color: #28a745;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    border-radius: 8px;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 100%; /* Đảm bảo nút rộng toàn bộ form */
+    margin-top: 15px;
+}
+
+.btn-save-changes:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
+
+.btn-save-changes:active {
+    transform: scale(0.99);
+}
+
+/* Tùy chỉnh cho link phụ (Trở về/Đổi mật khẩu) */
+.profile-links a {
+    color: #28a745;
+    font-weight: 600;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.profile-links a:hover {
+    color: #1e7e34;
+    text-decoration: underline;
 }

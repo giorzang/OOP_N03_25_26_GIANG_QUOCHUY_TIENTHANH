@@ -1,9 +1,9 @@
 <header>
-    <nav class="navbar navbar-expand-lg main-nav fixed-top bg-success shadow"> 
+    <nav class="navbar navbar-expand-lg main-nav fixed-top shadow-lg"> 
         <div class="container-fluid">
             
-            <a class="navbar-brand text-white fw-bold d-flex align-items-center" href="/">
-                <i class="fas fa-seedling me-2 fs-5"></i> Rau Sạch Online
+            <a class="navbar-brand text-white fw-bolder d-flex align-items-center" href="/">
+                <i class="fas fa-seedling me-2 fs-4"></i> Rau Sạch Online
             </a>
             
             <button class="navbar-toggler border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,21 +12,30 @@
             
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="/">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0 fs-6"> 
+                    <li class="nav-item me-3">
+                        <a class="nav-link text-white fw-bolder <%= path === '/' ? 'active-nav-link' : '' %>" aria-current="page" href="/">
                             <i class="fas fa-home me-1"></i> Trang chủ
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/cart">
+                    
+                    <li class="nav-item me-3">
+                        <a class="nav-link text-white fw-bolder <%= path === '/cart' ? 'active-nav-link' : '' %>" href="/cart">
                             <i class="fas fa-shopping-basket me-1"></i> Giỏ hàng
                         </a>
                     </li>
+                    
                     <% if (isAuthenticated) { %>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/orders">
+                        <li class="nav-item me-3">
+                            <a class="nav-link text-white fw-bolder <%= path === '/orders' ? 'active-nav-link' : '' %>" href="/orders">
                                 <i class="fas fa-receipt me-1"></i> Đơn hàng
+                            </a>
+                        </li>
+                    <% } %>
+                    <% if (isAuthenticated) { %>
+                        <li class="nav-item me-3">
+                            <a class="nav-link text-white fw-bolder <%= path === '/profile/wishlist' ? 'active-nav-link' : '' %>" href="/profile/wishlist">
+                                <i class="fas fa-heart me-1"></i> Yêu thích
                             </a>
                         </li>
                     <% } %>
@@ -36,25 +45,25 @@
                     <% if (isAuthenticated) { %>
                         
                         <li class="nav-item me-3">
-                            <a class="nav-link text-white fw-bold" href="/profile">
+                            <a class="nav-link text-white fw-bolder <%= path === '/profile' ? 'active-nav-link' : '' %>" href="/profile">
                                 <i class="fas fa-user-circle me-1"></i> Chào, <%= user.name %>
                             </a>
                         </li>
                         
                         <li class="nav-item dropdown me-3">
-                            <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white fw-bolder fs-5 <%= path.startsWith('/admin') ? 'active-nav-link' : '' %>" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-cog me-1"></i> Quản lý
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0" aria-labelledby="adminDropdown">
-                                <li><a class="dropdown-item" href="/admin/users"><i class="fas fa-users-cog me-2 text-success"></i> Người dùng</a></li>
-                                <li><a class="dropdown-item" href="/admin/products"><i class="fas fa-boxes me-2 text-success"></i> Sản phẩm</a></li>
-                                <li><a class="dropdown-item" href="/admin/categories"><i class="fas fa-layer-group me-2 text-success"></i> Danh mục</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border border-3 border-success" aria-labelledby="adminDropdown">
+                                <li><a class="dropdown-item fw-bold <%= path === '/admin/users' ? 'active' : '' %>" href="/admin/users"><i class="fas fa-users-cog me-2 text-primary"></i> Quản lý Người dùng</a></li>
+                                <li><a class="dropdown-item fw-bold <%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products"><i class="fas fa-boxes me-2 text-success"></i> Quản lý Sản phẩm</a></li>
+                                <li><a class="dropdown-item fw-bold <%= path === '/admin/categories' ? 'active' : '' %>" href="/admin/categories"><i class="fas fa-layer-group me-2 text-warning"></i> Quản lý Danh mục</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
                             <form action="/logout" method="POST" class="d-flex">
-                                <button class="btn btn-danger btn-sm fw-bold" type="submit">
+                                <button class="btn btn-danger btn-md fw-bolder rounded-pill px-3" type="submit">
                                     <i class="fas fa-sign-out-alt me-1"></i> Đăng xuất
                                 </button>
                             </form>
@@ -62,17 +71,16 @@
                     <% } else { %>
                         
                         <li class="nav-item me-2">
-                            <a class="nav-link text-white" href="/login">
+                            <a class="nav-link text-white fw-bolder <%= path === '/login' ? 'active-nav-link' : '' %>" href="/login">
                                 <i class="fas fa-sign-in-alt me-1"></i> Đăng nhập
                             </a>
                         </li>
                         
                         <li class="nav-item">
-                            <a class="btn btn-sm btn-light text-success fw-bold" href="/register">
+                            <a class="btn btn-md btn-warning text-dark fw-bolder rounded-pill px-3" href="/register">
                                 <i class="fas fa-user-plus me-1"></i> Đăng ký
                             </a>
                         </li>
-
                     <% } %>
                 </ul>
 
@@ -80,4 +88,4 @@
         </div>
     </nav>
 </header>
-<div style="height: 56px;"></div>
+<div style="height: 65px;"></div>

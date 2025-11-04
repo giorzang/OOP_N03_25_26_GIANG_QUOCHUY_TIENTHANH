@@ -1,17 +1,17 @@
-const Product = require('../models/product'); 
+const Product = require('../models/product');
 
 exports.getProducts = async (req, res, next) => {
-    try {
-        const products = await Product.fetchAll();
-        // res.status(200).json({ products: products });
-        res.render('shop/product-list', {
-            prods: products,
-            pageTitle: 'Shop Rau Sạch',
-            path: '/'
-        });
-    } catch (err) {
-        console.log(err);
-    }
+  try {
+    const products = await Product.fetchAll();
+    
+    res.render('shop/product-list', {
+      prods: products,
+      pageTitle: 'Shop Rau Sạch',
+      path: '/',
+      editing: false 
+    });
+  } catch (error) {
+    console.error('Lỗi khi lấy danh sách sản phẩm:', error);
+    next(error); 
+  }
 };
-
-// exports.getProductDetail = async (req, res, next) => {}

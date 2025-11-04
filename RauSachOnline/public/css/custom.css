@@ -1,0 +1,211 @@
+.custom-bg {
+    background-color: #f8fff8; 
+}
+
+.custom-login-card {
+    border-radius: 15px !important; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 
+                0 0 0 6px #e0ffe0 !important; 
+    border: none !important; 
+}
+
+.custom-login-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.custom-login-header h2 {
+    color: #28a745; 
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-login-header p {
+    color: #6c757d; 
+    font-size: 14px;
+}
+
+.custom-btn-login {
+    background-color: #28a745 !important; 
+    border-color: #28a745 !important;
+    color: white !important;
+    border-radius: 8px !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.custom-btn-login:hover {
+    background-color: #218838 !important;
+    border-color: #218838 !important;
+}
+
+.test-info {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #495057;
+    line-height: 1.8;
+}
+
+.test-info strong {
+    color: #007bff;
+}
+
+
+
+.main-nav {
+    background-color: #28aa46 !important; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-nav .navbar-brand, .main-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-nav .nav-link:hover {
+    color: #ccffcc !important; 
+}
+
+.btn-logout {
+    background-color: #dc3545 !important; 
+    border-color: #dc3545 !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+
+
+.album {
+    background-color: #f8fff8 !important; 
+}
+
+.product-card {
+    border: none !important; 
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    height: 100%; 
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(40, 167, 69, 0.2) !important;
+}
+
+.product-card img {
+    object-fit: cover;
+    height: 220px; 
+    border-top-left-radius: 0.5rem; 
+    border-top-right-radius: 0.5rem;
+}
+
+.product-title {
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-size: 1.25rem;
+    color: #dc3545 !important; 
+    font-weight: 700 !important;
+}
+
+.custom-btn-add-cart {
+    background-color: #1e7e34 !important;
+    border-color: #1e7e34 !important;
+    color: white !important;
+    border-radius: 50px !important;
+    padding: 6px 20px;
+    font-weight: 500;
+    width: 100%;
+}
+
+.custom-btn-add-cart:hover {
+    background-color: #155d28 !important;
+    border-color: #155d28 !important;
+}
+
+
+
+.cart-table th {
+    background-color: #f1f8f3; 
+    color: #28a745; 
+    border-top: 2px solid #28a745;
+    font-weight: bold;
+}
+
+.cart-table img {
+    border-radius: 8px;
+}
+
+.order-summary-card {
+    border-radius: 10px;
+    border: 1px solid #d4edda; 
+    background-color: #f7fff7; 
+}
+
+.order-summary-card h5 {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.btn-checkout {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: white !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    padding: 10px;
+}
+
+.btn-checkout:hover {
+    background-color: #218838 !important;
+    border-color: #218838 !important;
+}
+
+
+
+.orders-accordion .order-item {
+    border: none;
+    border-radius: 10px;
+    background-color: white; 
+    overflow: hidden; 
+}
+
+.orders-accordion .order-header-button {
+    background-color: #f7fff7; 
+    color: #28a745; 
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-bottom: 1px solid #d4edda;
+    padding: 15px 20px;
+    transition: background-color 0.2s;
+}
+
+.orders-accordion .order-header-button:not(.collapsed) {
+    background-color: #d4edda; 
+    color: #1e7e34;
+    box-shadow: none;
+}
+
+.orders-accordion .order-id {
+    color: #1e7e34; 
+}
+
+.order-detail-table th {
+    color: #6c757d;
+    font-weight: normal;
+    border-bottom: 1px solid #e9ecef !important;
+}
+
+.order-detail-table td {
+    border-top: none;
+}

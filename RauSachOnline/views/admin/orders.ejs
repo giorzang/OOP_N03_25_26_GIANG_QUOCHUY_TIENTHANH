@@ -2,40 +2,107 @@
 <%- include('../includes/navigation.ejs') %>
 
 <main>
-    <div class="container" style="margin-top: 100px;">
-        <h2 class="mb-4">Quản lý Đơn hàng</h2>
+    <div class="container py-5 mt-5">
+        
+        <h2 class="mb-5 fw-bold text-success border-bottom pb-2">
+            <i class="fas fa-boxes me-2"></i> Quản lý Đơn hàng
+        </h2>
+
+        <% if (successMessage && successMessage.length > 0) { %>
+            <div class="alert alert-success"><%= successMessage[0] %></div>
+        <% } %>
+        <% if (errorMessage && errorMessage.length > 0) { %>
+            <div class="alert alert-danger"><%= errorMessage[0] %></div>
+        <% } %>
 
         <% if (!orders || orders.length === 0) { %>
-            <div class="alert alert-info" role="alert">
-                Chưa có đơn hàng nào.
+            <div class="alert alert-info py-4" role="alert">
+                <i class="fas fa-info-circle me-2"></i> Hệ thống chưa có đơn hàng nào.
             </div>
         <% } else { %>
-            <div class="accordion" id="ordersAccordion">
+            <div class="accordion accordion-flush shadow-lg rounded" id="ordersAccordion">
                 
-                <% orders.forEach((order, index) => { %>
-                    <div class="accordion-item">
+                <% orders.forEach((order, index) => { 
+                    // Định nghĩa màu sắc và icon dựa trên trạng thái (TỰ ĐỘNG)
+                    let statusClass = 'bg-secondary';
+                    let statusIcon = 'fas fa-question-circle';
+                    let statusText = order.status; // Dùng để hiển thị tiếng Việt nếu cần
+
+                    switch (order.status) {
+                        case 'Pending':
+                            statusClass = 'bg-warning text-dark';
+                            statusIcon = 'fas fa-clock';
+                            statusText = 'Đang chờ';
+                            break;
+                        case 'Confirmed':
+                            statusClass = 'bg-primary';
+                            statusIcon = 'fas fa-check-circle';
+                            statusText = 'Đã xác nhận';
+                            break;
+                        case 'Shipped':
+                            statusClass = 'bg-info text-dark';
+                            statusIcon = 'fas fa-shipping-fast';
+                            statusText = 'Đang giao';
+                            break;
+                        case 'Completed':
+                            statusClass = 'bg-success';
+                            statusIcon = 'fas fa-box-open';
+                            statusText = 'Hoàn thành';
+                            break;
+                        case 'Cancelled':
+                            statusClass = 'bg-danger';
+                            statusIcon = 'fas fa-times-circle';
+                            statusText = 'Đã hủy';
+                            break;
+                        default:
+                            statusClass = 'bg-secondary';
+                            statusIcon = 'fas fa-question-circle';
+                            statusText = 'Không rõ';
+                            break;
+                    }
+                %>
+                    <div class="accordion-item border-top">
                         <h2 class="accordion-header" id="heading<%= order.id %>">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                                    data-bs-target="#collapse<%= order.id %>" aria-expanded="false" 
+                            <button class="accordion-button <%= index !== 0 ? 'collapsed' : '' %> fw-bold" 
+                                    type="button" 
+                                    data-bs-toggle="collapse" 
+                                    data-bs-target="#collapse<%= order.id %>" 
+                                    aria-expanded="<%= index === 0 ? 'true' : 'false' %>" 
                                     aria-controls="collapse<%= order.id %>">
                                 
-                                <div class="d-flex justify-content-between w-100 me-3">
-                                    <span>Đơn #<%= order.id %></span>
-                                    <strong class="text-primary"><%= order.customer_name %></strong>
-                                    <span class="text-muted"><%= new Date(order.created_at).toLocaleDateString('vi-VN') %></span>
-                                    <span>Trạng thái: <span class="badge bg-warning"><%= order.status %></span></span>
-                                    <span class="text-danger fw-bold"><%= parseFloat(order.total_price).toLocaleString('vi-VN') %> VND</span>
+                                <div class="row w-100 align-items-center">
+                                    
+                                    <div class="col-md-3">
+                                        <i class="fas fa-hashtag me-1 text-muted"></i> Đơn <%= order.id %>
+                                        <div class="text-sm text-muted fw-normal"><i class="fas fa-user-alt"></i> <%= order.customer_name %></div>
+                                    </div>
+                                    
+                                    <div class="col-md-2 text-center text-muted fw-normal">
+                                        <%= new Date(order.created_at).toLocaleDateString('vi-VN') %>
+                                    </div>
+                                    
+                                    <div class="col-md-3 text-center">
+                                        <span class="badge <%= statusClass %> rounded-pill px-3 py-2 text-white">
+                                            <i class="<%= statusIcon %> me-1"></i> <%= statusText %>
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="col-md-4 text-end text-danger fs-5">
+                                        <%= parseFloat(order.total_price).toLocaleString('vi-VN') %> VND
+                                    </div>
                                 </div>
                             </button>
                         </h2>
+                        
                         <div id="collapse<%= order.id %>" class="accordion-collapse collapse" 
                              aria-labelledby="heading<%= order.id %>" data-bs-parent="#ordersAccordion">
                             
-                            <div class="accordion-body">
+                            <div class="accordion-body bg-light">
                                 <div class="row">
-                                    <div class="col-md-7">
-                                        <h5>Chi tiết sản phẩm</h5>
-                                        <ul class="list-group">
+                                    
+                                    <div class="col-md-7 border-end">
+                                        <h5 class="fw-bold mb-3 text-primary"><i class="fas fa-shopping-basket me-2"></i> Chi tiết sản phẩm</h5>
+                                        <ul class="list-group shadow-sm">
                                             <% order.items.forEach(item => { %>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                                     <div>
@@ -44,23 +111,24 @@
                                                             Giá lúc đặt: <%= parseFloat(item.product_price).toLocaleString('vi-VN') %> VND
                                                         </small>
                                                     </div>
-                                                    <span class="badge bg-primary rounded-pill">
-                                                        SL: <%= item.quantity %>
+                                                    <span class="badge bg-success rounded-pill p-2 fw-normal">
+                                                        x <%= item.quantity %>
                                                     </span>
                                                 </li>
                                             <% }); %>
                                         </ul>
                                     </div>
                                     
-                                    <div class="col-md-5">
-                                        <h5>Thông tin giao hàng</h5>
-                                        <p class="mb-0"><strong>Tên:</strong> <%= order.customer_name %></p>
-                                        <p class="mb-0"><strong>SĐT:</strong> <%= order.shipping_phone %></p>
-                                        <p class="mb-2"><strong>Địa chỉ:</strong> <%= order.shipping_address %></p>
+                                    <div class="col-md-5 ps-4">
                                         
-                                        <hr>
+                                        <h5 class="fw-bold mb-3 text-success"><i class="fas fa-truck me-2"></i> Thông tin giao hàng</h5>
+                                        <p class="mb-1"><strong>Tên KH:</strong> <%= order.customer_name %></p>
+                                        <p class="mb-1"><strong>SĐT:</strong> <span class="badge bg-secondary"><%= order.shipping_phone %></span></p>
+                                        <p class="mb-3"><strong>Địa chỉ:</strong> <%= order.shipping_address %></p>
                                         
-                                        <h5>Cập nhật trạng thái</h5>
+                                        <hr class="my-3">
+                                        
+                                        <h5 class="fw-bold mb-3 text-danger"><i class="fas fa-sync-alt me-2"></i> Cập nhật trạng thái</h5>
                                         <form action="/admin/update-order-status" method="POST">
                                             <input type="hidden" name="orderId" value="<%= order.id %>">
                                             <div class="input-group">
@@ -71,7 +139,9 @@
                                                     <option value="Completed" <%= order.status === 'Completed' ? 'selected' : '' %>>Hoàn thành</option>
                                                     <option value="Cancelled" <%= order.status === 'Cancelled' ? 'selected' : '' %>>Đã hủy</option>
                                                 </select>
-                                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                                <button type="submit" class="btn btn-danger fw-bold shadow-sm">
+                                                    <i class="fas fa-edit me-1"></i> Cập nhật
+                                                </button>
                                             </div>
                                         </form>
                                     </div>

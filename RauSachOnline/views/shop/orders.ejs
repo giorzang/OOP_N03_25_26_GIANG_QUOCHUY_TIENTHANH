@@ -14,7 +14,44 @@
         <% } else { %>
             <div class="accordion orders-accordion" id="ordersAccordion">
                 
-                <% orders.forEach((order, index) => { %>
+                <% orders.forEach((order, index) => { 
+                    // Định nghĩa màu sắc và icon dựa trên trạng thái (TỰ ĐỘNG)
+                    let statusClass = 'bg-secondary';
+                    let statusIcon = 'fas fa-question-circle';
+                    let statusText = order.status; // Dùng để hiển thị tiếng Việt nếu cần
+
+                    switch (order.status) {
+                        case 'Pending':
+                            statusClass = 'bg-warning text-dark';
+                            statusIcon = 'fas fa-clock';
+                            statusText = 'Đang chờ';
+                            break;
+                        case 'Confirmed':
+                            statusClass = 'bg-primary';
+                            statusIcon = 'fas fa-check-circle';
+                            statusText = 'Đã xác nhận';
+                            break;
+                        case 'Shipped':
+                            statusClass = 'bg-info text-dark';
+                            statusIcon = 'fas fa-shipping-fast';
+                            statusText = 'Đang giao';
+                            break;
+                        case 'Completed':
+                            statusClass = 'bg-success';
+                            statusIcon = 'fas fa-box-open';
+                            statusText = 'Hoàn thành';
+                            break;
+                        case 'Cancelled':
+                            statusClass = 'bg-danger';
+                            statusIcon = 'fas fa-times-circle';
+                            statusText = 'Đã hủy';
+                            break;
+                        default:
+                            statusClass = 'bg-secondary';
+                            statusIcon = 'fas fa-question-circle';
+                            statusText = 'Không rõ';
+                            break;
+                    }%>
                     <div class="accordion-item order-item shadow-sm mb-3">
                         <h2 class="accordion-header" id="heading<%= order.id %>">
                             <button class="accordion-button collapsed order-header-button" type="button" data-bs-toggle="collapse" 
@@ -35,14 +72,8 @@
                                     <div class="d-flex align-items-center">
                                         <span class="text-danger fw-bold fs-5 me-3"><%= parseFloat(order.total_price).toLocaleString('vi-VN') %> VND</span>
                                         
-                                        <span>Trạng thái: 
-                                            <% let badgeColor = 'bg-warning text-dark'; %>
-                                            <% if (order.status === 'Completed' || order.status === 'Shipped') { badgeColor = 'bg-success'; } %>
-                                            <% if (order.status === 'Cancelled') { badgeColor = 'bg-danger'; } %>
-                                        
-                                            <span class="badge <%= badgeColor %>">
-                                                <%= order.status %>
-                                            </span>
+                                        <span class="badge <%= statusClass %> rounded-pill px-3 py-2 text-white">
+                                            <i class="<%= statusIcon %> me-1"></i> <%= statusText %>
                                         </span>
                                     </div>
                                     

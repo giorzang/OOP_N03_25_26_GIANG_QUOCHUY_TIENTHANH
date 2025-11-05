@@ -68,7 +68,8 @@ thêm sửa xóa thông tin
 
 
 
-**5. **
+**5. Giao diện đơn hàng đã mua:**  <img width="975" height="467" alt="image" src="https://github.com/user-attachments/assets/4c9ee8c8-e39b-4716-aad1-9d8584d5d040" />
+
 
 **6. **
 

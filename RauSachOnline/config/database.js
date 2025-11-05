@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     port: 14566,
     user: 'avnadmin',
     password: 'AVNS_GPxgS8Dhx3rE1cD_rBd',
-    database: 'no3oop'
+    database: 'no3oop' 
 });
 
 // Mọi Model (Product, User) sẽ import file này

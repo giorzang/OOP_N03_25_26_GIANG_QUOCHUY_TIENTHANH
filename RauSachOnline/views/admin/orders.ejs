@@ -24,7 +24,7 @@
                                     <strong class="text-primary"><%= order.customer_name %></strong>
                                     <span class="text-muted"><%= new Date(order.created_at).toLocaleDateString('vi-VN') %></span>
                                     <span>Trạng thái: <span class="badge bg-warning"><%= order.status %></span></span>
-                                    <span class="text-danger fw-bold"><%= order.total_price.toLocaleString('vi-VN') %> VND</span>
+                                    <span class="text-danger fw-bold"><%= parseFloat(order.total_price).toLocaleString('vi-VN') %> VND</span>
                                 </div>
                             </button>
                         </h2>
@@ -41,7 +41,7 @@
                                                     <div>
                                                         <strong><%= item.product_name %></strong>
                                                         <small class="text-muted d-block">
-                                                            Giá lúc đặt: <%= item.product_price.toLocaleString('vi-VN') %> VND
+                                                            Giá lúc đặt: <%= parseFloat(item.product_price).toLocaleString('vi-VN') %> VND
                                                         </small>
                                                     </div>
                                                     <span class="badge bg-primary rounded-pill">

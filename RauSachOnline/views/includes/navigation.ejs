@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg main-nav fixed-top shadow-lg"> 
         <div class="container-fluid">
             
-            <a class="navbar-brand text-white fw-bolder d-flex align-items-center" href="/">
+            <a class="navbar-brand text-white fw-bolder d-flex align-items-center">
                 <i class="fas fa-seedling me-2 fs-4"></i> Rau Sạch Online
             </a>
             
@@ -29,13 +29,6 @@
                         <li class="nav-item me-3">
                             <a class="nav-link text-white fw-bolder <%= path === '/orders' ? 'active-nav-link' : '' %>" href="/orders">
                                 <i class="fas fa-receipt me-1"></i> Đơn hàng
-                            </a>
-                        </li>
-                    <% } %>
-                    <% if (isAuthenticated) { %>
-                        <li class="nav-item me-3">
-                            <a class="nav-link text-white fw-bolder <%= path === '/profile/wishlist' ? 'active-nav-link' : '' %>" href="/profile/wishlist">
-                                <i class="fas fa-heart me-1"></i> Yêu thích
                             </a>
                         </li>
                     <% } %>

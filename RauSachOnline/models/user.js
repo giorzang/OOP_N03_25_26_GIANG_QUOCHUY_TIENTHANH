@@ -144,34 +144,6 @@ class User {
     static async deleteById(id) {
         return db.execute('DELETE FROM users WHERE id = ?', [id]);
     }
-    
-    // Hàm Wishlist (Đã cung cấp trước đó)
-    async getWishlistProductIds() {
-        const [rows] = await db.execute(
-            'SELECT product_id FROM wishlist WHERE user_id = ?',
-            [this.id]
-        );
-        return rows.map(row => row.product_id.toString());
-    }
-
-    async toggleWishlist(productId) {
-        const wishlistIds = await this.getWishlistProductIds();
-        const productIdStr = productId.toString();
-        
-        if (wishlistIds.includes(productIdStr)) {
-            await db.execute(
-                'DELETE FROM wishlist WHERE user_id = ? AND product_id = ?',
-                [this.id, productId]
-            );
-            return { action: 'removed' };
-        } else {
-            await db.execute(
-                'INSERT INTO wishlist (user_id, product_id) VALUES (?, ?)',
-                [this.id, productId]
-            );
-            return { action: 'added' };
-        }
-    }
 
     async checkPassword(plainPassword) {
         return bcrypt.compare(plainPassword, this.password);

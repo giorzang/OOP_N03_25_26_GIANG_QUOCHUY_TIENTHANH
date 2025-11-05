@@ -1,6 +1,7 @@
 const Product = require('../models/product');
 const Category = require('../models/category');
 const User = require('../models/user');
+const Order = require('../models/order');
 
 // Create sản phẩm
 exports.getAddProduct = async (req, res, next) => {
@@ -197,4 +198,44 @@ exports.deleteUser = async (req, res, next) => {
         await User.deleteById(userId);
         res.redirect('/admin/users'); 
     } catch (err) { console.log(err); }
+};
+
+exports.getAdminOrders = async (req, res, next) => {
+    try {
+        const orders = await Order.fetchAll();
+        // res.status(200).json({ 
+        //     message: "Lấy tất cả đơn hàng thành công",
+        //     orders: orders 
+        // });
+        res.render('admin/orders', {
+            pageTitle: 'Quản lý Đơn hàng',
+            path: '/admin/orders',
+            orders: orders
+        });
+    } catch (err) { console.log(err); }
+};
+
+exports.postUpdateOrderStatus = async (req, res, next) => {
+    const { orderId, status } = req.body;
+    try {
+        await Order.updateStatus(orderId, status);
+        res.redirect('/admin/orders');
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+exports.postToggleAdmin = async (req, res, next) => {
+    const { userId, currentIsAdmin } = req.body;
+    
+    // Đảo ngược trạng thái:
+    // req.body gửi về string 'true' (từ 1) hoặc 'false' (từ 0)
+    const newIsAdmin = (currentIsAdmin === 'true' || currentIsAdmin === '1') ? false : true;
+
+    try {
+        await User.updateAdminStatus(userId, newIsAdmin);
+        res.redirect('/admin/users');
+    } catch (err) {
+        console.log(err);
+    }
 };

@@ -99,6 +99,32 @@ class Order {
 
         return orders;
     }
+
+    static async fetchAll() {
+        const [orders] = await db.execute(
+            `SELECT o.*, u.name AS customer_name 
+             FROM orders o
+             JOIN users u ON o.user_id = u.id
+             ORDER BY o.created_at DESC`
+        );
+
+        for (const order of orders) {
+            const [items] = await db.execute(
+                'SELECT * FROM order_items WHERE order_id = ?',
+                [order.id]
+            );
+            order.items = items;
+        }
+
+        return orders;
+    }
+
+    static async updateStatus(orderId, newStatus) {
+        return db.execute(
+            'UPDATE orders SET status = ? WHERE id = ?',
+            [newStatus, orderId]
+        );
+    }
 }
 
 module.exports = Order;

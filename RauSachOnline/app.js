@@ -10,11 +10,12 @@ const authRoutes = require('./routes/authRoutes');
 /// Routes của User
 const userProfileRoutes = require('./routes/userProfileRoutes');
 const cartRoutes = require('./routes/cartRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 /// Routes của Admin
 const adminProductRoutes = require('./routes/adminProductRoutes');
 const adminCategoryRoutes = require('./routes/adminCategoryRoutes');
 const adminUserRoutes = require('./routes/adminUserRoutes');
-const orderRoutes = require('./routes/orderRoutes');
+const adminOrderRoutes = require('./routes/adminOrderRoutes');
 
 const app = express();
 
@@ -58,6 +59,8 @@ app.use((req, res, next) => {
 app.use('/admin', adminProductRoutes);
 app.use('/admin', adminCategoryRoutes);
 app.use('/admin', adminUserRoutes);
+app.use('/admin', adminOrderRoutes);
+
 app.use('/profile', userProfileRoutes);
 app.use('/cart', cartRoutes);
 app.use('/orders', orderRoutes);

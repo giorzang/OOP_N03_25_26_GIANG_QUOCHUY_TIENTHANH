@@ -15,19 +15,36 @@
                             <th scope="col">Họ tên</th>
                             <th scope="col">Email</th>
                             <th scope="col">Số điện thoại</th>
+                            <th scope="col">Trạng thái</th>
                             <th scope="col" class="text-center">Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% for (let user of users) { %>
+                        <% for (let u of users) { %>
                             <tr>
-                                <td><%= user.id %></td>
-                                <td class="fw-bold"><%= user.name %></td>
-                                <td><%= user.email %></td>
-                                <td><%= user.phone %></td> 
+                                <td><%= u.id %></td>
+                                <td class="fw-bold"><%= u.name %></td>
+                                <td><%= u.email %></td>
+                                <td><%= u.phone %></td> 
+                                <td>
+                                    <% if (u.isAdmin) { %>
+                                            <span class="badge bg-success">Admin</span>
+                                        <% } else { %>
+                                            <span class="badge bg-secondary">User</span>
+                                    <% } %>
+                                </td>
                                 <td class="text-center">
+                                    <form action="/admin/toggle-admin" method="POST" class="d-inline me-2">
+                                        <input type="hidden" name="userId" value="<%= u.id %>">
+                                        <input type="hidden" name="currentIsAdmin" value="<%= u.isAdmin %>">                            
+                                        <% if (u.isAdmin) { %>
+                                            <button type="submit" class="btn btn-sm btn-warning">Xóa Admin</button>
+                                        <% } else { %>
+                                            <button type="submit" class="btn btn-sm btn-success">Thêm Admin</button>
+                                        <% } %>
+                                    </form>
                                     <form action="/admin/delete-user" method="POST" class="d-inline">
-                                        <input type="hidden" name="userId" value="<%= user.id %>">
+                                        <input type="hidden" name="userId" value="<%= u.id %>">
                                         <button type="submit" class="btn btn-action-delete btn-sm">
                                             <i class="fas fa-trash-alt"></i> Xóa
                                         </button>

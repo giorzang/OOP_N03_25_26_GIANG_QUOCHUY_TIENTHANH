@@ -31,7 +31,7 @@ class User {
 
     /// Read (admin)
     static async fetchAll() {
-        const [rows] = await db.execute('SELECT id, email, phone, name, address FROM users');
+        const [rows] = await db.execute('SELECT id, email, phone, name, address, isAdmin FROM users');
         // Không gửi password ra ngoài!
         return rows.map(row => new User(
             row.id,
@@ -116,6 +116,13 @@ class User {
             );
         }
         return null;
+    }
+
+    static async updateAdminStatus(userId, isAdmin) {
+        return db.execute(
+            'UPDATE users SET isAdmin = ? WHERE id = ?',
+            [isAdmin, userId]
+        );
     }
 
     // --- CÁC HÀM BỔ SUNG KHÁC ---

@@ -1,0 +1,90 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+
+<main>
+    <div class="container" style="margin-top: 100px;">
+        <h2 class="mb-4">Quản lý Đơn hàng</h2>
+
+        <% if (!orders || orders.length === 0) { %>
+            <div class="alert alert-info" role="alert">
+                Chưa có đơn hàng nào.
+            </div>
+        <% } else { %>
+            <div class="accordion" id="ordersAccordion">
+                
+                <% orders.forEach((order, index) => { %>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading<%= order.id %>">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#collapse<%= order.id %>" aria-expanded="false" 
+                                    aria-controls="collapse<%= order.id %>">
+                                
+                                <div class="d-flex justify-content-between w-100 me-3">
+                                    <span>Đơn #<%= order.id %></span>
+                                    <strong class="text-primary"><%= order.customer_name %></strong>
+                                    <span class="text-muted"><%= new Date(order.created_at).toLocaleDateString('vi-VN') %></span>
+                                    <span>Trạng thái: <span class="badge bg-warning"><%= order.status %></span></span>
+                                    <span class="text-danger fw-bold"><%= order.total_price.toLocaleString('vi-VN') %> VND</span>
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="collapse<%= order.id %>" class="accordion-collapse collapse" 
+                             aria-labelledby="heading<%= order.id %>" data-bs-parent="#ordersAccordion">
+                            
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <h5>Chi tiết sản phẩm</h5>
+                                        <ul class="list-group">
+                                            <% order.items.forEach(item => { %>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <strong><%= item.product_name %></strong>
+                                                        <small class="text-muted d-block">
+                                                            Giá lúc đặt: <%= item.product_price.toLocaleString('vi-VN') %> VND
+                                                        </small>
+                                                    </div>
+                                                    <span class="badge bg-primary rounded-pill">
+                                                        SL: <%= item.quantity %>
+                                                    </span>
+                                                </li>
+                                            <% }); %>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="col-md-5">
+                                        <h5>Thông tin giao hàng</h5>
+                                        <p class="mb-0"><strong>Tên:</strong> <%= order.customer_name %></p>
+                                        <p class="mb-0"><strong>SĐT:</strong> <%= order.shipping_phone %></p>
+                                        <p class="mb-2"><strong>Địa chỉ:</strong> <%= order.shipping_address %></p>
+                                        
+                                        <hr>
+                                        
+                                        <h5>Cập nhật trạng thái</h5>
+                                        <form action="/admin/update-order-status" method="POST">
+                                            <input type="hidden" name="orderId" value="<%= order.id %>">
+                                            <div class="input-group">
+                                                <select name="status" class="form-select">
+                                                    <option value="Pending" <%= order.status === 'Pending' ? 'selected' : '' %>>Đang chờ</option>
+                                                    <option value="Confirmed" <%= order.status === 'Confirmed' ? 'selected' : '' %>>Đã xác nhận</option>
+                                                    <option value="Shipped" <%= order.status === 'Shipped' ? 'selected' : '' %>>Đang giao</option>
+                                                    <option value="Completed" <%= order.status === 'Completed' ? 'selected' : '' %>>Hoàn thành</option>
+                                                    <option value="Cancelled" <%= order.status === 'Cancelled' ? 'selected' : '' %>>Đã hủy</option>
+                                                </select>
+                                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+</main>
+
+<div style="height: 100px;"></div>
+
+<%- include('../includes/end.ejs') %>

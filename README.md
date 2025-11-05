@@ -59,6 +59,9 @@ thêm sửa xóa thông tin
 **1. Giao diện Đăng ký / Đăng nhập:** <img width="975" height="471" alt="image" src="https://github.com/user-attachments/assets/253f234c-bf20-4c44-a2fe-abc424e14227" /> <img width="975" height="477" alt="image" src="https://github.com/user-attachments/assets/bd820911-b803-43a7-ac30-4d05c06b9968" />
 
 
+**2. Giao diện trang chủ (Giao diện đầu tiên):** <img width="975" height="476" alt="image" src="https://github.com/user-attachments/assets/319b9e2c-a111-4e6c-9bce-1bcaeb0542f5" />
+
+
 
 ## Ưu Diểm Ứng Dụng
 

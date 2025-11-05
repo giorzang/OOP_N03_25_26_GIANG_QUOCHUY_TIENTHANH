@@ -35,7 +35,7 @@ exports.getOrders = async (req, res, next) => {
         res.render('shop/orders', {
             path: '/orders',
             pageTitle: 'Đơn hàng của bạn',
-            orders: orders
+            orders: orders 
         });
     } catch (err) {
         console.log(err);

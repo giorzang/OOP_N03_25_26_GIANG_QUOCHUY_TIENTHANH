@@ -19,6 +19,7 @@ Chũ ký: Thành
 
 Hệ thống Quản lý Bán hàng Siêu Sạch
 
+
 2. Mục tiêu dự án
 
 Dự án “Quản lý Bán hàng Siêu Sạch” được xây dựng nhằm hỗ trợ các cửa hàng kinh doanh sản phẩm sạch (như rau củ quả, thịt cá hữu cơ, sản phẩm nông nghiệp an toàn, v.v.) trong việc quản lý bán hàng, kho hàng, đơn đặt hàng và khách hàng một cách hiệu quả, chính xác và tự động hóa.
@@ -35,7 +36,6 @@ thêm sửa xóa thông tin
 
 ##  UML Dự Án
 **1. UML class diagram** <img width="975" height="1273" alt="image" src="https://github.com/user-attachments/assets/8ecaae02-a1d7-4bf9-990f-3909c9bc8841" />
-
 
 
 **2. UML sequence diagram**
@@ -64,16 +64,20 @@ thêm sửa xóa thông tin
 
 **3. Giao diện giỏ hàng:**  <img width="975" height="471" alt="image" src="https://github.com/user-attachments/assets/2bbf306e-2780-40a8-8ca3-d47aa441d942" />
 
-**4.  Giao diện quản lý sản phẩm và thêm sản phẩm:**  <img width="975" height="477" alt="image" src="https://github.com/user-attachments/assets/4ddecc20-d18d-4c5b-8e36-fb0599e65e2d" />     <img width="975" height="470" alt="image" src="https://github.com/user-attachments/assets/c5e10cf2-267f-4f79-b7bd-025bd369b1a6" />
 
+**4.  Giao diện quản lý sản phẩm và thêm sản phẩm:**  <img width="975" height="477" alt="image" src="https://github.com/user-attachments/assets/4ddecc20-d18d-4c5b-8e36-fb0599e65e2d" />     <img width="975" height="470" alt="image" src="https://github.com/user-attachments/assets/c5e10cf2-267f-4f79-b7bd-025bd369b1a6" />
 
 
 **5. Giao diện đơn hàng đã mua:**  <img width="975" height="467" alt="image" src="https://github.com/user-attachments/assets/4c9ee8c8-e39b-4716-aad1-9d8584d5d040" />
 
 
-**6. **
-
 ## Ưu Diểm Ứng Dụng
+
+•	Dự án đã hoàn thành các chức năng cơ bản của một website thương mại điện tử: quản lý sản phẩm, quản lý người dùng (xác thực, phân quyền), và luồng đặt hàng.
+•	Áp dụng thành công mô hình MVC (dù không tường minh) với việc tách biệt logic (Routes/Controllers), dữ liệu (Models - tương tác MySQL) và giao diện (Views - EJS).
+•	Sử dụng express-session để quản lý phiên đăng nhập hiệu quả và bcryptjs để đảm bảo an toàn cơ bản cho mật khẩu người dùng
+
+
 
 ## Kết luận Và Phát Triển Tương Lai
 

@@ -56,6 +56,9 @@ thêm sửa xóa thông tin
 2.5. Sơ đồ chức năng lõi: Đặt hàng (Place Order) <img width="975" height="703" alt="image" src="https://github.com/user-attachments/assets/178bf47d-b4ae-4d8e-91db-5973244a866f" />
 
 ## Giao Diện Ứng Dụng
+**1. Giao diện Đăng ký / Đăng nhập:** <img width="975" height="471" alt="image" src="https://github.com/user-attachments/assets/253f234c-bf20-4c44-a2fe-abc424e14227" /> <img width="975" height="477" alt="image" src="https://github.com/user-attachments/assets/bd820911-b803-43a7-ac30-4d05c06b9968" />
+
+
 
 ## Ưu Diểm Ứng Dụng
 

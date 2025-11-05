@@ -71,12 +71,27 @@ thêm sửa xóa thông tin
 **5. Giao diện đơn hàng đã mua:**  <img width="975" height="467" alt="image" src="https://github.com/user-attachments/assets/4c9ee8c8-e39b-4716-aad1-9d8584d5d040" />
 
 
-## Ưu Diểm Ứng Dụng
+## Ưu Diểm Và Nhược Điểm Ứng Dụng
+**1. Ưu điểm**
 
-•	Dự án đã hoàn thành các chức năng cơ bản của một website thương mại điện tử: quản lý sản phẩm, quản lý người dùng (xác thực, phân quyền), và luồng đặt hàng.
-•	Áp dụng thành công mô hình MVC (dù không tường minh) với việc tách biệt logic (Routes/Controllers), dữ liệu (Models - tương tác MySQL) và giao diện (Views - EJS).
-•	Sử dụng express-session để quản lý phiên đăng nhập hiệu quả và bcryptjs để đảm bảo an toàn cơ bản cho mật khẩu người dùng
+ •	Dự án đã hoàn thành các chức năng cơ bản của một website thương mại điện tử: quản lý sản phẩm, quản lý người dùng (xác thực, phân quyền), và luồng đặt hàng.
+ 
+ •	Áp dụng thành công mô hình MVC (dù không tường minh) với việc tách biệt logic (Routes/Controllers), dữ liệu (Models - tương tác MySQL) và giao diện (Views - EJS).
+ 
+ •	Sử dụng express-session để quản lý phiên đăng nhập hiệu quả và bcryptjs để đảm bảo an toàn cơ bản cho mật khẩu người dùng
 
+**2. Nhược điẻm**
+
+Nhược điểm
+•	Giao diện người dùng vẫn còn ở mức cơ bản, chưa có tính tương tác cao (chủ yếu render phía server).
+
+•	Chức năng giỏ hàng và có thể bị mất nếu lưu ở session.
+
+•	Chưa xử lý các trường hợp phức tạp như: quản lý khuyến mãi, đánh giá sản phẩm, hủy đơn hàng (tự động hoàn stock).
+
+•	Bảo mật cần được tăng cường thêm (ví dụ: chống CSRF, XSS, SQL Injection).
+
+•	Chưa tích hợp cổng thanh toán trực tuyến.
 
 
 ## Kết luận Và Phát Triển Tương Lai

@@ -35,7 +35,15 @@
                                     <div class="d-flex align-items-center">
                                         <span class="text-danger fw-bold fs-5 me-3"><%= parseFloat(order.total_price).toLocaleString('vi-VN') %> VND</span>
                                         
-                                        <span class="badge bg-success me-3">Đã giao</span> 
+                                        <span>Trạng thái: 
+                                            <% let badgeColor = 'bg-warning text-dark'; %>
+                                            <% if (order.status === 'Completed' || order.status === 'Shipped') { badgeColor = 'bg-success'; } %>
+                                            <% if (order.status === 'Cancelled') { badgeColor = 'bg-danger'; } %>
+                                        
+                                            <span class="badge <%= badgeColor %>">
+                                                <%= order.status %>
+                                            </span>
+                                        </span>
                                     </div>
                                     
                                 </div>

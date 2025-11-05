@@ -96,6 +96,17 @@ Nhược điểm
 
 ## Kết luận Và Phát Triển Tương Lai
 
+•	Tích hợp cổng thanh toán: Kết nối với các API thanh toán như VNPAY, MoMo.
+
+•	Cải thiện Frontend: Sử dụng một framework JavaScript (như React, Angular) để xây dựng Giao diện người dùng (SPA) có tính tương tác cao hơn, và Node.js chỉ đóng vai trò API.
+
+•	Nâng cao chức năng: Thêm các module: đánh giá sản phẩm, quản lý khuyến mãi, tìm kiếm và lọc sản phẩm nâng cao.
+
+•	Tối ưu hiệu suất: Tối ưu hóa truy vấn CSDL, sử dụng cache.
+
+•	Phát triển ứng dụng di động: Xây dựng app mobile (React Native, Flutter) kết nối với API của hệ thống.
+
+
 
 
  

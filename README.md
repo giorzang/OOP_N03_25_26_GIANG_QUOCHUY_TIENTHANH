@@ -62,6 +62,15 @@ thêm sửa xóa thông tin
 **2. Giao diện trang chủ (Giao diện đầu tiên):** <img width="975" height="476" alt="image" src="https://github.com/user-attachments/assets/319b9e2c-a111-4e6c-9bce-1bcaeb0542f5" />
 
 
+**3. Giao diện giỏ hàng:**  <img width="975" height="471" alt="image" src="https://github.com/user-attachments/assets/2bbf306e-2780-40a8-8ca3-d47aa441d942" />
+
+**4.  Giao diện quản lý sản phẩm và thêm sản phẩm:**  <img width="975" height="477" alt="image" src="https://github.com/user-attachments/assets/4ddecc20-d18d-4c5b-8e36-fb0599e65e2d" />     <img width="975" height="470" alt="image" src="https://github.com/user-attachments/assets/c5e10cf2-267f-4f79-b7bd-025bd369b1a6" />
+
+
+
+**5. **
+
+**6. **
 
 ## Ưu Diểm Ứng Dụng
 

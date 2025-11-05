@@ -110,7 +110,7 @@ exports.postDeleteProduct = async (req, res, next) => {
         // Gọi phương thức static .deleteById()
         await Product.deleteById(productId);
         res.redirect('/admin/products');
-    } catch (err) { console.log(err); }
+    } catch (err) { console.log(err); } 
 };
 
 // Create category

@@ -50,16 +50,18 @@
                             </a>
                         </li>
                         
-                        <li class="nav-item dropdown me-3">
-                            <a class="nav-link dropdown-toggle text-white fw-bolder fs-5 <%= path.startsWith('/admin') ? 'active-nav-link' : '' %>" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-cog me-1"></i> Quản lý
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border border-3 border-success" aria-labelledby="adminDropdown">
-                                <li><a class="dropdown-item fw-bold <%= path === '/admin/users' ? 'active' : '' %>" href="/admin/users"><i class="fas fa-users-cog me-2 text-primary"></i> Quản lý Người dùng</a></li>
-                                <li><a class="dropdown-item fw-bold <%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products"><i class="fas fa-boxes me-2 text-success"></i> Quản lý Sản phẩm</a></li>
-                                <li><a class="dropdown-item fw-bold <%= path === '/admin/categories' ? 'active' : '' %>" href="/admin/categories"><i class="fas fa-layer-group me-2 text-warning"></i> Quản lý Danh mục</a></li>
-                            </ul>
-                        </li>
+                        <% if (user.isAdmin) { %>
+                            <li class="nav-item dropdown me-3">
+                                <a class="nav-link dropdown-toggle text-white fw-bolder fs-5 <%= path.startsWith('/admin') ? 'active-nav-link' : '' %>" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-cog me-1"></i> Quản lý
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end shadow-lg border border-3 border-success" aria-labelledby="adminDropdown">
+                                    <li><a class="dropdown-item fw-bold <%= path === '/admin/users' ? 'active' : '' %>" href="/admin/users"><i class="fas fa-users-cog me-2 text-primary"></i> Quản lý Người dùng</a></li>
+                                    <li><a class="dropdown-item fw-bold <%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products"><i class="fas fa-boxes me-2 text-success"></i> Quản lý Sản phẩm</a></li>
+                                    <li><a class="dropdown-item fw-bold <%= path === '/admin/categories' ? 'active' : '' %>" href="/admin/categories"><i class="fas fa-layer-group me-2 text-warning"></i> Quản lý Danh mục</a></li>
+                                </ul>
+                            </li>
+                        <% } %>
 
                         <li class="nav-item">
                             <form action="/logout" method="POST" class="d-flex">

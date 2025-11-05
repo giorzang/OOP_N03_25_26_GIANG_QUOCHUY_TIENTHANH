@@ -3,17 +3,98 @@ const bcrypt = require('bcryptjs');
 
 class User {
     // Thuộc tính (properties)
-    constructor(id, email, phone, password, name, address) {
+    constructor(id, email, phone, password, name, address, isAdmin) {
         this.id = id;
         this.email = email;
         this.phone = phone;
         this.password = password;
         this.name = name;
         this.address = address;
+        this.isAdmin = isAdmin || false; // Mac dinh la false
     }
 
-    // ... (Các hàm save, fetchAll, findById giữ nguyên) ...
+    async save() {
+        // Hash mật khẩu
+        const hashedPassword = await bcrypt.hash(this.password, 12);
 
+        return db.execute(
+            'INSERT INTO users (email, phone, password, name, address) VALUES (?, ?, ?, ?, ?)',
+            [
+                this.email,
+                this.phone,
+                hashedPassword,
+                this.name,
+                this.address
+            ]
+        );
+    }
+
+    /// Read (admin)
+    static async fetchAll() {
+        const [rows] = await db.execute('SELECT id, email, phone, name, address FROM users');
+        // Không gửi password ra ngoài!
+        return rows.map(row => new User(
+            row.id,
+            row.email,
+            row.phone,
+            null, // Không gửi pass
+            row.name,
+            row.address,
+            row.isAdmin
+        ));
+    }
+    //// findById
+    static async findById(id) {
+        const [rows] = await db.execute('SELECT * FROM users WHERE id = ?', [id]);
+        if (rows.length > 0) {
+            const row = rows[0];
+            return new User(
+                row.id,
+                row.email,
+                row.phone,
+                row.password, // Cần pass để login
+                row.name,
+                row.address,
+                row.isAdmin
+            );
+        }
+        return null;
+    }
+    //// findByEmail
+    static async findByEmail(email) {
+        const [rows] = await db.execute('SELECT * FROM users WHERE email = ?', [email]);
+        if (rows.length > 0) {
+            const row = rows[0];
+            return new User(
+                row.id, 
+                row.email, 
+                row.phone, 
+                row.password,
+                row.name,
+                row.address,
+                row.isAdmin
+            );
+        }
+        return null;
+    }
+    //// findByPhone
+    static async findByPhone(phone) {
+        const [rows] = await db.execute('SELECT * FROM users WHERE phone = ?', [phone]);
+        if (rows.length > 0) {
+            const row = rows[0];
+            return new User(
+                row.id, 
+                row.email, 
+                row.phone, 
+                row.password,
+                row.name, 
+                row.address,
+                row.isAdmin
+            );
+        }
+        return null;
+    }
+    
     //// findByEmailOrPhone (HÀM BỊ THIẾU/LỖI CÚ PHÁP TRƯỚC ĐÓ)
     static async findByEmailOrPhone(loginInput) {
         const [rows] = await db.execute(
@@ -30,7 +111,8 @@ class User {
                 row.phone,
                 row.password,
                 row.name,
-                row.address
+                row.address,
+                row.isAdmin
             );
         }
         return null;
@@ -50,6 +132,10 @@ class User {
             'UPDATE users SET password = ? WHERE id = ?',
             [newHashedPassword, this.id]
         );
+    }
+
+    static async deleteById(id) {
+        return db.execute('DELETE FROM users WHERE id = ?', [id]);
     }
     
     // Hàm Wishlist (Đã cung cấp trước đó)
@@ -83,8 +169,6 @@ class User {
     async checkPassword(plainPassword) {
         return bcrypt.compare(plainPassword, this.password);
     }
-    
-    // ... (Các hàm khác) ...
 }
 
 module.exports = User;

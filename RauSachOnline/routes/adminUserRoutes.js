@@ -1,13 +1,13 @@
 const express = require('express');
 const adminController = require('../controllers/adminController');
-const isAuth = require('../middleware/isAuth');
+const isAdmin = require('../middleware/isAdmin');
 
 const router = express.Router();
 
 // === R (Read) ===
-router.get('/users', isAuth, adminController.getUsers);
+router.get('/users', isAdmin, adminController.getUsers);
 
 // === D (Delete) ===
-router.post('/delete-user', isAuth, adminController.deleteUser);
+router.post('/delete-user', isAdmin, adminController.deleteUser);
 
 module.exports = router;

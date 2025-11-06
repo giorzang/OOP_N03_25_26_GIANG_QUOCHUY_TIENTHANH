@@ -1,4 +1,4 @@
-## Project (Nhóm) Giang - Quốc Huy - Tiến Thành
+## Project (Nhóm 3) Giang - Quốc Huy - Tiến Thành
 ## Thành Viên Nóm: 
 **1. Vũ Trường Giang**
 ID: 23010257

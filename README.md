@@ -23,13 +23,22 @@ Hệ thống Quản lý Bán hàng Siêu Sạch
 Dự án “Quản lý Bán hàng Siêu Sạch” được xây dựng nhằm hỗ trợ các cửa hàng kinh doanh sản phẩm sạch (như rau củ quả, thịt cá hữu cơ, sản phẩm nông nghiệp an toàn, v.v.) trong việc quản lý bán hàng, kho hàng, đơn đặt hàng và khách hàng một cách hiệu quả, chính xác và tự động hóa.
 
 ## Chức Năng Chính
-Dăng ký, đăng nhập tài khoản người dung
 
-Dặt hàng
+1.	Quản trị viên (Admin):
+   Quản lý người dùng (Khóa/Mở tài khoản Customer).
+  	Quản lý danh mục sản phẩm (Thêm, Sửa, Xóa).
+   Quản lý sản phẩm (Thêm, Sửa, Xóa, Cập nhật số lượng).
+   Quản lý đơn hang (Xác nhận đơn, Cập nhật trạng thái đơn hàng).
 
-Hiển thị danh sach hàng đã đặt (Khách hàng), hiển thị danh sách hàng chung (Admin)
+3.	Khách hàng (Customer):
+ 	Đăng ký tài khoản.
+ 	Đăng nhâp/Đăng xuất (Sử dụng Session).
+ 	Xem danh sách sản phẩm (Theo danh mục hoặc tất cả).
+ 	Xem chi tiết sản phẩm.
+ 	Thêm sản phẩm vào giỏ hàng.
+ 	Quản lý giỏ hàng (Thay đổi số lượng, Xóa sản phẩm).
+ 	Đặt hàng (Checkout) và xem lại lịch sử đơn hàng.
 
-thêm sửa xóa thông tin
 
 
 ##  UML Dự Án

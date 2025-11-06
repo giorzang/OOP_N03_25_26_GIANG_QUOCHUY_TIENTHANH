@@ -33,11 +33,21 @@ exports.postRegister = async (req, res, next) => {
         // Kiểm tra user/email tồn tại
         const userByEmail = await User.findByEmail(email);
         if (userByEmail) {
-            return res.status(422).json({ errorMessage: 'Email này đã được sử dụng!' });
+            // return res.status(422).json({ errorMessage: 'Email này đã được sử dụng!' });
+            return res.status(422).render('auth/register', {
+                path: '/register',
+                pageTitle: 'Đăng Ký',
+                errorMessage: 'Email này đã được sử dụng!'
+            });
         }
         const userByPhone = await User.findByPhone(phone);
         if (userByPhone) {
-            return res.status(422).json({ errorMessage: 'Số điện thoại này đã tồn tại!' });
+            // return res.status(422).json({ errorMessage: 'Số điện thoại này đã tồn tại!' });
+            return res.status(422).render('auth/register', {
+                path: '/register',
+                pageTitle: 'Đăng Ký',
+                errorMessage: 'Số điện thoại này đã tồn tại!'
+            });
         }
 
         const newUser = new User(
@@ -82,7 +92,12 @@ exports.postLogin = async (req, res, next) => {
 
         // Bắt lỗi: User không tồn tại
         if (!user) {
-            return res.status(422).json({ errorMessage: 'Email/Số điện thoại hoặc mật khẩu không đúng!' });
+            // return res.status(422).json({ errorMessage: 'Email/Số điện thoại hoặc mật khẩu không đúng!' });
+            return res.status(422).render('auth/login', {
+                path: '/login',
+                pageTitle: 'Đăng Nhập',
+                errorMessage: 'Email/Số điện thoại hoặc mật khẩu không đúng!'
+            });
         }
 
         // User tồn tại -> So sánh mật khẩu
@@ -91,7 +106,12 @@ exports.postLogin = async (req, res, next) => {
 
         // 5. Bắt lỗi: Sai mật khẩu
         if (!isMatch) {
-            return res.status(422).json({ errorMessage: 'Email/Số điện thoại hoặc mật khẩu không đúng!' });
+            // return res.status(422).json({ errorMessage: 'Email/Số điện thoại hoặc mật khẩu không đúng!' });
+            return res.status(422).render('auth/login', {
+                path: '/login',
+                pageTitle: 'Đăng Nhập',
+                errorMessage: 'Email/Số điện thoại hoặc mật khẩu không đúng!'
+            });
         }
 
         // ĐĂNG NHẬP THÀNH CÔNG

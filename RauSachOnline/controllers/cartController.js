@@ -29,6 +29,7 @@ exports.postAddToCart = async (req, res, next) => {
     try {
         const cart = await Cart.findOrCreateByUserId(req.session.user.id);
         await cart.addProduct(productId, 1); 
+        req.flash('success', 'Đã thêm sản phẩm vào giỏ hàng!');
         res.redirect('/');
     } catch (err) { console.log(err); }
 };

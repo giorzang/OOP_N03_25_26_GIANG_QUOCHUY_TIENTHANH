@@ -61,6 +61,7 @@ exports.postRegister = async (req, res, next) => {
         await newUser.save();
 
         // Đăng ký thành công -> Chuyển hướng sang trang Đăng nhập
+        req.flash('success', 'Đăng ký thành công! Bạn có thể đăng nhập.');
         res.redirect('/login');
 
     } catch (err) {

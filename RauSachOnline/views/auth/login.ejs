@@ -5,6 +5,14 @@
 <main>
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 85vh;">
         <div class="card p-5 custom-login-card shadow-lg rounded-3 border-success border-2" style="width: 100%; max-width: 480px;">
+            <% if (successMessage && successMessage.length > 0) { %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                
+                    <%= successMessage[0] %> 
+                
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
             <div class="card-body p-0">
                 
                 <div class="text-center mb-4">
